@@ -13,11 +13,11 @@ export default function handler(
 
   let data : any
 
-  axios.get(`/napi/db`).then((x) => {
+  axios.post(`http://localhost:5238/api/db`,{ip : "mc.shwa.space"}).then((x) => {
     data = x.data
     console.log(x)
     res.status(200).json({datas : data});
 
-  });
-  res.status(200).json({datas : data});
+  }); 
+
 }

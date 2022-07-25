@@ -6,10 +6,14 @@ const nextConfig = {
     return [
       {
         source : '/napi/:path*',
-        destination : "http://localhost:5238/api/:path*"
-      }
+        destination : "https://localhost:7238/api/:path*"
+      },
+      {source : '/api/:path*',
+      destination : "http://localhost:3002/api/:path*"
+    }
     ]
   }
 }
 
 module.exports = nextConfig
+
