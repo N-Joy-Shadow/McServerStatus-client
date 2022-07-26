@@ -1,6 +1,6 @@
-.title{
-    width: 100%;
+.Mctitle{
     height: 100%;
+    width: 100%;
     padding-bottom: 0.3em;
     display: flex;
     justify-content: center;
@@ -11,9 +11,7 @@
 }
 
 .McButton{
-    height: 36px;
-    width: 250px;
-    
+    height: 40px;
     font-family: "minecraft";
 
     white-space: nowrap;
@@ -22,12 +20,12 @@
     image-rendering: pixelated;
     border: 2px solid #000;
 }
-.McButton:hover .title{
+.McButton:hover .Mctitle{
     background-color: rgba(100, 100, 255, .45);
     text-shadow: 2px 2px #202013CC;
     color: #FFFFA0;
 }
-.McButton:active .title {
+.McButton:active .Mctitle {
     box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
 }
 .McBtnContainer{

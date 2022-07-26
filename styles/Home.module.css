@@ -5,7 +5,8 @@
 }
 
 .main {
-  height: 80vh;
+  height: 86vh;
+  width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
 }

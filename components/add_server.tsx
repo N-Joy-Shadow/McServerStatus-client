@@ -3,7 +3,9 @@ import { useState } from "react";
 import axios from "axios";
 import https from "https";
 import Bstyles from "../styles/Mc/Background.module.css";
-import styles from '../styles/Mc/Button.module.css'
+import MCTextField from "./MCStyled/MCTextField";
+import MCButton from "./MCStyled/MCButton";
+import Link from "next/link";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
@@ -27,19 +29,29 @@ export default function AddServer() {
   }
 
   return (
-    <div className={Bstyles.McBackground}>
-
-      <Button
+    <div
+      className={Bstyles.McBackground}
+      style={{ width: "100%", height: "100%" }}
+    >
+      <div style={{ width : "400px", height : "40px"}}> 
+      <MCButton 
         onClick={async () => {
           await PostServer().then(() => {
             alert("완료");
           });
         }}
       >
-        {" "}
-        서버 추가
-      </Button>
-      <TextField onChange={(x) => HandleOnChange(x.target)} />
+        Add Server
+      </MCButton>
+      </div>
+        <div style={{width : "400px", height :"200px"}}>
+      <MCTextField  onChange={(x) => HandleOnChange(x.target)}/>
+      <Link href='/'>
+
+        <MCButton>Back</MCButton>
+      </Link>
+
+      </div>
     </div>
   );
 }
