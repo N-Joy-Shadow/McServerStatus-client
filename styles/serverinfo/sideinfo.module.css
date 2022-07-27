@@ -1,0 +1,23 @@
+.ServerLayoutContainer{
+    width: 100vw;
+    background-color: #00000042;
+}
+.playerName{
+    margin: 2px;
+    padding: 5px;
+    background-color: #000;
+    border: 2px solid #000050;
+    border-radius: 1px;
+    border-width: thin;
+    width: auto;
+    display: inline-block;
+}
+.TopRightBtn{
+    width: 40px;
+    height: 35px;
+    
+}
+.TopRightBtnContainer{
+    width: 80px;
+    display: flex;
+}

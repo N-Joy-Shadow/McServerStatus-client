@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { ServerInfo } from "../API/ServerInfo";
+import { useContext, useEffect, useState } from "react";
+import { ServerInfo } from '../API/ServerInfo';
 import PlayerMinInfo from "./player/player_info";
-import serverStyle from "../styles/serverinfo/server.module.css";
+import styles from "../styles/serverinfo/sideinfo.module.css";
 import ServerInfoLayout from "./ServerList/ServerInfoLayout";
+import { ServerInfoContext } from '../pages/index';
+import serverStyle from "../styles/serverinfo/server.module.css";
+
 export interface serverip {
   serverip: string;
 }
 
-export default function infoServer(data: serverip) {
+export default function infoServer(name: serverip) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverData, SetserverData] = useState<ServerInfo>();
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -16,19 +19,24 @@ export default function infoServer(data: serverip) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     axios
-      .post("https://localhost:7238/api/db", { Ip: data.serverip })
+      .post("https://localhost:7238/api/db", { Ip: name.serverip })
       .then((x) => {
+        
         SetserverData(x.data[0]);
       });
   }, []);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { data, setData }= useContext(ServerInfoContext);
   //임시
   let icon = serverData?.icon ?? "https://status.shwa.space/assets/images/default.png";
   if (icon == "" || icon == null) {
     icon = "https://status.shwa.space/assets/images/default.png";
   }
+
+
   let dumpdata : ServerInfo= {
     isOnline :false,
-    hostName : data.serverip,
+    hostName : name.serverip,
     motdHtml : ["<p style={{ color : 'white'}}>Loading...</p>"],
     players :{
       playerCount : 0,
@@ -37,25 +45,14 @@ export default function infoServer(data: serverip) {
     
   }
 
-  if (serverData == null)
-    return (
-      <ServerInfoLayout data={dumpdata} icon={icon}/>
-      
-    );
-
+  if (serverData == null) return (<div><ServerInfoLayout data={dumpdata} icon={icon}/></div>)
   return (
-    <ServerInfoLayout data={serverData} icon={icon}/>
-      
+    <div onClick={() =>{
+      serverData.icon = icon
+      setData(serverData)
+    }}>
 
+      <ServerInfoLayout data={serverData} icon={icon}/>
+    </div>
   );
 }
-
-{
-  /* <p>버킷 : {serverData.bukkit}</p>
-<p>Ip : {serverData.ip}</p>
-<p>Version : {serverData.version}</p> */
-}
-{/* {serverPlayerList.map((x,i) =>{
-        console.log(x)
-        return(<PlayerMinInfo key={i * 100} name={x}/>)
-      })} */}

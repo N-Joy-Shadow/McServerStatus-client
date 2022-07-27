@@ -7,7 +7,7 @@
     align-items: center;
     color: #DDD;
     text-shadow: 2px 2px #000a;
-    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff7;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff5;
 }
 
 .McButton{
@@ -21,9 +21,10 @@
     border: 2px solid #000;
 }
 .McButton:hover .Mctitle{
-    background-color: rgba(100, 100, 255, .45);
+    /* background-color: rgba(100, 100, 255, .45);
     text-shadow: 2px 2px #202013CC;
-    color: #FFFFA0;
+    color: #FFFFA0; */
+    border: #fff9 2px solid;
 }
 .McButton:active .Mctitle {
     box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;

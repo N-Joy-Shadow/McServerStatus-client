@@ -1,11 +1,12 @@
 import { Button } from "@mui/material";
 import Link from "next/link";
-import Bstyles from "../styles/Mc/Background.module.css";
 import MCButton from "../components/MCStyled/MCButton";
 import McToast from "../components/MCStyled/McToast";
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 
-export default function login() {
+import Bstyles from "../styles/Mc/Background.module.css";
+
+ const login : NextPage = ({}) => {
   return (
     <div className={Bstyles.McBackground} style={{ height: "100vh" }}>
       <p>회원가입 따윈 없다.</p>
@@ -21,8 +22,9 @@ export default function login() {
     </div>
   );
 }
-export const getServerSideProps: GetStaticProps = (context) => {
+export const getstatiacprops: GetStaticProps = (context) => {
   return {
     props: {},
   };
 };
+export default login

@@ -1,14 +1,16 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from 'react';
 import serverStyle from "../../styles/serverinfo/server.module.css";
 import { ServerInfo } from "../../API/ServerInfo";
+import { ServerInfoContext } from "../../pages";
 
-interface ServerInfoLayoutProps {
+export interface ServerInfoLayoutProps {
   data: ServerInfo;
-  icon: string;
+  icon?: string;
 }
 
 export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
+
   return (
     <div className={serverStyle.serverContainer}>
       <div style={{ display: "flex" }}>

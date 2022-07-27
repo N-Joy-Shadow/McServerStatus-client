@@ -14,6 +14,7 @@
     color: white;
     font-family: 'minecraft';
     font-size: 20px;
+    caret-color: transparent;
 }
 .McTextInput:focus{
     outline: none;
