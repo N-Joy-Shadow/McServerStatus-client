@@ -17,6 +17,8 @@ export default function infoServer(name: serverip) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [reload, Setreload] = useState<boolean>(false);
   // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { data, setData }= useContext(ServerInfoContext);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     axios
       .post("https://localhost:7238/api/db", { Ip: name.serverip })
@@ -24,8 +26,6 @@ export default function infoServer(name: serverip) {
         SetserverData(x.data);
       });
   }, []);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { data, setData }= useContext(ServerInfoContext);
   //임시
   let icon = serverData?.icon ?? "https://status.shwa.space/assets/images/default.png";
   if (icon == "" || icon == null) {
@@ -39,7 +39,8 @@ export default function infoServer(name: serverip) {
      players :{
       playerCount : 0,
       maxPlayerCount : 0,
-    }
+    },
+    motd : "loading..."
     
   }
 

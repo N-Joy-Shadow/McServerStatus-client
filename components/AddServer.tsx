@@ -25,6 +25,8 @@ export default function AddServer() {
       },
     });
   }
+
+
   const router = useRouter();
   return (
     <div
@@ -49,6 +51,8 @@ export default function AddServer() {
 
         <MCButton>Back</MCButton>
       </Link>
+      <MCButton onClick={() => {
+      }}>Test Btn</MCButton>
 
       </div>
     </div>

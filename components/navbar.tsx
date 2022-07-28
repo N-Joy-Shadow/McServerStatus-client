@@ -7,9 +7,10 @@ import MCButton from "./MCStyled/MCButton";
 export default function navbar() {
   return (
     <div className={Bstyles.McBackground}>
-      <nav className={styles.McBtnContainer} style={{ float: "right" }}>
+      <p>Multi Player</p>
+      <nav className={styles.McBtnContainer}>
         <Link href="login">
-          <div style={{ width: "360px" }}>
+          <div style={{ width: "300px" }}>
             <MCButton>Login</MCButton>
           </div>
         </Link>
