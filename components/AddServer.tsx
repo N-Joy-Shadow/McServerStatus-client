@@ -6,16 +6,15 @@ import Bstyles from "../styles/Mc/Background.module.css";
 import MCTextField from "./MCStyled/MCTextField";
 import MCButton from "./MCStyled/MCButton";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
 
   function HandleOnChange(x: any) {
-    console.log(x.value);
     Setserver(x.value);
   }
   async function PostServer() {
-    console.log(process.env.NODE_TLS_REJECT_UNAUTHORIZED);
     const httpsAgent = new https.Agent({ rejectUnauthorized: false });
     await axios({
       url: "https://localhost:7238/api/db",
@@ -23,11 +22,10 @@ export default function AddServer() {
       method: "POST",
       data: {
         Ip: server,
-        IsAll: false,
       },
     });
   }
-
+  const router = useRouter();
   return (
     <div
       className={Bstyles.McBackground}
@@ -37,7 +35,8 @@ export default function AddServer() {
       <MCButton 
         onClick={async () => {
           await PostServer().then(() => {
-            alert("완료");
+            alert("완료!")
+            router.push("/")
           });
         }}
       >

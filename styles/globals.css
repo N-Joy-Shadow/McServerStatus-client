@@ -20,6 +20,11 @@ a {
   box-sizing: border-box;
 }
 
+div {
+  color : white;
+  font-family: "minecraft";
+}
+
 ::-webkit-scrollbar {
   width: 16px;
   height: 16px;

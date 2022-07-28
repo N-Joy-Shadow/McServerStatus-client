@@ -23,7 +23,7 @@ const Home: NextPage = ({ data } : any)   => {
       playerList : [''],
       maxPlayerCount :0,
     },
-    motdHtml : ["<p>hi</p>"]})
+  })
   useEffect(() =>{
     axios.get("https://localhost:7238/api/serverlist").then((x) =>{
       setServerIp(x.data)
@@ -106,7 +106,6 @@ export const ServerInfoContext =createContext<ServerInfoContext>({
       playerList : [''],
       maxPlayerCount :0,
     },
-    motdHtml : ["<p>hi</p>"]
   },
   setData: () => {}
 })

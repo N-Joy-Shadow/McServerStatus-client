@@ -527,6 +527,11 @@
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.1.4.tgz"
   "version" "1.1.4"
 
+"@sfirew/mc-motd-parser@^1.0.8":
+  "integrity" "sha512-PR7FPa4iS2+KF6dolcYMHX2LbMb8jqRyDdKc2Sq9HxeAYfrDDir+20I4ZI3pI1WQowlaDOnoBLCiyG4E58lAtw=="
+  "resolved" "https://registry.npmjs.org/@sfirew/mc-motd-parser/-/mc-motd-parser-1.0.8.tgz"
+  "version" "1.0.8"
+
 "@swc/helpers@0.4.2":
   "integrity" "sha512-556Az0VX7WR6UdoTn4htt/l3zPQ7bsQWK+HqdG4swV7beUCxo/BqmvbOpUkTIm/9ih86LIf1qsUnywNL3obGHw=="
   "resolved" "https://registry.npmjs.org/@swc/helpers/-/helpers-0.4.2.tgz"

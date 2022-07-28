@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
+    "@sfirew/mc-motd-parser": "^1.0.8",
     "@types/markdown-it": "^12.2.3",
     "axios": "^0.27.2",
     "cors": "^2.8.5",

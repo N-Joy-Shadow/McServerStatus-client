@@ -21,8 +21,7 @@ export default function infoServer(name: serverip) {
     axios
       .post("https://localhost:7238/api/db", { Ip: name.serverip })
       .then((x) => {
-        
-        SetserverData(x.data[0]);
+        SetserverData(x.data);
       });
   }, []);
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -37,8 +36,7 @@ export default function infoServer(name: serverip) {
   let dumpdata : ServerInfo= {
     isOnline :false,
     hostName : name.serverip,
-    motdHtml : ["<p style={{ color : 'white'}}>Loading...</p>"],
-    players :{
+     players :{
       playerCount : 0,
       maxPlayerCount : 0,
     }

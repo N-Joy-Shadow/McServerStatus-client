@@ -3,13 +3,23 @@ import { useEffect, useState, useContext } from 'react';
 import serverStyle from "../../styles/serverinfo/server.module.css";
 import { ServerInfo } from "../../API/ServerInfo";
 import { ServerInfoContext } from "../../pages";
-
+import { motdParser } from '@sfirew/mc-motd-parser'
 export interface ServerInfoLayoutProps {
   data: ServerInfo;
   icon?: string;
 }
 
 export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
+
+  let motd = props.data.motd ?? "{\"text\":\"Loading...\"}"
+  let motdHtml =""
+  try{
+    let motdJson = JSON.parse(motd)
+    motdHtml = motdParser.autoToHtml(motdJson)
+  }
+  catch{
+    motdHtml = motdParser.autoToHtml(motd)
+  }
 
   return (
     <div className={serverStyle.serverContainer}>
@@ -23,14 +33,9 @@ export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
               {props?.data.players?.maxPlayerCount}
             </p>
           </div>
-          {props?.data.motdHtml?.map((x, i) => {
-            if (x.startsWith("A Minecraft Server")) {
-              return <p style={{ color: "white" }}>A Minecraft Server</p>;
-            }
-            return <div key={i} dangerouslySetInnerHTML={{ __html: x }} />;
-          })}
+          <div dangerouslySetInnerHTML={{ __html : motdHtml }}></div>
         </div>
-      </div>
+    </div>
     </div>
   );
 }

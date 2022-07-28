@@ -9,8 +9,9 @@
         version?: string;
         bukkit?: string;
         players: Players;
-        motdHtml: string[];
+        motd?: string;
         icon? : string
+        modList? : string[]
     }
     
     export interface Players {
