@@ -9,6 +9,7 @@
 .serverName {
     top: 0;
     flex-grow: 2;
+    margin-left: 10px;
 }
 .serverContainer{
     margin: 5px;
@@ -23,3 +24,8 @@
     /*background-color: rgba(255, 255,255,0.1);*/
 }
 
+
+.serverMotd {
+    color: white;
+    margin-left: 10px;
+}

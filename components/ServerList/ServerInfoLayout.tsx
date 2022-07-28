@@ -37,11 +37,14 @@ export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
               {playerCount}
             </p>
             <MCServerLoading
-              isOnline={props.data.isOnline}
-              LoadingStr={props.data.motd}
+            isOnline={props.data.isOnline}
+            LoadingStr={props.data.motd}
             />
+            
           </div>
-          <div dangerouslySetInnerHTML={{ __html: motdHtml }}></div>
+          <div dangerouslySetInnerHTML={{ __html: motdHtml }}
+          className={serverStyle.serverMotd}
+          ></div>
         </div>
       </div>
     </div>

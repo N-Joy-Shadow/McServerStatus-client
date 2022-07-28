@@ -9,4 +9,14 @@
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.mainOpen {
+  height: 86vh;
+  width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: 20%;
 }
