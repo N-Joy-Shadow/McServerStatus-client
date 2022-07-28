@@ -2,6 +2,7 @@
   background-image: url("https://status.shwa.space/assets/images/dirt.png");
   background-repeat: repeat;
   background-size: 64px;
+  font-size: large
 }
 
 .main {
@@ -9,8 +10,7 @@
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-left: 20%;
-  padding-right: 20%;
+  /* padding-right: 20%; */
 }
 
 .mainOpen {
@@ -18,5 +18,4 @@
   width: 100vw;
   overflow-y: auto;
   overflow-x: hidden;
-  padding-left: 20%;
 }

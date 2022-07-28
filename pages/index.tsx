@@ -55,15 +55,16 @@ const Home: NextPage = ({ data } : any)   => {
       </Head>
       <ServerInfoContext.Provider value={{ data : serverInfo, setData : SetserverInfo}}>
       <div style={{ display: "flex"}}>
-        <div className={serverPd}>
+        <div className={serverPd} style={{marginRight: serverInfo.hostName== "" ? "20%" : "0%", marginLeft: serverInfo.hostName== "" ? "20%" : "0%"}}>
           {serverIp.map((x,i) => {
             //return(<div key={i}>{x}</div>)
-            useEffect(() => {
-              setServerPd(`${styles.mainOpen}`)
-              setServerPd(`${styles.main}`)
-              console.log(styles.mainOpen)
-              console.log(serverPd)
-            })
+
+            // useEffect(() => {
+            //   setServerPd(`${styles.mainOpen}`)
+            //   setServerPd(`${styles.main}`)
+            //   console.log(styles.mainOpen)
+            //   console.log(serverPd)
+            // })
             return (<InfoServer serverip={x} key={i}/>)
           })}
           
