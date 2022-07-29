@@ -1,10 +1,11 @@
 import { ServerInfoLayoutProps } from "./ServerInfoLayout";
 import styles from "../../styles/serverinfo/sideinfo.module.css";
 import MCButton from "../MCStyled/MCButton";
-import { Refresh } from "@mui/icons-material";
 import { useContext } from 'react';
 import { ServerInfoContext } from '../../pages/index';
 import { ServerInfo } from '../../API/ServerInfo';
+import axios from "axios";
+import https from 'https';
 
 export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
   const { data, setData} = useContext(ServerInfoContext)
@@ -17,6 +18,23 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
       maxPlayerCount :0,
     },
   }
+
+  async function PostServer(server :string) {
+    const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+    await axios({
+      url: "https://localhost:7238/api/db",
+      httpsAgent: httpsAgent,
+      method: "POST",
+      data: {
+        ip: server,
+      },
+    })
+    .then((x) =>{
+       setData(x.data.serverInfo)
+    });
+  }
+
+
   return (
     <div>
       <div style={{ display: "flex" }}>
@@ -35,7 +53,9 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
         </div>
         <div className={styles.TopRightBtnContainer}>
           <div className={styles.TopRightBtn}>
-            <MCButton onClick={() => {
+            <MCButton onClick={async () => {
+                await PostServer(props.data.hostName)
+
             }} style={{ color: "green" }}>
               R
             </MCButton>
@@ -49,8 +69,9 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
       </div>
       <p>Player List</p>
       <div>
+        {props.data.players.playerList == null && <p>何もなかった</p>}
         {props.data.players.playerList?.map((x, i) => {
-          if (x == " " || x == "") return <p>何もなかった</p>;
+          if (x == " " || x == "" || x == null || x== undefined) return <p>何もなかった</p>;
           return (
             <p key={i} className={styles.playerName} onClick={() => {}}>
               {x}
@@ -59,7 +80,7 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
         })}
       </div>
       <div>
-        {props.data.modList != null && (
+        {(props.data.modList != null && !props.data.isOnline) && (
           <div>
             <p>Mod List :</p>
             <div style={{ height: "50vh", overflowY: "auto" }}>

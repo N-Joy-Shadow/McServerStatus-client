@@ -12,10 +12,20 @@
         motd?: string;
         icon? : string
         modList? : string[]
+        pluginList? : string[]
     }
     
     export interface Players {
         playerCount: number;
         maxPlayerCount: number;
         playerList?: string[];
+    }
+
+    export interface ResData {
+        serverInfo: ServerInfo;
+        responseinfo: Responseinfo;
+    }    
+    export interface Responseinfo {
+        message?: string;
+        isSuccess?: boolean;
     }

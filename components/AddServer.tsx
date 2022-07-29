@@ -7,10 +7,12 @@ import MCTextField from "./MCStyled/MCTextField";
 import MCButton from "./MCStyled/MCButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { ConnectingAirportsOutlined } from "@mui/icons-material";
+import { Responseinfo, ServerInfo } from "../API/ServerInfo";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
-
+  const [Res,SetRes] = useState<Responseinfo>()
   function HandleOnChange(x: any) {
     Setserver(x.value);
   }
@@ -21,12 +23,13 @@ export default function AddServer() {
       httpsAgent: httpsAgent,
       method: "POST",
       data: {
-        Ip: server,
+        ip: server,
       },
+    })
+    .then((x) =>{
+            SetRes(x.data.responseinfo)
     });
   }
-
-
   const router = useRouter();
   return (
     <div
@@ -37,8 +40,10 @@ export default function AddServer() {
       <MCButton 
         onClick={async () => {
           await PostServer().then(() => {
-            alert("완료!")
-            router.push("/")
+            if(Res?.isSuccess){
+              router.push("/")
+            }
+
           });
         }}
       >
@@ -53,7 +58,7 @@ export default function AddServer() {
       </Link>
       <MCButton onClick={() => {
       }}>Test Btn</MCButton>
-
+<p>{Res?.message}</p>
       </div>
     </div>
   );
@@ -66,3 +71,4 @@ export default function AddServer() {
 // --header 'Origin: http://localhost:3002'
 // --header 'Access-Control-Request-Headers: Origin, Accept, Content-Type'
 // --header 'Access-Control-Request-Method: POST'
+
