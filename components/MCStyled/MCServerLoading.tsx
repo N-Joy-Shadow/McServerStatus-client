@@ -6,8 +6,6 @@ interface ServerLoadingProps {
 }
 
 export default function MCServerLoading(props : ServerLoadingProps) {
-    let serverIcon  = "https://status.shwa.space/assets/images/icons.png"
-    console.log(props.LoadingStr)
     let serverStatusIcon;
     if(props.LoadingStr == "loading...") serverStatusIcon = styles.loading
     else if(props.isOnline == false) serverStatusIcon = styles.offline

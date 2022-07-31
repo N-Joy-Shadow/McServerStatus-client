@@ -1,12 +1,17 @@
-import type { GetServerSideProps, GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import { createContext, useEffect, useState } from 'react';
-import NavBar from "../components/navbar"
-import InfoServer from '../components/InfoServer';
-import axios from 'axios'
-import { ServerInfo } from '../API/ServerInfo';
-import Footer from '../components/footer';
+import type {
+  GetServerSideProps,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
+import Head from "next/head";
+import Link from "next/link";
+import { createContext, useEffect, useState } from "react";
+import NavBar from "../components/navbar";
+import InfoServer from "../components/InfoServer";
+import axios from "axios";
+import { ServerInfo } from "../API/ServerInfo";
+import Footer from "../components/footer";
 
 import styles from '../styles/Home.module.css'
 import serverStyles from "../styles/serverinfo/sideinfo.module.css"
@@ -47,7 +52,7 @@ const Home: NextPage = ({ data } : any)   => {
   }
   return (
     <div className={styles.container}>
-      <NavBar/>
+      <NavBar />
       <Head>
         <title>서버 리스트</title>
         <meta name="description" content="스티브 갤러리 서버 리스트" />
@@ -77,52 +82,29 @@ const Home: NextPage = ({ data } : any)   => {
             <ServerSideInfoLayout data={serverInfo}/>
         </div>
         </div>
-        </ServerInfoContext.Provider>
-        <Footer/>
-      </div>
-  )
-}
-
-// export const getServerSideProps : GetStaticProps = async (context) => {
-//   const httpAgent = new https.Agent({rejectUnauthorized : false })
-
-//   let data;
-//   await axios({
-//     url : "http://localhost:5238/api/db",
-//     httpsAgent : httpAgent,
-//     method : "POST",
-//     data : {
-//       IsAll :true,
-//     }
-//   }).then((x) =>{
-//     data = x.data
-//   })
-// return {
-//   props : {
-//     data
-//   }
-// }
-
-// } 
+      </ServerInfoContext.Provider>
+      <Footer />
+    </div>
+  );
+};
 
 
-
-export const ServerInfoContext =createContext<ServerInfoContext>({
-  data : {
-    hostName :"",
-    isOnline : false,
-    players : {
-      playerCount : 0,
-      playerList : [''],
-      maxPlayerCount :0,
+export const ServerInfoContext = createContext<ServerInfoContext>({
+  data: {
+    hostName: "",
+    isOnline: false,
+    players: {
+      playerCount: 0,
+      playerList: [""],
+      maxPlayerCount: 0,
     },
   },
-  setData: () => {}
-})
+  setData: () => {},
+});
 
-interface ServerInfoContext{
-  data : ServerInfo,
-  setData : SetData
+interface ServerInfoContext {
+  data: ServerInfo;
+  setData: SetData;
 }
 type SetData = (value: ServerInfo) => void;
 
