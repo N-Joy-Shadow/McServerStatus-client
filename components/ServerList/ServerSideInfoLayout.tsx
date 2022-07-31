@@ -42,9 +42,9 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
           src={props.data.icon}
           width={128}
           height={128}
-          style={{ flexGrow: 0 }}
+          style={{ flexGrow: 0, marginTop: "10px" }}
         />
-        <div style={{ flexGrow: "1" }}>
+        <div className={styles.serverInfo} style={{ flexGrow: "1" }}>
           <p>서버 주소 : {props.data.hostName}</p>
           <p>IP 주소 : {props.data.ip}</p>
           <p>Port : {props.data.port}</p>
@@ -67,13 +67,13 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
           </div>
         </div>
       </div>
-      <p>Player List</p>
+      <p style={{marginLeft:"10px", fontSize: "23px", marginBottom: "10px"}}>Player List :</p>
       <div>
         {props.data.players.playerList == null && <p>何もなかった</p>}
         {props.data.players.playerList?.map((x, i) => {
           if (x == " " || x == "" || x == null || x== undefined) return <p>何もなかった</p>;
           return (
-            <p key={i} className={styles.playerName} onClick={() => {}}>
+            <p style={{marginLeft:"30px"}} key={i} className={styles.playerName} onClick={() => {}}>
               {x}
             </p>
           );
@@ -82,8 +82,8 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
       <div>
         {(props.data.modList != null && !props.data.isOnline) && (
           <div>
-            <p>Mod List :</p>
-            <div style={{ height: "50vh", overflowY: "auto" }}>
+            <p style={{marginLeft: "10px", fontSize: "23px", marginTop:"10px", marginBottom:"10px"}} >Mod List :</p>
+            <div style={{ height: "50vh", overflowY: "auto", marginLeft: "30px"}}>
               {props?.data?.modList?.map((x, i) => {
                 return <div key={i * 100}><p>{x}</p></div>;
               })}

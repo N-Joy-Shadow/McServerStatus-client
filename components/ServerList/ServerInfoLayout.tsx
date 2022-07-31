@@ -5,6 +5,7 @@ import { ServerInfo } from "../../API/ServerInfo";
 import { ServerInfoContext } from "../../pages";
 import { motdParser } from "@sfirew/mc-motd-parser";
 import MCServerLoading from "../MCStyled/MCServerLoading";
+
 export interface ServerInfoLayoutProps {
   data: ServerInfo;
   icon?: string;
@@ -29,7 +30,7 @@ export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
   return (
     <div className={serverStyle.serverContainer}>
       <div style={{ display: "flex" }}>
-        <img src={props.icon} width={64} height={64} />
+        <img className={serverStyle.serverImage} src={props.icon} width={64} height={64} />
         <div className={serverStyle?.serverInfoContainer}>
           <div style={{ display: "flex" }}>
             <p className={serverStyle.serverName}>{props?.data.hostName}</p>
@@ -37,11 +38,14 @@ export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
               {playerCount}
             </p>
             <MCServerLoading
-              isOnline={props.data.isOnline}
-              LoadingStr={props.data.motd}
+            isOnline={props.data.isOnline}
+            LoadingStr={props.data.motd}
             />
+            
           </div>
-          <div dangerouslySetInnerHTML={{ __html: motdHtml }}></div>
+          <div dangerouslySetInnerHTML={{ __html: motdHtml }}
+          className={serverStyle.serverMotd}
+          ></div>
         </div>
       </div>
     </div>

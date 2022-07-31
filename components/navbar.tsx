@@ -7,10 +7,10 @@ import MCButton from "./MCStyled/MCButton";
 export default function navbar() {
   return (
     <div className={Bstyles.McBackground}>
-      <p>Multi Player</p>
+      <p className={Bstyles.multiPlayerMarginAuto} style={{fontSize:"23px", paddingTop: "20px"}}>멀티플레이</p>
       <nav className={styles.McBtnContainer}>
         <Link href="login">
-          <div style={{ width: "300px" }}>
+          <div className={styles.McLoginBtn} style={{ width: "300px", marginTop: "-40px", marginLeft: "10px"}}>
             <MCButton>Login</MCButton>
           </div>
         </Link>

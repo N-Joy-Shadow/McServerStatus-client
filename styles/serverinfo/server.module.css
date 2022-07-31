@@ -2,6 +2,9 @@
     text-align: end;
     flex-grow: 0;
     color: rgb(170, 170,170);
+    margin-top: 10px;
+    margin-right: 5px;
+    font-size: 20px;
 }
 .serverInfoContainer{
     width: 100%;
@@ -9,11 +12,16 @@
 .serverName {
     top: 0;
     flex-grow: 2;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 20px;
 }
 .serverContainer{
     margin: 5px;
     margin-top: 0px;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 10px;
     border: solid transparent 2px;
 }
 .serverContainer:hover{
@@ -23,3 +31,15 @@
     /*background-color: rgba(255, 255,255,0.1);*/
 }
 
+
+.serverMotd {
+    color: white;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.serverImage {
+    width: 128px;
+    height: 128px;
+    margin-top: 10px;
+}
