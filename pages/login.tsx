@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import Link from "next/link";
-import MCButton from "../components/MCStyled/MCButton";
-import McToast from "../components/MCStyled/McToast";
+import MCButton from "../utils/components/MCStyled/mcButton";
 import { GetStaticProps, NextPage } from "next";
 
 import Bstyles from "../styles/Mc/Background.module.css";

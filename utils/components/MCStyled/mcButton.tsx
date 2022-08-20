@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, forwardRef, HTMLAttributes } from "react";
-import styles from "../../styles/mc/Button.module.css";
+import styles from "../../../styles/mc/Button.module.css";
 
 export default function MCButton(
   props: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>

@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { ServerInfo } from '../API/ServerInfo';
-import PlayerMinInfo from "./player/player_info";
-import styles from "../styles/serverinfo/sideinfo.module.css";
-import ServerInfoLayout from "./ServerList/ServerInfoLayout";
-import { ServerInfoContext } from "../pages/index";
-import serverStyle from "../styles/serverinfo/server.module.css";
+import { ServerInfo } from '../../API/ServerInfo';
+import ServerInfoLayout from "./serverList/ServerInfoLayout";
+import { ServerInfoContext } from "../../pages/index";
+import ServerInfoItem from "./serverInfo/item";
 
 export interface serverip {
   serverip: string;
@@ -14,10 +12,6 @@ export interface serverip {
 export default function infoServer(name: serverip) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverData, SetserverData] = useState<ServerInfo>();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [reload, Setreload] = useState<boolean>(false);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { data, setData } = useContext(ServerInfoContext);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     axios
@@ -48,10 +42,10 @@ export default function infoServer(name: serverip) {
     <div
       onClick={() => {
         serverData.icon = icon;
-        setData(serverData);
       }}
-    >
-      <ServerInfoLayout data={serverData} icon={icon} />
+    >    {/* <ServerInfoItem/> */}
+      <ServerInfoItem data={serverData} icon={icon}/>
+      <ServerInfoLayout data={serverData} icon={icon} /> 
     </div>
   );
 }

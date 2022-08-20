@@ -1,9 +1,9 @@
 import { ServerInfoLayoutProps } from "./ServerInfoLayout";
-import styles from "../../styles/serverinfo/sideinfo.module.css";
-import MCButton from "../MCStyled/MCButton";
+import styles from "../../../styles/serverinfo/sideinfo.module.css";
+import MCButton from "../MCStyled/mcButton";
 import { useContext } from 'react';
-import { ServerInfoContext } from '../../pages/index';
-import { ServerInfo } from '../../API/ServerInfo';
+import { ServerInfoContext } from '../../../pages/index';
+import { ServerInfo } from '../../../API/ServerInfo';
 import axios from "axios";
 import https from 'https';
 
@@ -73,7 +73,10 @@ export default function ServerSideInfoLayout(props: ServerInfoLayoutProps) {
         {props.data.players.playerList?.map((x, i) => {
           if (x == " " || x == "" || x == null || x== undefined) return <p>何もなかった</p>;
           return (
-            <p style={{marginLeft:"30px"}} key={i} className={styles.playerName} onClick={() => {}}>
+            <p style={{marginLeft:"5px"}} key={i} className={styles.playerName} onClick={(x) => {
+              let PlayerName =  x.currentTarget.innerText
+              
+            }}>
               {x}
             </p>
           );

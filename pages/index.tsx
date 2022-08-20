@@ -7,87 +7,51 @@ import type {
 import Head from "next/head";
 import Link from "next/link";
 import { createContext, useEffect, useState } from "react";
-import NavBar from "../components/navbar";
-import InfoServer from "../components/InfoServer";
+import NavBar from "../utils/components/navbar";
+import InfoServer from "../utils/components/InfoServer";
 import axios from "axios";
 import { ServerInfo } from "../API/ServerInfo";
-import Footer from "../components/footer";
+import Footer from "../utils/components/footer";
 
-import styles from '../styles/Home.module.css'
-import serverStyles from "../styles/serverinfo/sideinfo.module.css"
-import ServerSideInfoLayout from '../components/ServerList/ServerSideInfoLayout';
-import { ExpandMore } from '@mui/icons-material';
+import styles from "../styles/Home.module.css";
+import serverStyles from "../styles/serverinfo/sideinfo.module.css";
+import ServerSideInfoLayout from "../utils/components/serverList/ServerSideInfoLayout";
+import { ExpandMore } from "@mui/icons-material";
+import { env } from "process";
+import https from "https";
+import MainLayout from "../utils/layouts/mainLayout";
 
-const Home: NextPage = ({ data } : any)   => {
-  const [serverIp,setServerIp] = useState<string[]>(["rlcs.kro.kr"])
-  const [display,setDisplay] = useState<string>("none")
-  const [serverInfo,SetserverInfo] = useState<ServerInfo>({
-    hostName :"",
-    isOnline : false,
-    players : {
-      playerCount : 0,
-      playerList : [''],
-      maxPlayerCount :0,
+const Home: NextPage = ({ data }: any) => {
+  const [serverIp, setServerIp] = useState<string[]>([]);
+  const [display, setDisplay] = useState<string>("none");
+
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
+
+  const [serverInfo, SetserverInfo] = useState<ServerInfo>({
+    hostName: "",
+    isOnline: false,
+    players: {
+      playerCount: 0,
+      playerList: [""],
+      maxPlayerCount: 0,
     },
-  })
-  const [serverPd, setServerPd] = useState<string>(`${styles.main}`)
-  useEffect(() =>{
-    axios.get("https://localhost:7238/api/serverlist").then((x) =>{
-      setServerIp(x.data)
-    })
-  },[])
-  if(serverIp == null){
-    <div className={styles.container}>
-    <NavBar/>
-    <Head>
-      <title>서버 리스트</title>
-      <meta name="description" content="스티브 갤러리 서버 리스트" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <div className={serverPd}>
-      Loading...
-    </div>
-        <Footer/>
-      </div>
-  }
-  return (
-    <div className={styles.container}>
-      <NavBar />
-      <Head>
-        <title>서버 리스트</title>
-        <meta name="description" content="스티브 갤러리 서버 리스트" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <ServerInfoContext.Provider value={{ data : serverInfo, setData : SetserverInfo}}>
-      <div style={{ display: "flex"}}>
-        <div className={serverPd} style={{marginRight: serverInfo.hostName== "" ? "20%" : "0%", marginLeft: serverInfo.hostName== "" ? "20%" : "0%"}}>
-          {serverIp.map((x,i) => {
-            //return(<div key={i}>{x}</div>)
+  });
+  useEffect(() => {
+    axios.get(`/v2/api/serverlist`, { httpsAgent: agent }).then((x) => {
+      setServerIp(x.data);
+    });
+  }, []);
 
-            // useEffect(() => {
-            //   setServerPd(`${styles.mainOpen}`)
-            //   setServerPd(`${styles.main}`)
-            //   console.log(styles.mainOpen)
-            //   console.log(serverPd)
-            // })
-            return (<InfoServer serverip={x} key={i}/>)
-          })}
-          
-          {/* {data.map((x : ServerInfo ,i : number) =>{
-            console.log(x)
-            return(<div key={i * 100} ><InfoServer ServerData={x}/></div>)
-          })} */}
-        </div>
-          <div className={serverStyles.ServerLayoutContainer} style={{display: serverInfo.hostName == "" ? "none" : "block"}}>
-            <ServerSideInfoLayout data={serverInfo}/>
-        </div>
-        </div>
-      </ServerInfoContext.Provider>
-      <Footer />
-    </div>
+  return (
+    <MainLayout>
+        {serverIp.map((x, i) => {
+          return <InfoServer serverip={x} key={i} />;
+        })}
+    </MainLayout>
   );
 };
-
 
 export const ServerInfoContext = createContext<ServerInfoContext>({
   data: {
@@ -107,6 +71,5 @@ interface ServerInfoContext {
   setData: SetData;
 }
 type SetData = (value: ServerInfo) => void;
-
 
 export default Home;

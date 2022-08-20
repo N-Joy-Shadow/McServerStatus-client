@@ -1,4 +1,4 @@
-import styles from "../../styles/mc/ServerLoading.module.css"
+import styles from "../../../styles/mc/ServerLoading.module.css"
 
 interface ServerLoadingProps {
     isOnline : boolean

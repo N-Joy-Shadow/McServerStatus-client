@@ -3,12 +3,11 @@ import { useState } from "react";
 import axios from "axios";
 import https from "https";
 import Bstyles from "../styles/Mc/Background.module.css";
-import MCTextField from "./MCStyled/MCTextField";
-import MCButton from "./MCStyled/MCButton";
+import MCTextField from "../components/MCStyled/MCTextField";
+import MCButton from "./MCStyled/mcButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ConnectingAirportsOutlined } from "@mui/icons-material";
-import { Responseinfo, ServerInfo } from "../API/ServerInfo";
+import { Responseinfo, ServerInfo } from "../../API/ServerInfo";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
@@ -19,7 +18,7 @@ export default function AddServer() {
   async function PostServer() {
     const httpsAgent = new https.Agent({ rejectUnauthorized: false });
     await axios({
-      url: "https://localhost:7238/api/db",
+      url: "/v2/api/db",
       httpsAgent: httpsAgent,
       method: "POST",
       data: {

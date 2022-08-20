@@ -1,25 +1,17 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import serverStyle from "../../styles/serverinfo/server.module.css";
-import { ServerInfo } from "../../API/ServerInfo";
-import { ServerInfoContext } from "../../pages";
-import { motdParser } from "@sfirew/mc-motd-parser";
-import MCServerLoading from "../MCStyled/MCServerLoading";
+import serverStyle from "../../../styles/serverinfo/server.module.css";
+import { ServerInfo } from "../../../API/ServerInfo";
+import { ServerInfoContext } from "../../../pages";
+import MCServerLoading from "../MCStyled/mcServerLoading";
+import MotdPaser from "../../util/MotdPaser";
 
 export interface ServerInfoLayoutProps {
   data: ServerInfo;
   icon?: string;
 }
-
 export default function ServerInfoLayout(props: ServerInfoLayoutProps) {
-  let motd = props.data.motd ?? '{"text":"호스트 네임을 찾을 수 없습니다."}';
-  let motdHtml = "";
-  try {
-    let motdJson = JSON.parse(motd);
-    motdHtml = motdParser.autoToHtml(motdJson);
-  } catch {
-    motdHtml = motdParser.autoToHtml(motd);
-  }
+  let motdHtml = MotdPaser(props.data.motd)
   let playerCount;
   if(props.data?.players?.maxPlayerCount == null || props.data.players.maxPlayerCount == 0){
     playerCount = ""

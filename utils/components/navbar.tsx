@@ -1,8 +1,8 @@
 import { Button } from "@mui/material";
 import Link from "next/link";
-import styles from "../styles/mc/Button.module.css";
-import Bstyles from "../styles/mc/Background.module.css";
-import MCButton from "./MCStyled/MCButton";
+import styles from "../../styles/mc/Button.module.css";
+import Bstyles from "../../styles/mc/Background.module.css";
+import MCButton from "../components/MCStyled/mcButton";
 
 export default function navbar() {
   return (
