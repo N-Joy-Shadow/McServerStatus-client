@@ -3,13 +3,7 @@ interface PlayerInfoProps  {
 }
 
 export default function PlayerInfo(props : PlayerInfoProps) {
-    return(<div className="outline outline-1 player-tag">
-        <p>{props.name}</p>
-        <style jsx>{`
-            .player-tag{
-                border-color : #000050;
-            }
-            `}
-        </style>
+    return(<div className="outline outline-1 player-tag outline-blue-800">
+        <p className="truncate select-none cursor-pointer">{props.name}</p>
     </div>)
 };

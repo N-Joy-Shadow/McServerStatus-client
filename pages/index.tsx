@@ -13,9 +13,6 @@ import axios from "axios";
 import { ServerInfo } from "../API/ServerInfo";
 import Footer from "../utils/components/footer";
 
-import styles from "../styles/Home.module.css";
-import serverStyles from "../styles/serverinfo/sideinfo.module.css";
-import ServerSideInfoLayout from "../utils/components/serverList/ServerSideInfoLayout";
 import { ExpandMore } from "@mui/icons-material";
 import { env } from "process";
 import https from "https";

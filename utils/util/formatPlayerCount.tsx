@@ -1,4 +1,5 @@
-export function FormatPlayerCount(current? : number, max? : number ){
+
+export default function formatplayercount(current : number, max : number ){
     if(max == 0){
         return ""
     }

@@ -14,14 +14,19 @@ export interface ServerInfoItemProps {
 export default function ServerInfoItem(props: ServerInfoItemProps) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-    if(!props.isLoading || props.data.motd === "호스트 네임을 찾을 수 없습니다.") setOpen(true);
+    if (!props.isLoading || props.data.isOnline === true) {
+      setOpen(true);
+    }
   };
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <div onClick={handleOpen}>
-        <ServerItem data={props.data} icon={props.icon} />
+    <div className="ms:px-0 md:px-32 2xl:px-80 ">
+      <div className="p-4 hover:outline hover:outline-3 hover:outline-gray-500">
+        <div onClick={handleOpen}>
+          <ServerItem data={props.data} icon={props.icon} />
+        </div>
+        <div className="mt-4">hi</div>
       </div>
       <Modal
         open={open}
@@ -30,7 +35,7 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
         aria-describedby="de"
       >
         <ModalLayout title={props.data.hostName}>
-          <ServerInfoModal data={props.data} icon={props.icon}/>
+          <ServerInfoModal data={props.data} icon={props.icon} />
         </ModalLayout>
       </Modal>
     </div>

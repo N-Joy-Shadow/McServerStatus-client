@@ -1,4 +1,4 @@
-import { FormatPlayerCount } from "../../util/FormatPlayerCount";
+import formatplayercount from "../../util/FormatPlayerCount";
 import MotdPaser from "../../util/MotdPaser";
 import MCServerLoading from "../MCStyled/mcServerLoading";
 import { ServerInfoItemProps } from "./item";
@@ -9,13 +9,17 @@ export default function ServerItem(props : ServerInfoItemProps) {
     const playerCount = props?.data.players.playerCount
     const MaxPlayer = props?.data.players.maxPlayerCount
 
-    const formattedCounter = FormatPlayerCount(playerCount,MaxPlayer)
+    const formattedCounter = formatplayercount(playerCount,MaxPlayer)
     return(
-        <div className="flex p-4
-            hover:outline hover:outline-3 hover:outline-gray-500">
-            <img src={props.icon} className="w-32 h-32 fill"/>
+        <div className="flex">
+            <img src={props.icon} className="fill w-16 h-16
+            sm:w-32 sm:h-32 
+            "/>
             <div className="flex flex-col pl-3 w-full">
-                <div className="flex flex-row justify-between">
+                <div className="flex flex-col
+                sm:flex-row  
+                justify-start
+                sm:justify-between">
                     <h1 className="flex-grow">{props.data.hostName}</h1>
                     <div className="flex-grow-0 flex flex-row items-center">
                         <p className="text-center pr-2">{formattedCounter}</p>
