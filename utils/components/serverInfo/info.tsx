@@ -1,3 +1,4 @@
+import { FormatPlayerCount } from "../../util/FormatPlayerCount";
 import MotdPaser from "../../util/MotdPaser";
 import MCServerLoading from "../MCStyled/mcServerLoading";
 import { ServerInfoItemProps } from "./item";
@@ -5,9 +6,10 @@ import { ServerInfoItemProps } from "./item";
 
 export default function ServerItem(props : ServerInfoItemProps) {
     const motdHtml = MotdPaser(props.data.motd)
-    const playerCount = props?.data.players.playerCount ?? 0
-    const MaxPlayer = props?.data.players.maxPlayerCount ?? 20
-    const formattedCounter = `${playerCount} / ${MaxPlayer}`
+    const playerCount = props?.data.players.playerCount
+    const MaxPlayer = props?.data.players.maxPlayerCount
+
+    const formattedCounter = FormatPlayerCount(playerCount,MaxPlayer)
     return(
         <div className="flex p-4
             hover:outline hover:outline-3 hover:outline-gray-500">

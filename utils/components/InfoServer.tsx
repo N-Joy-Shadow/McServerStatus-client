@@ -37,15 +37,10 @@ export default function infoServer(name: serverip) {
     },
     motd: "loading...",
   };
-  if (serverData == null) return (<div><ServerInfoLayout data={dumpdata} icon={icon} /></div>);
+  if (serverData == null) return (<div><ServerInfoItem data={dumpdata} icon={icon} isLoading={true}/></div>);
   return (
-    <div
-      onClick={() => {
-        serverData.icon = icon;
-      }}
-    >    {/* <ServerInfoItem/> */}
-      <ServerInfoItem data={serverData} icon={icon}/>
-      <ServerInfoLayout data={serverData} icon={icon} /> 
+    <div>
+      <ServerInfoItem data={serverData} icon={icon} isLoading={false}/>
     </div>
   );
 }

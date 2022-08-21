@@ -2,8 +2,8 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import https from "https";
-import Bstyles from "../styles/Mc/Background.module.css";
-import MCTextField from "../components/MCStyled/MCTextField";
+import Bstyles from "../../styles/mc/Background.module.css";
+import MCTextField from "./MCStyled/mcTextField";
 import MCButton from "./MCStyled/mcButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -11,7 +11,7 @@ import { Responseinfo, ServerInfo } from "../../API/ServerInfo";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
-  const [Res,SetRes] = useState<Responseinfo>()
+  const [Res, SetRes] = useState<Responseinfo>();
   function HandleOnChange(x: any) {
     Setserver(x.value);
   }
@@ -24,9 +24,8 @@ export default function AddServer() {
       data: {
         ip: server,
       },
-    })
-    .then((x) =>{
-            SetRes(x.data.responseinfo)
+    }).then((x) => {
+      SetRes(x.data.responseinfo);
     });
   }
   const router = useRouter();
@@ -35,29 +34,26 @@ export default function AddServer() {
       className={Bstyles.McBackground}
       style={{ width: "100%", height: "100%" }}
     >
-      <div style={{ width : "400px", height : "40px"}}> 
-      <MCButton 
-        onClick={async () => {
-          await PostServer().then(() => {
-            if(Res?.isSuccess){
-              router.push("/")
-            }
-
-          });
-        }}
-      >
-        Add Server
-      </MCButton>
+      <div style={{ width: "400px", height: "40px" }}>
+        <MCButton
+          onClick={async () => {
+            await PostServer().then(() => {
+              if (Res?.isSuccess) {
+                router.push("/");
+              }
+            });
+          }}
+        >
+          Add Server
+        </MCButton>
       </div>
-        <div style={{width : "400px", height :"200px"}}>
-      <MCTextField  onChange={(x) => HandleOnChange(x.target)}/>
-      <Link href='/'>
-
-        <MCButton>Back</MCButton>
-      </Link>
-      <MCButton onClick={() => {
-      }}>Test Btn</MCButton>
-<p>{Res?.message}</p>
+      <div style={{ width: "400px", height: "200px" }}>
+        <MCTextField onChange={(x) => HandleOnChange(x.target)} />
+        <Link href="/">
+          <MCButton>Back</MCButton>
+        </Link>
+        <MCButton onClick={() => {}}>Test Btn</MCButton>
+        <p>{Res?.message}</p>
       </div>
     </div>
   );
@@ -70,4 +66,3 @@ export default function AddServer() {
 // --header 'Origin: http://localhost:3002'
 // --header 'Access-Control-Request-Headers: Origin, Accept, Content-Type'
 // --header 'Access-Control-Request-Method: POST'
-

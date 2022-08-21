@@ -8,7 +8,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { createContext, useEffect, useState } from "react";
 import NavBar from "../utils/components/navbar";
-import InfoServer from "../utils/components/InfoServer";
+import InfoServer from "../utils/components/infoServer";
 import axios from "axios";
 import { ServerInfo } from "../API/ServerInfo";
 import Footer from "../utils/components/footer";
