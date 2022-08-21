@@ -6,8 +6,14 @@ import styles from "../../../styles/mc/TextField.module.css"
 
 
 export default function MCTextField(props : DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>) {
-    let asd = useRef<HTMLInputElement>();
+    let inputRef = useRef<HTMLInputElement>(null);
+
+    const handleOnChange = () =>{
+        console.log(inputRef.current?.value + "hi")
+    }
     return(<div className={styles.McTextField}>
-        <input className={styles.McTextInput} {...props}/>
+        <input
+        onChange={handleOnChange}
+        ref={inputRef} className={styles.McTextInput} {...props}/>
     </div>)
 };

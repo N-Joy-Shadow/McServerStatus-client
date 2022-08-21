@@ -1,5 +1,5 @@
 import { GetStaticProps,NextPage } from "next";
-import AddServer from "../../utils/components/addServer";
+import AddServer from "../../utils/components/pushServer/addServer";
 
  const server : NextPage= ({}) => {
   return (

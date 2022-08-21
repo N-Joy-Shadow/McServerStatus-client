@@ -2,12 +2,12 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import https from "https";
-import Bstyles from "../../styles/mc/Background.module.css";
-import MCTextField from "./MCStyled/mcTextField";
-import MCButton from "./MCStyled/mcButton";
+import Bstyles from "../../../styles/mc/Background.module.css";
+import MCTextField from "../MCStyled/mcTextField";
+import MCButton from "../MCStyled/mcButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Responseinfo, ServerInfo } from "../../API/ServerInfo";
+import { Responseinfo } from "../../../API/ServerInfo";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
@@ -34,26 +34,23 @@ export default function AddServer() {
       className={Bstyles.McBackground}
       style={{ width: "100%", height: "100%" }}
     >
-      <div style={{ width: "400px", height: "40px" }}>
-        <MCButton
-          onClick={async () => {
-            await PostServer().then(() => {
-              if (Res?.isSuccess) {
-                router.push("/");
-              }
-            });
-          }}
-        >
-          Add Server
-        </MCButton>
-      </div>
-      <div style={{ width: "400px", height: "200px" }}>
-        <MCTextField onChange={(x) => HandleOnChange(x.target)} />
-        <Link href="/">
-          <MCButton>Back</MCButton>
-        </Link>
-        <MCButton onClick={() => {}}>Test Btn</MCButton>
-        <p>{Res?.message}</p>
+      <div className="flex flex-col items-center align-middle top-80 relative">
+        <div className="w-[28rem] ">
+          <p className="text-center">ADD SERVER</p>
+          <div className="my-4">
+            <MCTextField onChange={(x) => HandleOnChange(x.target)} />
+          </div>
+
+          <div className="my-4">
+            <MCButton>Add Server</MCButton>
+          </div>
+
+          <div>
+            <Link href="/">
+              <MCButton>Back</MCButton>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
