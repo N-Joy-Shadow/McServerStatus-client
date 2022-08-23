@@ -1,46 +1,36 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import { ServerInfo } from '../../API/ServerInfo';
-import ServerInfoLayout from "./serverList/ServerInfoLayout";
-import { ServerInfoContext } from "../../pages/index";
+import { useEffect, useState } from "react";
+import { ServerInfo } from "../../API/ServerInfo";
 import ServerInfoItem from "./serverInfo/item";
-
-export interface serverip {
-  serverip: string;
+import {UpdateServer } from "./fetch/updateServer"
+export interface infoServerProps {
+  hostname: string;
 }
 
-export default function infoServer(name: serverip) {
+export default function infoServer(props: infoServerProps) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [serverData, SetserverData] = useState<ServerInfo>();
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    axios
-      .post("https://localhost:7238/api/db", { Ip: name.serverip })
-      .then((x) => {
-        SetserverData(x.data.serverInfo);
-      });
+    UpdateServer(props.hostname).then((x) =>{
+      SetserverData(x.data)
+    })
   }, []);
   //임시
   let icon =
-    serverData?.icon ?? "https://status.shwa.space/assets/images/default.png";
+    serverData?.lazy.icon ??
+    "https://status.shwa.space/assets/images/default.png";
   if (icon == "" || icon == null) {
     icon = "https://status.shwa.space/assets/images/default.png";
   }
 
-  let dumpdata: ServerInfo = {
+  //TODO : Fix this 
+  if (serverData == null) return (<div>야스</div>);
+  //if (serverData == null) return (<div><ServerInfoItem data={dumpdata} icon={icon} isLoading={true}/></div>);
 
-    isOnline: false,
-    hostName: name.serverip,
-    players: {
-      playerCount: 0,
-      maxPlayerCount: 0,
-    },
-    motd: "loading...",
-  };
-  if (serverData == null) return (<div><ServerInfoItem data={dumpdata} icon={icon} isLoading={true}/></div>);
   return (
     <div>
-      <ServerInfoItem data={serverData} icon={icon} isLoading={false}/>
+      <ServerInfoItem data={serverData} icon={icon} isLoading={false} />
     </div>
   );
 }

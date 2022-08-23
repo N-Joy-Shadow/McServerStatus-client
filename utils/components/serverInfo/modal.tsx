@@ -1,10 +1,10 @@
 import { ServerInfoItemProps } from "./item";
-import formatplayercount from "../../util/formatPlayerCount";
+import formatplayercount from "../../util/formatplayercount";
 import PlayerInfo from "../player/playerinfo";
 
 export default function ServerInfoModal(props: ServerInfoItemProps) {
-  const CurrentPlayer = props.data.players.playerCount;
-  const MaxPlayer = props.data.players.maxPlayerCount;
+  const CurrentPlayer = props.data.frenquency.players.current;
+  const MaxPlayer = props.data.frenquency.players.max;
   const FormatPlayer = formatplayercount(CurrentPlayer, MaxPlayer);
   return (
     <div
@@ -13,14 +13,14 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
     md:flex-row md:justify-between"
     >
       <div>
-        <h1>{props.data.hostName}</h1>
+        <h1>{props.data.hostname}</h1>
         <p>
-          IP : {props.data.ip}:{props.data.port}
+          IP : {props.data.lazy.ip}:{props.data.port}
         </p>
         <p>Player : {FormatPlayer}</p>
-        <p>version : {props.data.version}</p>
+        <p>version : {props.data.lazy.version}</p>
         <div className="grid gap-4 grid-cols-4">
-          {props.data.players.playerList?.map((x, i) => (
+          {props.data.frenquency.players.playerlist?.map((x, i) => (
             <PlayerInfo key={i} name={x} />
           )) ?? (
             <div className="w-full col-span-2">

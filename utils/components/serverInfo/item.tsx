@@ -14,7 +14,7 @@ export interface ServerInfoItemProps {
 export default function ServerInfoItem(props: ServerInfoItemProps) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
-    if (!props.isLoading || props.data.isOnline === true) {
+    if (!props.isLoading || props.data.frenquency.isOnline === true) {
       setOpen(true);
     }
   };
@@ -34,7 +34,7 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
         aria-labelledby="title"
         aria-describedby="de"
       >
-        <ModalLayout title={props.data.hostName}>
+        <ModalLayout title={props.data.hostname}>
           <ServerInfoModal data={props.data} icon={props.icon} />
         </ModalLayout>
       </Modal>

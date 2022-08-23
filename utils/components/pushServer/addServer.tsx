@@ -7,27 +7,15 @@ import MCTextField from "../MCStyled/mcTextField";
 import MCButton from "../MCStyled/mcButton";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Responseinfo } from "../../../API/ServerInfo";
+import TagSelect from "./tagSelect";
+import MarkdownRender from "./markdown";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
-  const [Res, SetRes] = useState<Responseinfo>();
   function HandleOnChange(x: any) {
     Setserver(x.value);
   }
-  async function PostServer() {
-    const httpsAgent = new https.Agent({ rejectUnauthorized: false });
-    await axios({
-      url: "/v2/api/db",
-      httpsAgent: httpsAgent,
-      method: "POST",
-      data: {
-        ip: server,
-      },
-    }).then((x) => {
-      SetRes(x.data.responseinfo);
-    });
-  }
+  
   const router = useRouter();
   return (
     <div
@@ -40,6 +28,10 @@ export default function AddServer() {
           <div className="my-4">
             <MCTextField onChange={(x) => HandleOnChange(x.target)} />
           </div>
+          
+          <TagSelect/>
+          <MarkdownRender/>
+
 
           <div className="my-4">
             <MCButton>Add Server</MCButton>

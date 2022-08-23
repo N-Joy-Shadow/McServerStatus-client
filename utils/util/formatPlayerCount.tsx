@@ -1,4 +1,3 @@
-
 export default function formatplayercount(current : number, max : number ){
     if(max == 0){
         return ""

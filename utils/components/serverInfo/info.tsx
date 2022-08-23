@@ -1,13 +1,13 @@
-import formatplayercount from "../../util/FormatPlayerCount";
+import formatplayercount from "../../util/formatplayercount";
 import MotdPaser from "../../util/MotdPaser";
 import MCServerLoading from "../MCStyled/mcServerLoading";
 import { ServerInfoItemProps } from "./item";
 
 
 export default function ServerItem(props : ServerInfoItemProps) {
-    const motdHtml = MotdPaser(props.data.motd)
-    const playerCount = props?.data.players.playerCount
-    const MaxPlayer = props?.data.players.maxPlayerCount
+    const motdHtml = MotdPaser(props.data.frenquency.motd)
+    const playerCount = props?.data.frenquency.players.current
+    const MaxPlayer = props?.data.frenquency.players.max
 
     const formattedCounter = formatplayercount(playerCount,MaxPlayer)
     return(
@@ -20,10 +20,10 @@ export default function ServerItem(props : ServerInfoItemProps) {
                 sm:flex-row  
                 justify-start
                 sm:justify-between">
-                    <h1 className="flex-grow">{props.data.hostName}</h1>
+                    <h1 className="flex-grow">{props.data.hostname}</h1>
                     <div className="flex-grow-0 flex flex-row items-center">
                         <p className="text-center pr-2">{formattedCounter}</p>
-                        <MCServerLoading isOnline={props.data.isOnline} LoadingStr={props.data.motd}/>
+                        <MCServerLoading isOnline={props.data.frenquency.isOnline} LoadingStr={props.data.frenquency.motd}/>
                     </div>
                 </div>
                 <div dangerouslySetInnerHTML={{__html : motdHtml}}/>

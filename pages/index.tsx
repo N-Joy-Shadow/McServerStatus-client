@@ -26,15 +26,7 @@ const Home: NextPage = ({ data }: any) => {
     rejectUnauthorized: false,
   });
 
-  const [serverInfo, SetserverInfo] = useState<ServerInfo>({
-    hostName: "",
-    isOnline: false,
-    players: {
-      playerCount: 0,
-      playerList: [""],
-      maxPlayerCount: 0,
-    },
-  });
+
   useEffect(() => {
     axios.get(`/v2/api/serverlist`, { httpsAgent: agent }).then((x) => {
       setServerIp(x.data);
@@ -44,29 +36,9 @@ const Home: NextPage = ({ data }: any) => {
   return (
     <MainLayout>
         {serverIp.map((x, i) => {
-          return <InfoServer serverip={x} key={i} />;
+          return <InfoServer hostname={x} key={i} />;
         })}
     </MainLayout>
   );
 };
-
-export const ServerInfoContext = createContext<ServerInfoContext>({
-  data: {
-    hostName: "",
-    isOnline: false,
-    players: {
-      playerCount: 0,
-      playerList: [""],
-      maxPlayerCount: 0,
-    },
-  },
-  setData: () => {},
-});
-
-interface ServerInfoContext {
-  data: ServerInfo;
-  setData: SetData;
-}
-type SetData = (value: ServerInfo) => void;
-
 export default Home;
