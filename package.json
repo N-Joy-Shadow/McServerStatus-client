@@ -13,6 +13,7 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mdx-js/react": "^2.1.3",
+    "@microsoft/signalr": "^6.0.8",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
     "@sfirew/mc-motd-parser": "^1.0.8",
