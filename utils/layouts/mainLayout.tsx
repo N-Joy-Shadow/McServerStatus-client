@@ -13,7 +13,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <NavBar />
       <main className="container-item">
         <div className="main">
-          <div className="w-full">{children}</div>
+          <div className="w-full p-4">{children}</div>
         </div>
       </main>
       <Footer />

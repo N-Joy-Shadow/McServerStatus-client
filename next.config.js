@@ -12,12 +12,14 @@ const nextConfig = {
     return [
       {
         source : '/v2/api/:path*',
-        destination : `http://localhost:${port}/api/:path*`,
-        
+        destination : `http://localhost:${port}/api/:path*`,    
       },
       {
         source : '/v1/api',
-        destination : `http://localhost:${port}/swagger/`
+        destination : `http://localhost:${port}/swagger/index.html`
+      },{
+        source : '/v2/hubs/:path*',
+        destination : `http://localhost:${port}/hubs/:path*`
       }
     ]
   }

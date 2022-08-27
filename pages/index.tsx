@@ -4,41 +4,55 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import Head from "next/head";
-import Link from "next/link";
 import { createContext, useEffect, useState } from "react";
-import NavBar from "../utils/components/navbar";
+
 import InfoServer from "../utils/components/infoServer";
 import axios from "axios";
-import { ServerInfo } from "../API/ServerInfo";
-import Footer from "../utils/components/footer";
 
-import { ExpandMore } from "@mui/icons-material";
-import { env } from "process";
-import https from "https";
 import MainLayout from "../utils/layouts/mainLayout";
+import { HttpTransportType, HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { ServerInfo } from '../API/ServerInfo';
+import { serverNameListFetch } from "../utils/components/fetch/serverlist";
 
 const Home: NextPage = ({ data }: any) => {
-  const [serverIp, setServerIp] = useState<string[]>([]);
-  const [display, setDisplay] = useState<string>("none");
-
-  const agent = new https.Agent({
-    rejectUnauthorized: false,
-  });
+  const [serverList, setServerList] = useState<ServerInfo[]>([]);
 
 
+
+  const [connection, setConnection] = useState<HubConnection>();
   useEffect(() => {
-    axios.get(`/v2/api/serverlist`, { httpsAgent: agent }).then((x) => {
-      setServerIp(x.data);
+    const newConnection = new HubConnectionBuilder()
+      //Fix Url Later
+      .withUrl("https://localhost:7238/hubs/update", {
+        skipNegotiation: true,
+        transport: HttpTransportType.WebSockets,
+      })
+      .withAutomaticReconnect()
+      .build();
+
+    setConnection(newConnection);
+  }, []);
+
+
+
+ 
+
+  //getServerList from serer
+  //TODO : Move SSR
+  useEffect(() => {
+    serverNameListFetch().then((x) => {
+      setServerList(x.data);
     });
   }, []);
 
   return (
     <MainLayout>
-        {serverIp.map((x, i) => {
-          return <InfoServer hostname={x} key={i} />;
-        })}
+      {serverList.map((x, i) => <InfoServer signalR={connection} hostname={x} key={x._id} />)}
     </MainLayout>
   );
 };
+
+
+
+
 export default Home;

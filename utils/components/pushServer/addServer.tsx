@@ -9,7 +9,12 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import TagSelect from "./tagSelect";
 import MarkdownRender from "./markdown";
-import { HttpTransportType, HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
+import {
+  HttpTransportType,
+  HubConnection,
+  HubConnectionBuilder,
+  HubConnectionState,
+} from "@microsoft/signalr";
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
@@ -18,9 +23,9 @@ export default function AddServer() {
   const [chat, setChat] = useState<string>();
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
-      .withUrl("https://localhost:7238/updateHub", {
+      .withUrl("/v2/hubs/update", {
         skipNegotiation: true,
-        transport: HttpTransportType.WebSockets
+        transport: HttpTransportType.WebSockets,
       })
       .withAutomaticReconnect()
       .build();
@@ -29,34 +34,27 @@ export default function AddServer() {
   }, []);
 
   useEffect(() => {
-    if (connection) {
+    if(connection){
+
       connection
-        .start()
-        .then((result) => {
-          console.log("Connected!");
-          connection.on("test_receive", (message) => {
-            console.log(message)
-            setChat(message);
-          });
-        })
-        .catch((e) => console.log("Connection failed: ", e));
+      .start()
+      .then(() => {
+        console.log("Connected!");
+        connection.on("test_receive", (message) => {
+          console.log(message);
+          setChat(message);
+        });
+      })
+      .catch((e) => console.log("Connection failed: ", e));
     }
   }, [connection]);
 
   async function send() {
-    const chatMessage = {
-      user: "나님",
-      message: "aasd",
-    };
-
-
-    if(connection){
-      await connection.invoke("test_send", "나님","ㅁㄴㅇㅁㄴ").then(() =>{
-        console.log("success")
-      });    
-      
+    if (connection) {
+      await connection.invoke("test_send", "나님", "ㅁㄴㅇㅁㄴ").then(() => {
+        console.log("success");
+      });
     }
-  
   }
 
   function HandleOnChange(x: any) {
@@ -91,7 +89,6 @@ export default function AddServer() {
           </div>
 
           <div className="flex flex-row h-auo">
-            
             <Button onClick={send}>Send!</Button>
             <p>result : {chat}</p>
           </div>

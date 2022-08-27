@@ -1,11 +1,12 @@
 import { Modal, Button, Typography, Box } from "@mui/material";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { ServerInfo } from "../../../API/ServerInfo";
 import ModalLayout from "../../layouts/modalLayout";
 import ServerItem from "./info";
 import ServerInfoModal from "./modal";
 
 export interface ServerInfoItemProps {
+  children? : ReactNode;
   data: ServerInfo;
   icon?: string;
   isLoading?: boolean;
@@ -26,7 +27,10 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
         <div onClick={handleOpen}>
           <ServerItem data={props.data} icon={props.icon} />
         </div>
-        <div className="mt-4">hi</div>
+        <div className="flex px-1 py-4 justify-between">
+          <p>hi</p>
+          {props.children}
+        </div>
       </div>
       <Modal
         open={open}
