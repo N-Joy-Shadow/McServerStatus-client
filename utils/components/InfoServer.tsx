@@ -20,19 +20,14 @@ export default function infoServer(props: infoServerProps) {
       SetserverData(x.data)
     })
   },[])
-  async function updateBtn() {
-    if (props.signalR?.state == HubConnectionState.Connected) {
-      console.log(props.hostname);
-      await props.signalR.invoke("updateServer", props.hostname)
-    }
-  } 
+
   useEffect(() => {
     if (props.signalR) {
       props.signalR
         .start()
         .then(() => {
           console.log("connected");
-          props.signalR.on("updated", (data) => {
+          props.signalR?.on("updated", (data) => {
             SetserverData(data)
           });
         })
@@ -40,10 +35,6 @@ export default function infoServer(props: infoServerProps) {
     }
   },[]);
   //임시
-  let icon = serverData?.lazy.icon
-  if (icon == "" || icon == undefined ) {
-    icon = "https://status.shwa.space/assets/images/default.png";
-  }
 
   //TODO : Fix this 
   if (serverData == null) return (<>야스</>);
@@ -51,7 +42,7 @@ export default function infoServer(props: infoServerProps) {
 
   return (
     <>
-      <ServerInfoItem data={serverData} icon={icon} isLoading={false}>
+      <ServerInfoItem data={serverData} isLoading={false}>
         <Button onClick={updateBtn}>RELOAD</Button>
       </ServerInfoItem>
     </>

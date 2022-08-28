@@ -12,7 +12,7 @@ export default function ServerItem(props : ServerInfoItemProps) {
     const formattedCounter = formatplayercount(playerCount,MaxPlayer)
     return(
         <div className="flex">
-            <img src={props.icon} className="fill w-16 h-16
+            <img src={props.data.lazy.icon} className="fill w-16 h-16
             sm:w-32 sm:h-32 
             "/>
             <div className="flex flex-col pl-3 w-full">

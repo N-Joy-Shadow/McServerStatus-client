@@ -19,43 +19,6 @@ import {
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
 
-  const [connection, setConnection] = useState<HubConnection>();
-  const [chat, setChat] = useState<string>();
-  useEffect(() => {
-    const newConnection = new HubConnectionBuilder()
-      .withUrl("/v2/hubs/update", {
-        skipNegotiation: true,
-        transport: HttpTransportType.WebSockets,
-      })
-      .withAutomaticReconnect()
-      .build();
-
-    setConnection(newConnection);
-  }, []);
-
-  useEffect(() => {
-    if(connection){
-
-      connection
-      .start()
-      .then(() => {
-        console.log("Connected!");
-        connection.on("test_receive", (message) => {
-          console.log(message);
-          setChat(message);
-        });
-      })
-      .catch((e) => console.log("Connection failed: ", e));
-    }
-  }, [connection]);
-
-  async function send() {
-    if (connection) {
-      await connection.invoke("test_send", "나님", "ㅁㄴㅇㅁㄴ").then(() => {
-        console.log("success");
-      });
-    }
-  }
 
   function HandleOnChange(x: any) {
     Setserver(x.value);
@@ -73,10 +36,9 @@ export default function AddServer() {
           <div className="my-4">
             <MCTextField onChange={(x) => HandleOnChange(x.target)} />
           </div>
-          {/*  
+          
           <TagSelect/>
           <MarkdownRender/>
- */}
 
           <div className="my-4">
             <MCButton>Add Server</MCButton>
@@ -86,11 +48,6 @@ export default function AddServer() {
             <Link href="/">
               <MCButton>Back</MCButton>
             </Link>
-          </div>
-
-          <div className="flex flex-row h-auo">
-            <Button onClick={send}>Send!</Button>
-            <p>result : {chat}</p>
           </div>
         </div>
       </div>

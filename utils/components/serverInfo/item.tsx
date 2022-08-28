@@ -8,7 +8,6 @@ import ServerInfoModal from "./modal";
 export interface ServerInfoItemProps {
   children? : ReactNode;
   data: ServerInfo;
-  icon?: string;
   isLoading?: boolean;
 }
 
@@ -25,7 +24,7 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
     <div className="ms:px-0 md:px-32 2xl:px-80 ">
       <div className="p-4 hover:outline hover:outline-3 hover:outline-gray-500">
         <div onClick={handleOpen}>
-          <ServerItem data={props.data} icon={props.icon} />
+          <ServerItem data={props.data}/>
         </div>
         <div className="flex px-1 py-4 justify-between">
           <p>hi</p>
@@ -39,7 +38,7 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
         aria-describedby="de"
       >
         <ModalLayout title={props.data.hostname}>
-          <ServerInfoModal data={props.data} icon={props.icon} />
+          <ServerInfoModal data={props.data}  />
         </ModalLayout>
       </Modal>
     </div>

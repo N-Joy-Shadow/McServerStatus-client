@@ -2,6 +2,7 @@
 
 let port = process.env.NODE_ENV =="development" ? 5238 : 5001
 
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,

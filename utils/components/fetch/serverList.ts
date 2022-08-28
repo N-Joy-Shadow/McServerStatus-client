@@ -11,13 +11,15 @@ async function serverListFetch() {
   return data;
 }
 
-async function serverNameListFetch(){
-    const data = await axios.get("/v2/api/serverlist");
+async function serverNameListFetch() {
+  const data = await axios.get("/v2/api/serverlist");
 
   return data;
 }
 
-export {
-    serverListFetch,
-    serverNameListFetch
+async function serverUpdateListFetch() {
+  const data = await axios.put("/v2/api/serverlist");
+
+  return data;
 }
+export { serverListFetch, serverNameListFetch,serverUpdateListFetch };
