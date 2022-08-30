@@ -6,7 +6,7 @@ import type {
 } from "next";
 import { createContext, useEffect, useState } from "react";
 
-import InfoServer from "../utils/components/infoServer";
+
 import axios from "axios";
 
 import MainLayout from "../utils/layouts/mainLayout";

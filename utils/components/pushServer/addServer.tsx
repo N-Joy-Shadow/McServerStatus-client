@@ -1,7 +1,5 @@
 import { Button, TextField } from "@mui/material";
 import { useState, useEffect, useRef } from "react";
-import axios from "axios";
-import https from "https";
 import Bstyles from "../../../styles/mc/Background.module.css";
 import MCTextField from "../MCStyled/mcTextField";
 import MCButton from "../MCStyled/mcButton";
@@ -9,12 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import TagSelect from "./tagSelect";
 import MarkdownRender from "./markdown";
-import {
-  HttpTransportType,
-  HubConnection,
-  HubConnectionBuilder,
-  HubConnectionState,
-} from "@microsoft/signalr";
+import { InsertServer } from "../fetch/insertServer";
+
 
 export default function AddServer() {
   const [server, Setserver] = useState<string>("");
@@ -24,7 +18,7 @@ export default function AddServer() {
     Setserver(x.value);
   }
 
-  const router = useRouter();
+  
   return (
     <div
       className={Bstyles.McBackground}
@@ -41,7 +35,7 @@ export default function AddServer() {
           <MarkdownRender/>
 
           <div className="my-4">
-            <MCButton>Add Server</MCButton>
+            <MCButton onClick={async () =>await InsertServer(server).then((x) => alert("Done!"))}>Add Server</MCButton>
           </div>
 
           <div>
