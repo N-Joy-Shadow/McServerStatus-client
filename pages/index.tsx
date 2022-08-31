@@ -19,17 +19,18 @@ import { ServerInfo } from "../API/ServerInfo";
 import { serverListFetch, serverNameListFetch, serverUpdateListFetch } from "../utils/components/fetch/serverList";
 import ServerInfoItem from "../utils/components/serverInfo/item";
 import { Button } from "@mui/material";
+import { baseHubURL } from "../utils/components/fetch/InitFetch";
 
 const Home: NextPage = ({ data }: any) => {
   //zustnad
   const [serverList, setServerList] = useState<ServerInfo[]>([]);
   const [connection, setConnection] = useState<HubConnection>();
-
+  const port = process.env.NODE_ENV =="development"  ? 7238 : 5001
   //init signalR
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
       //Fix Url Later
-      .withUrl("https://localhost:7238/hubs/update", {
+      .withUrl(baseHubURL("update"), {
         skipNegotiation: true,
         transport: HttpTransportType.WebSockets,
       })

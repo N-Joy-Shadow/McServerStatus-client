@@ -7,7 +7,7 @@ export default function ModalLayout({
   children: ReactNode;
   title: string;
 }) {
-  const titleref = useRef<HTMLParagraphElement>();
+  const titleref = useRef<HTMLParagraphElement>(null);
   //Copy Function
   const handleCopy = () => {
     const rawtitle = titleref.current?.innerText ?? "notfound";

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
-import { PlayerInfo } from "../../API/PlayerInfo";
+import { PlayerInfo } from "../../../API/PlayerInfo";
 
 interface playerData {
   data?: PlayerInfo;
