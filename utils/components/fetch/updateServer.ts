@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { baseURL } from './InitFetch';
+import { baseAPIURL } from './InitFetch';
 export async function UpdateServer(hostname :string){
-    const data = await axios.put(baseURL("status"), { hostname: hostname})
+    const data = await axios.put(baseAPIURL("status"), { hostname: hostname})
 
     return data
 }

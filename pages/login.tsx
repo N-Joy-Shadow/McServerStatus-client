@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import Link from "next/link";
 import MCButton from "../utils/components/MCStyled/mcButton";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { GetStaticProps, NextPage } from "next";
 
 import Bstyles from "../styles/Mc/Background.module.css";
@@ -19,12 +18,15 @@ const login: NextPage = ({}) => {
       <div style={{ width: "300px" }}>
         <MCButton
           onClick={() => {
-            signIn();
           }}
         >
           Login
         </MCButton>
+        <MCButton onClick={() => {}}>
+          LogOut
+        </MCButton>
       </div>
+      
       <Link href="/">
         <div style={{ width: "300px" }}>
           <MCButton>Get out!</MCButton>

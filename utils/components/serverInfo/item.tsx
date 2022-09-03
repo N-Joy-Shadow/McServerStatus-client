@@ -14,6 +14,7 @@ export interface ServerInfoItemProps {
 
 export default function ServerInfoItem(props: ServerInfoItemProps) {
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => {
     if (!props.isLoading || props.data.frenquency.isOnline === true) {
       setOpen(true);

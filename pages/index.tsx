@@ -25,7 +25,6 @@ const Home: NextPage = ({ data }: any) => {
   //zustnad
   const [serverList, setServerList] = useState<ServerInfo[]>([]);
   const [connection, setConnection] = useState<HubConnection>();
-  const port = process.env.NODE_ENV =="development"  ? 7238 : 5001
   //init signalR
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
