@@ -1,16 +1,12 @@
-export default function Tag() {
-  return (<div>{"hi"}</div>);
+interface TagProps{
+  name : string
 }
 
 
-
-
-function DrawCircle(){
-    //반지름
-    const Diameter = 1
-    for(let i = 0; i < 30; i++){
-        const radian = (i * 15)*(Math.PI/180)
-        const y = Math.sin(Diameter * radian)
-        const x = Math.cos(Diameter * radian)
-    }
+export default function Tag(props : TagProps) {
+  return (<div className="outline outline-2 outline-blue-700 p-1 w-auto">
+    <p>{props.name}</p>
+    </div>);
 }
+
+

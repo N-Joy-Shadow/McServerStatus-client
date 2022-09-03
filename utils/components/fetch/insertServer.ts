@@ -1,6 +1,6 @@
 import axios from "axios";
 import https from "https";
-import { baseURL } from "./InitFetch";
+import { baseAPIURL } from "./InitFetch";
 
 /**
  * InsertServer to backend DB
@@ -10,7 +10,7 @@ import { baseURL } from "./InitFetch";
 export async function InsertServer(hostname : string) {
   const httpsAgent = new https.Agent({ rejectUnauthorized: false });
   return await axios({
-    url: baseURL("status"),
+    url: baseAPIURL("status"),
     httpsAgent: httpsAgent,
     method: "POST",
     data: {

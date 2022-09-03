@@ -23,7 +23,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           {props.data.frenquency.players.playerlist?.map((x, i) => (
             <PlayerInfo key={i} name={x} />
           )) ?? (
-            <div className="w-full col-span-2">
+            <div className="w-full col-span-4">
               현재 접속중인 플레이가 없습니다.
             </div>
           )}

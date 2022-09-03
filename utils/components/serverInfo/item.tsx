@@ -2,6 +2,7 @@ import { Modal, Button, Typography, Box } from "@mui/material";
 import { ReactNode, useState } from "react";
 import { ServerInfo } from "../../../API/ServerInfo";
 import ModalLayout from "../../layouts/modalLayout";
+import Tag from "../tag/tag";
 import ServerItem from "./info";
 import ServerInfoModal from "./modal";
 
@@ -21,14 +22,20 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="ms:px-0 md:px-32 2xl:px-80 ">
+    <div className="ms:px-0 md:px-32 2xl:px-80">
       <div className="p-4 hover:outline hover:outline-3 hover:outline-gray-500">
         <div onClick={handleOpen}>
           <ServerItem data={props.data}/>
         </div>
         <div className="flex px-1 py-4 justify-between">
-          <p>hi</p>
-          {props.children}
+          <div className="gird grid-cols-4 gap-4 grow grid-rows-1">
+          {props.data.custom?.tags != undefined && props.data.custom?.tags.map((x,i) =>{
+            return( <Tag key={i} name={x}/>)
+          })}
+          </div>
+          <div>
+            {props.children}
+          </div>
         </div>
       </div>
       <Modal

@@ -31,5 +31,5 @@ export interface ServerInfo {
   port: number;
   frenquency: Frenquency;
   lazy: Lazy;
-  custom: Custom;
+  custom?: Custom;
 }

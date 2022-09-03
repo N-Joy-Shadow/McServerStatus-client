@@ -36,6 +36,9 @@ const Home: NextPage = ({ data }: any) => {
       })
       .withAutomaticReconnect()
       .build();
+    serverListFetch().then((x) =>{
+      setServerList(x.data)
+    })
     setConnection(newConnection);
   }, []);
   useEffect(() => {
@@ -46,7 +49,7 @@ const Home: NextPage = ({ data }: any) => {
         serverUpdateListFetch().then((x) => {
           setServerList(x.data);
           connection.invoke("updateAllServer",x.data)
-    
+          console.log(x.data)
         });
   
         connection.on("updated", (data) => {
