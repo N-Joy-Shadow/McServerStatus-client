@@ -18,6 +18,7 @@ const login: NextPage = ({}) => {
       <div style={{ width: "300px" }}>
         <MCButton
           onClick={() => {
+            window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1015634399070539867&redirect_uri=http%3A%2F%2Flocalhost%3A12345%2Fauth%2Floading&response_type=code&scope=identify%20email"
           }}
         >
           Login
