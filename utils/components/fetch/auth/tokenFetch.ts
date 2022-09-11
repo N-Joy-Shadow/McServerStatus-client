@@ -4,7 +4,6 @@ import qs from 'qs';
 
 export async function TokenChangeFetch(code : string) {
     console.log(code)
-    const API_URL = "https://discord.com/api/v10/oauth2/token"
     return await axios.post("/v2/api/oauth",{code : code})
     //change this to .env
 

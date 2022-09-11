@@ -6,10 +6,7 @@ import { GetStaticProps, NextPage } from "next";
 import Bstyles from "../styles/Mc/Background.module.css";
 import { useEffect } from 'react';
 const login: NextPage = ({}) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useEffect(() =>{
-    console.log(`[${process.env.NEXTAUTH_URL}]`)
-  },[])
+
 
   return (
     <div className={Bstyles.McBackground} style={{ height: "100vh" }}>

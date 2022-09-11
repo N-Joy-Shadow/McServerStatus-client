@@ -9,7 +9,7 @@ export default function navbar() {
     <div className={Bstyles.McBackground}>
       <p className={Bstyles.multiPlayerMarginAuto} style={{fontSize:"23px", paddingTop: "20px"}}>멀티플레이</p>
       <nav className={styles.McBtnContainer}>
-        <Link href="login">
+        <Link href="/login">
           <div className={styles.McLoginBtn} style={{ width: "300px", marginTop: "-40px", marginLeft: "10px"}}>
             <MCButton>Login</MCButton>
           </div>

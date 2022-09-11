@@ -9,7 +9,7 @@ const index = ({ code }: { code: string }) => {
   useEffect(() => {
     TokenChangeFetch(code).then((x) => {
       console.log(x.data);
-    });
+    })
   }, []);
 
   return <MainLayout>hi</MainLayout>;

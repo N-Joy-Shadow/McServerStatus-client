@@ -1,13 +1,5 @@
-import type {
-  GetServerSideProps,
-  GetStaticProps,
-  InferGetStaticPropsType,
-  NextPage,
-} from "next";
-import { createContext, useEffect, useState } from "react";
-
-
-import axios from "axios";
+import type { NextPage } from "next";
+import { useEffect, useState } from "react";
 
 import MainLayout from "../utils/layouts/mainLayout";
 import {
@@ -16,7 +8,11 @@ import {
   HubConnectionBuilder,
 } from "@microsoft/signalr";
 import { ServerInfo } from "../API/ServerInfo";
-import { serverListFetch, serverNameListFetch, serverUpdateListFetch } from "../utils/components/fetch/serverList";
+import {
+  serverListFetch,
+  serverNameListFetch,
+  serverUpdateListFetch,
+} from "../utils/components/fetch/serverList";
 import ServerInfoItem from "../utils/components/serverInfo/item";
 import { Button } from "@mui/material";
 import { baseHubURL } from "../utils/components/fetch/InitFetch";
@@ -35,33 +31,32 @@ const Home: NextPage = ({ data }: any) => {
       })
       .withAutomaticReconnect()
       .build();
-    serverListFetch().then((x) =>{
-      setServerList(x.data)
-    })
+    serverListFetch().then((x) => {
+      setServerList(x.data);
+    });
     setConnection(newConnection);
   }, []);
   useEffect(() => {
     if (connection) {
       connection.start().then(() => {
-
         //test function
         serverUpdateListFetch().then((x) => {
           setServerList(x.data);
-          connection.invoke("updateAllServer",x.data)
-          console.log(x.data)
+          connection.invoke("updateAllServer", x.data);
+          console.log(x.data);
         });
-  
+
         connection.on("updated", (data) => {
           setServerList(data);
         });
       });
     }
   }, [connection]);
-  async function updateBtn(x : ServerInfo) {
+  async function updateBtn(x: ServerInfo) {
     if (connection) {
-      await connection.invoke("updateServer", x.hostname)
+      await connection.invoke("updateServer", x.hostname);
     }
-  } 
+  }
 
   return (
     <MainLayout>
