@@ -4,7 +4,7 @@ interface TagProps{
 
 
 export default function Tag(props : TagProps) {
-  return (<div className="outline outline-2 outline-blue-700 p-1 w-auto">
+  return (<div className="outline outline-2 outline-blue-700 p-1 w-20">
     <p>{props.name}</p>
     </div>);
 }

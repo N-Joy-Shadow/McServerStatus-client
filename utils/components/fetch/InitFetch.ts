@@ -1,6 +1,6 @@
 
 const url = process.env.NODE_ENV == "development" ? 
-        "/v2/api/": "/api/"
+        "/api/": "/api/"
 
 
 export const baseAPIURL = (path : string) =>{

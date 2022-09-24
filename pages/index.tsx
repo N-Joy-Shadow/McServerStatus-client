@@ -16,6 +16,7 @@ import {
 import ServerInfoItem from "../utils/components/serverInfo/item";
 import { Button } from "@mui/material";
 import { baseHubURL } from "../utils/components/fetch/InitFetch";
+import MCButton from "../utils/components/MCStyled/mcButton";
 
 const Home: NextPage = ({ data }: any) => {
   //zustnad
@@ -34,6 +35,7 @@ const Home: NextPage = ({ data }: any) => {
     serverListFetch().then((x) => {
       setServerList(x.data);
     });
+    //disble for design
     setConnection(newConnection);
   }, []);
   useEffect(() => {
@@ -63,9 +65,7 @@ const Home: NextPage = ({ data }: any) => {
       {serverList.map((x) => {
         return (
           <>
-            <ServerInfoItem data={x} isLoading={false}>
-              <Button onClick={() => updateBtn(x)}>hi</Button>
-            </ServerInfoItem>
+            <ServerInfoItem data={x} isLoading={false}/>
           </>
         );
       })}

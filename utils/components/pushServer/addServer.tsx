@@ -11,12 +11,6 @@ import { InsertServer } from "../fetch/insertServer";
 
 
 export default function AddServer() {
-  const [server, Setserver] = useState<string>("");
-
-
-  function HandleOnChange(x: any) {
-    Setserver(x.value);
-  }
 
   
   return (
@@ -24,27 +18,7 @@ export default function AddServer() {
       className={Bstyles.McBackground}
       style={{ width: "100%", height: "100%" }}
     >
-      <div className="flex flex-col items-center align-middle top-80 relative">
-        <div className="w-[28rem] ">
-          <p className="text-center">ADD SERVER</p>
-          <div className="my-4">
-            <MCTextField onChange={(x) => HandleOnChange(x.target)} />
-          </div>
-          
-          <TagSelect/>
-          <MarkdownRender/>
-
-          <div className="my-4">
-            <MCButton onClick={async () =>await InsertServer(server).then((x) => alert("Done!"))}>Add Server</MCButton>
-          </div>
-
-          <div>
-            <Link href="/">
-              <MCButton>Back</MCButton>
-            </Link>
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 }
