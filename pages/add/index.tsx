@@ -25,10 +25,10 @@ const server: NextPage = ({}) => {
           <div className="my-4">
             <MCTextField onChange={(x) => HandleOnChange(x.target)} />
           </div>
-
-          <TagSelect />
-          <MarkdownRender />
-
+          <div>
+          
+            <TagSelect />
+          </div>
           <div className="my-4">
             <MCButton
               onClick={async () =>

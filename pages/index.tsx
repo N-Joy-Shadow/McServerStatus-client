@@ -17,10 +17,14 @@ import ServerInfoItem from "../utils/components/serverInfo/item";
 import { Button } from "@mui/material";
 import { baseHubURL } from "../utils/components/fetch/InitFetch";
 import MCButton from "../utils/components/MCStyled/mcButton";
+import { useTagStore } from "../utils/zustand/tagStore";
+import Tag from "../utils/components/tag/tag";
+import { ServerFilter } from "../utils/util/listFilter";
 
 const Home: NextPage = ({ data }: any) => {
   //zustnad
   const [serverList, setServerList] = useState<ServerInfo[]>([]);
+  const [filterList, setFilterList] = useState<ServerInfo[]>([]);
   const [connection, setConnection] = useState<HubConnection>();
   //init signalR
   useEffect(() => {
@@ -34,6 +38,7 @@ const Home: NextPage = ({ data }: any) => {
       .build();
     serverListFetch().then((x) => {
       setServerList(x.data);
+      setFilterList(x.data)
     });
     //disble for design
     setConnection(newConnection);
@@ -44,8 +49,6 @@ const Home: NextPage = ({ data }: any) => {
         //test function
         serverUpdateListFetch().then((x) => {
           setServerList(x.data);
-          connection.invoke("updateAllServer", x.data);
-          console.log(x.data);
         });
 
         connection.on("updated", (data) => {
@@ -54,21 +57,26 @@ const Home: NextPage = ({ data }: any) => {
       });
     }
   }, [connection]);
-  async function updateBtn(x: ServerInfo) {
-    if (connection) {
-      await connection.invoke("updateServer", x.hostname);
-    }
-  }
 
+  const TagList = useTagStore((x) => x.TagList)
+  useEffect(() =>{
+    if(serverList != undefined){
+      setFilterList(ServerFilter(serverList,TagList))
+    }
+  },[TagList, serverList])
   return (
     <MainLayout>
-      {serverList.map((x) => {
-        return (
-          <>
-            <ServerInfoItem data={x} isLoading={false}/>
-          </>
-        );
+      <div className="flex flex-row gap-2 h-12 justify-start items-center">
+        {TagList.length != 0 && <h2 className="text-lg">Tag List :</h2>}
+        {TagList.map((x,i) =>{
+          return(<Tag name={x} key={i} isSelected={true}></Tag>)
+        })}
+      </div>
+      <div>
+      {filterList.map((x,i) => {
+        return <ServerInfoItem data={x} isLoading={false} key={i}/>
       })}
+      </div>
     </MainLayout>
   );
 };

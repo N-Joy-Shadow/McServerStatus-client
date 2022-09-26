@@ -27,15 +27,11 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
         <div onClick={handleOpen}>
           <ServerItem data={props.data} />
         </div>
-        <div className="flex px-1 justify-between flex-row">
-        {/* 
-          <div className="gird grid-cols-4">
-            {props.data.custom?.tags != undefined &&
-              props.data.custom?.tags.map((x, i) => {
-                return (<Tag key={i} name={x} />);
-              })}
-          </div>  */}
-          
+
+        <div className="flex gap-4">
+          {props.data.custom?.tags.map((x, i) => {
+            return <Tag key={i} isSelected={false} name={x} />;
+          })}
         </div>
       </div>
       <Modal

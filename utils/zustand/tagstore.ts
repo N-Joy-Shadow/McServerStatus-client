@@ -23,11 +23,11 @@ export function pushTags(tags: string[], tag: string): string[] {
 export function removeTags(tags: string[], tag: string): string[] {
   let old_tags = [...tags];
   let index = old_tags.indexOf(tag);
-  old_tags.splice(index);
+  old_tags.splice(index,1);
   return old_tags;
 }
 
-function isExistTag(tags: string[], tag: string) {
+export function isExistTag(tags: string[], tag: string) {
   if (tags == undefined) {
     return false;
   }
