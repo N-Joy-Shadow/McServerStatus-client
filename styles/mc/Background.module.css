@@ -1,19 +1,5 @@
 .McBackground {
     background-image: url('https://status.shwa.space/assets/images/dirt-light.png');
-    height: 7vh;
-    margin: auto;
-}
-
-.marginAutoPadding {
-    padding: 10px;
-    margin: auto;
-}
-
-.marginAuto {
-    margin: auto;
-}
-
-.multiPlayerMarginAuto {
-    margin: auto;
-    display: table;
+    width: 100%;
+    height: 7vh;    
 }

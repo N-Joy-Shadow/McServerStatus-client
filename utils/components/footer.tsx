@@ -1,18 +1,18 @@
 import { Button } from "@mui/material";
 import Link from "next/link";
-import Bstyles from "../../styles/mc/Background.module.css";
+import styles from "../../styles/mc/Background.module.css";
 import MCButton from "./MCStyled/mcButton";
 
 export default function Footer() {
   return (
-    <div className={Bstyles.McBackground}>
-      <footer>
+    <footer className={styles.McBackground}>
+      <div className="w-[100%] flex justify-center items-center h-[100%]">
         <Link href="/add">
-          <div className={Bstyles.marginAutoPadding} style={{ width :"400px"}}>
+          <div className="fixed table w-96 h-10">
             <MCButton>서버 추가</MCButton>
           </div>
         </Link>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 }
