@@ -9,13 +9,29 @@
     padding-left: 10px;
     background-color: transparent;
     border: transparent;
-    width: 100%;
-    height: 100%;
+
     color: white;
     font-family: 'minecraft';
     font-size: 20px;
     caret-color: transparent;
 }
 .McTextInput:focus{
+    outline: none;
+}
+
+.McField{
+    border: 2px solid rgb(170,170 ,170);
+    background-color: black;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    
+    font-family: 'minecraft';
+    color: white;
+
+}
+
+.McField:focus{
     outline: none;
 }
