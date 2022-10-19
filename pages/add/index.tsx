@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 import MCButton from "../../utils/components/MCStyled/mcButton";
 
 import MCstyledLayout from "../../utils/layouts/mcStyleLayout";
@@ -10,22 +11,20 @@ import btn from "../../styles/mc/Button.module.css";
 import { FormProvider, useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import DefaultForm from "../../utils/components/form/defaultForm";
-import ModForm from "../../utils/components/form/ModForm";
+import ModForm from "../../utils/components/form/modForm";
 import TagForm from "../../utils/components/form/tagForm";
+import { useTagFormStore } from "../../utils/zustand/tagFormStore";
 
 const server: NextPage = ({}) => {
-
-
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const formprovider = useForm();
-
+  const {TagList,SetTag} = useTagFormStore()
+  
   /**
    * 서버에 제출
    * @param data
    * @returns
    */
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => console.log({ ...data, tags : TagList});
 
   /**
    * 들어가야 할것 :
@@ -77,7 +76,6 @@ const server: NextPage = ({}) => {
           </div>
         </div>
       </div>
-     
     </MCstyledLayout>
   );
 };

@@ -22,8 +22,11 @@ export default function ModForm() {
       name: "Zip File",
     },
   ];
+  
 
   const [FileText, SetFileText] = useState<string>("파일을 선택해 주세요.");
+  //추후 모드관련 옵션
+  const [isMod ,SetIsMod] = useState<boolean>(false)
 
   const handleFileInputText = (e: any) => {
     SetFileText(e.target.value);
@@ -31,7 +34,7 @@ export default function ModForm() {
 
   return (
     <>
-      <h2>서버 유형을 선택해주세요!</h2>
+      <h2>서버 유형을 선택해주세요! [WIP]</h2>
       {/* 색깔 바꾸기 */}
       <div className="flex flex-row space-x-4 outline outline-2 bg-black outline-gray-500 p-1">
         {FILE_TYPE.map((x, i) => (
@@ -42,7 +45,7 @@ export default function ModForm() {
               {...register("FileType", { required: true })}
               className="cursor-pointer"
               id={`type_file_${i}`}
-              defaultChecked={i == 0}
+              /* disabled */
             />
             <label htmlFor={`type_file_${i}`} className="cursor-pointer">
               {x.name}
@@ -56,7 +59,9 @@ export default function ModForm() {
         </h2>
       )}
       {/* 파일 선택*/}
-      <div className="flex flex-row space-x-1">
+      {isMod && (
+        
+        <div className="flex flex-row space-x-1">
         <div className="w-40">
           <label htmlFor="zip_file" className={`${btn.McButton}`}>
             파일 선택
@@ -75,6 +80,11 @@ export default function ModForm() {
           })}
         />
       </div>
+      )}
+
+
+
+      
       <style jsx>
         {`
           .dump-input {
