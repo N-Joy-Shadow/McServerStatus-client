@@ -6,6 +6,7 @@ import {
   HttpTransportType,
   HubConnection,
   HubConnectionBuilder,
+  HubConnectionState,
 } from "@microsoft/signalr";
 import { ServerInfo } from "../API/ServerInfo";
 import {
@@ -26,16 +27,21 @@ const Home: NextPage = ({ data }: any) => {
   const [serverList, setServerList] = useState<ServerInfo[]>([]);
   const [filterList, setFilterList] = useState<ServerInfo[]>([]);
   const [connection, setConnection] = useState<HubConnection>();
+
+  const [isConnect,setIsConnect] = useState<boolean>(false)
   //init signalR
   useEffect(() => {
-    const newConnection = new HubConnectionBuilder()
+
+      const newConnection = new HubConnectionBuilder()
       //Fix Url Later
-      .withUrl(baseHubURL("update"), {
-        skipNegotiation: true,
-        transport: HttpTransportType.WebSockets,
-      })
-      .withAutomaticReconnect()
-      .build();
+
+        .withUrl(baseHubURL("update"), {
+          skipNegotiation: true,
+          transport: HttpTransportType.WebSockets,
+        })
+        .withAutomaticReconnect()
+        .build();
+        
     serverListFetch().then((x) => {
       setServerList(x.data);
       setFilterList(x.data)
@@ -44,7 +50,9 @@ const Home: NextPage = ({ data }: any) => {
     setConnection(newConnection);
   }, []);
   useEffect(() => {
-    if (connection) {
+    if (connection?.state == HubConnectionState.Connected && connection) {
+      setIsConnect(true)
+
       connection.start().then(() => {
         //test function
         serverUpdateListFetch().then((x) => {
@@ -55,6 +63,9 @@ const Home: NextPage = ({ data }: any) => {
           setServerList(data);
         });
       });
+    }
+    else{
+
     }
   }, [connection]);
 
@@ -72,6 +83,9 @@ const Home: NextPage = ({ data }: any) => {
           return(<Tag name={x} key={i} isSelected={true}></Tag>)
         })}
       </div>
+      {/* SignalR 연결 확인 */}
+      {isConnect == false && <div className="text-center align-middle w-full h-full">서버와 연결에 실패했습니다.</div>}
+
       <div>
       {filterList.map((x,i) => {
         return <ServerInfoItem data={x} isLoading={false} key={i}/>

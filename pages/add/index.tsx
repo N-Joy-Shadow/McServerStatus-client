@@ -17,7 +17,7 @@ import { useTagFormStore } from "../../utils/zustand/tagFormStore";
 
 const server: NextPage = ({}) => {
   const formprovider = useForm();
-  const {TagList,SetTag} = useTagFormStore()
+  const {Tags,SetTags} = useTagFormStore()
   
   /**
    * 서버에 제출
@@ -58,8 +58,8 @@ const server: NextPage = ({}) => {
           <FormProvider {...formprovider}>
             <form onSubmit={formprovider.handleSubmit(onSubmit)} id="asdasd" className="space-y-4">
               <DefaultForm/>
-              {/* 압축파일 타입 선택 */}
-              <ModForm/>
+              {/* 모드 타입 선택 */}
+              {/* <ModForm/> */}
               {/* 태그 선택 */}
               <TagForm/>
               {/* 전송 */}
