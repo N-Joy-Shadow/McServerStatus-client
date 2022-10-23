@@ -37,7 +37,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           <a href={props.data.custom?.gallurl}>→→ <strong>갤러리 홍보 게시물 보기</strong> ←←</a>
 
           <p className="text-start pl-2 mt-8 text-xl">플레이어 목록</p>
-          <div className="grid gap-4 grid-cols-4 grid-flow-row p-2 mt-2">
+          <div className="p-2 mt-2">
             {props.data.frenquency.players.playerlist?.map((x, i) => (
               <PlayerInfo key={i} name={x} />
             )) ?? (
@@ -52,6 +52,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
               return <Tag name={x} key={i}></Tag>;
             })}
           </div>
+
         </div>
       </div>
     </div>

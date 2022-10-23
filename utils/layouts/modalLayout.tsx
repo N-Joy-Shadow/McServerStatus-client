@@ -1,5 +1,6 @@
 import { ReactNode, useRef, forwardRef } from 'react';
 import Mcbg from "../../styles/mc/Background.module.css"
+import MCButton from '../components/MCStyled/mcButton';
 
 
 export default function ModalLayout({
@@ -24,7 +25,7 @@ export default function ModalLayout({
       <div className="w-auto flex  justify-between">
         {/* 주소 복사 */}
         <div
-          className="text-xl text-center self-center p-2 flex justify-start cursor-pointer mb-2"
+          className="text-xl text-center self-center p-2 flex justify-start cursor-pointer my-2 pl-4"
           onClick={handleCopy}
         >
           <p ref={titleref} className=" text-white">
@@ -32,9 +33,11 @@ export default function ModalLayout({
           </p>
           <p className="text-white ml-4 text-lg">- Copy</p>
         </div>
-        {/* <button className="text-black px-3 py-1 text-xl text-end mb-1">
-          x
-        </button> */}
+        <div className='flex flex-row space-x-2'>
+       
+
+
+        </div>
       </div>
       </div>
       <div className="">{children}</div>

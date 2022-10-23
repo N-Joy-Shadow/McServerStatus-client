@@ -16,6 +16,9 @@ export default function TagForm() {
   } = useFormContext();
 
   const handleAddTag = (x:string) => {
+    if(Tags.length == 4){
+      return
+    }
     SetTags(pushTags(Tags,x))
   };
   const handleRemoveTag = (x:string) => {

@@ -5,7 +5,7 @@ import btn from "../../../styles/mc/Button.module.css";
 import { useState } from "react";
 
 export default function DefaultForm() {
-  const gall_url = "gall.dcinside.com/mgallery/board/view?id=steve"
+  const gall_url = "https://gall.dcinside.com/mgallery/board/view?id=steve"
 
   const {register,formState : {errors}} = useFormContext();
   const [md, setMd] = useState<string>("");
@@ -28,6 +28,7 @@ export default function DefaultForm() {
       <input
         type="text"
         className={field.McField}
+        placeholder={gall_url}
         {...register("gallurl", { required: true} )}
       />
       {errors.galladdress && (

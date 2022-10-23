@@ -2,6 +2,9 @@ import Head from "next/head";
 import { ReactNode } from "react";
 import Footer from "../components/footer";
 import NavBar from "../components/navbar";
+
+import bg from "../../styles/mc/Background.module.css"
+
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <div>
@@ -11,7 +14,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <main className="container-item">
+      <main className={bg.Mcbg}>
         <div className="main">
           <div className="w-full p-4">{children}</div>
         </div>
@@ -19,13 +22,6 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <Footer />
       <style jsx>
         {`
-          .container-item {
-            background-image: url("https://status.shwa.space/assets/images/dirt.png");
-            background-repeat: repeat;
-            background-size: 64px;
-            font-size: large;
-          }
-
           .main {
             height: 86vh;
             width: 100%;

@@ -11,7 +11,7 @@
     border: transparent;
 
     color: white;
-    font-family: 'minecraft';
+    font-family: 'minecraft','gal11';
     font-size: 20px;
     caret-color: transparent;
 }
@@ -27,7 +27,7 @@
     height: 100%;
     padding: 12px;
     
-    font-family: 'minecraft';
+    font-family: 'minecraft','gal11';
     color: white;
 
 }

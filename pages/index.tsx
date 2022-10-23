@@ -78,7 +78,7 @@ const Home: NextPage = ({ data }: any) => {
   },[TagList, serverList])
   return (
     <MainLayout>
-      <div className="flex flex-row gap-2 h-12 justify-start items-center">
+      <div className="flex-row gap-2 h-12 justify-start items-center" style={{ display :  TagList.length == 0 ? "none" : "flex"}}>
         {TagList.length != 0 && <h2 className="text-lg">Tag List :</h2>}
         {TagList.map((x,i) =>{
           return(<Tag name={x} key={i} isSelected={true}></Tag>)

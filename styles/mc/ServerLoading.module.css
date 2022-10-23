@@ -2,7 +2,7 @@
 
 .loading {
     background: -10px 78px;
-    background-image: url("https://status.shwa.space/assets/images/icons.png");
+    background-image: url("/icons.png");
     width: 10px;
     height: 8px;
     transform: scale(2.5, 2.5);
@@ -16,7 +16,7 @@
 .offline {
 
     background: 0 40px;
-    background-image: url("https://status.shwa.space/assets/images/icons.png");
+    background-image: url("/icons.png");
     width: 10px;
     height: 8px;
     transform: scale(2.5, 2.5);
@@ -25,7 +25,7 @@
 
 .online {
     background: 0px 79px;
-    background-image: url("https://status.shwa.space/assets/images/icons.png");
+    background-image: url("/icons.png");
     width: 10px;
     height: 8px;
     transform: scale(2.5, 2.5);
@@ -40,26 +40,26 @@
 @keyframes loadserver {
     0% {
         background: -10px 79px;
-        background-image: url("https://status.shwa.space/assets/images/icons.png");
+        background-image: url("/icons.png");
     }
     20% {
         background: -10px 71px;
-        background-image: url("https://status.shwa.space/assets/images/icons.png");
+        background-image: url("/icons.png");
     }
     40% {
         background: -10px 63px;
-        background-image: url("https://status.shwa.space/assets/images/icons.png");
+        background-image: url("/icons.png");
     }
     60% {
         background: -10px 55px;
-        background-image: url("https://status.shwa.space/assets/images/icons.png");
+        background-image: url("/icons.png");
     }
     80% {
         background: -10px 47px;
-        background-image: url("https://status.shwa.space/assets/images/icons.png");
+        background-image: url("/icons.png");
     }
     100% {
         background: -10px 79px;
-        background-image: url("https://status.shwa.space/assets/images/icons.png");
+        background-image: url("/icons.png");
     }
 } 
