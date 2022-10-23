@@ -14,6 +14,8 @@ import DefaultForm from "../../utils/components/form/defaultForm";
 import ModForm from "../../utils/components/form/modForm";
 import TagForm from "../../utils/components/form/tagForm";
 import { useTagFormStore } from "../../utils/zustand/tagFormStore";
+import { InsertServer } from "../../utils/components/fetch/insertServer";
+import UserInfoForm from '../../utils/components/form/userinfoForm';
 
 const server: NextPage = ({}) => {
   const formprovider = useForm();
@@ -24,7 +26,13 @@ const server: NextPage = ({}) => {
    * @param data
    * @returns
    */
-  const onSubmit = (data: any) => console.log({ ...data, tags : TagList});
+  const onSubmit = async (data: any) => {
+    const datas= { ...data, tags : Tags}
+    console.log(datas)
+    await InsertServer(datas).then((x) =>{
+      alert(x.data.message)
+    })
+  };
 
   /**
    * 들어가야 할것 :
@@ -37,24 +45,6 @@ const server: NextPage = ({}) => {
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto ">
           <p className="text-center">ADD SERVER</p>
-          {/*  기존 서버 입력 방법
-          <div className="my-4">
-            <MCTextField onChange={(x) => HandleOnChange(x.target)} />
-          </div>
-          <div>
-          
-            <TagSelect />
-          </div>
-          <div className="my-4 h-10">
-            <MCButton
-              onClick={async () =>
-                await InsertServer(server).then((x) => alert("Done!"))
-              }
-            >
-              Add Server
-            </MCButton>
-          </div>
- */}
           <FormProvider {...formprovider}>
             <form onSubmit={formprovider.handleSubmit(onSubmit)} id="asdasd" className="space-y-4">
               <DefaultForm/>
@@ -62,6 +52,8 @@ const server: NextPage = ({}) => {
               {/* <ModForm/> */}
               {/* 태그 선택 */}
               <TagForm/>
+              {/* 유저 정보 */}
+              <UserInfoForm/>
               {/* 전송 */}
               <div className="h-[40px] my-4">
                 <input type="submit" className={btn.McButton} />

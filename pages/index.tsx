@@ -28,7 +28,8 @@ const Home: NextPage = ({ data }: any) => {
   const [filterList, setFilterList] = useState<ServerInfo[]>([]);
   const [connection, setConnection] = useState<HubConnection>();
 
-  const [isConnect,setIsConnect] = useState<boolean>(false)
+  //나중에 손보기
+  const [isConnect,setIsConnect] = useState<boolean>(true)
   //init signalR
   useEffect(() => {
 
@@ -41,17 +42,15 @@ const Home: NextPage = ({ data }: any) => {
         })
         .withAutomaticReconnect()
         .build();
-        
     serverListFetch().then((x) => {
       setServerList(x.data);
       setFilterList(x.data)
     });
-    //disble for design
     setConnection(newConnection);
   }, []);
   useEffect(() => {
-    if (connection?.state == HubConnectionState.Connected && connection) {
-      setIsConnect(true)
+
+    if (connection?.state == HubConnectionState.Connected) {
 
       connection.start().then(() => {
         //test function
@@ -68,6 +67,8 @@ const Home: NextPage = ({ data }: any) => {
 
     }
   }, [connection]);
+
+
 
   const TagList = useTagStore((x) => x.TagList)
   useEffect(() =>{

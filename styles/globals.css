@@ -8,11 +8,10 @@ body {
   overflow: hidden;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Gal11", "Minecraft";
 }
 p {
-  font-family: Minecraft;
+  font-family: "Gal11", "Minecraft";
   color: white;
   margin: 0;
 }
@@ -20,10 +19,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
+input textarea select  {
+  font-family: inherit;
 
+}
 div {
   color : white;
-  font-family: "minecraft";
+  font-family:  "Gal11", "Minecraft";
   font-size: 1rem;
 
 }
@@ -31,7 +33,9 @@ div {
 span{
   font-size: 1rem;
 }
-
+h1 {
+  font-family: "Gal11", "Minecraft";
+}
 ::-webkit-scrollbar {
   width: 16px;
   height: 16px;
@@ -44,8 +48,20 @@ border-bottom: 3px inset gray;
 ::-webkit-scrollbar-track{
   background: black;
 }
+@import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 
 
+@font-face {
+  font-family: Gal11;
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Galmuri11 Bold'),
+       url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.ttf') format('truetype');
+       unicode-range: U+AC00-D7A3;
+}
 
 @font-face {
   font-family: Minecraft;

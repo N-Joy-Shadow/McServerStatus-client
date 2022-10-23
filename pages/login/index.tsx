@@ -30,7 +30,10 @@ const login: NextPage = ({}) => {
           </div>
         </Link>
         <div className="text-center">
-        <p>로그인은 관리자 전용입니다.<br/> 로그인시 수집되는 개인정보는 사이트용도외에 쓰이지 않으며 블라블라</p>
+        <p>로그인은 관리자 전용입니다.<br/> 로그인시 수집되는 개인정보는 사이트용도외에 쓰이지 않으며 블라블라
+        <br/> 아직 구현안됨.
+        
+        </p>
         </div>
       </div>
     </MCstyledLayout>

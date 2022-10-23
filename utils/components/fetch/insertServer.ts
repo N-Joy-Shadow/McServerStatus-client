@@ -7,14 +7,12 @@ import { baseAPIURL } from "./InitFetch";
  * @param hostname 서버 아이피
  * @returns void
  */
-export async function InsertServer(hostname : string) {
+export async function InsertServer(data : any) {
   const httpsAgent = new https.Agent({ rejectUnauthorized: false });
   return await axios({
     url: baseAPIURL("status"),
     httpsAgent: httpsAgent,
     method: "POST",
-    data: {
-      hostname: hostname,
-    },
+    data: data
   });
 }

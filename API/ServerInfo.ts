@@ -22,6 +22,8 @@ export interface Lazy {
 export interface Custom {
   markdown: string;
   tags: string[];
+  gallurl : string;
+
 }
 
 export interface ServerInfo {

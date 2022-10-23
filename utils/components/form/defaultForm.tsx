@@ -5,7 +5,7 @@ import btn from "../../../styles/mc/Button.module.css";
 import { useState } from "react";
 
 export default function DefaultForm() {
-  const gallpage = "gall.dcinside.com/mgallery/board/view?id=steve"
+  const gall_url = "gall.dcinside.com/mgallery/board/view?id=steve"
 
   const {register,formState : {errors}} = useFormContext();
   const [md, setMd] = useState<string>("");
@@ -16,7 +16,7 @@ export default function DefaultForm() {
       <input
         type="text"
         className={field.McField}
-        {...register("address", { required: true })}
+        {...register("url", { required: true })}
       />
       {errors.address && (
         <span className=" text-red-600">
@@ -28,7 +28,7 @@ export default function DefaultForm() {
       <input
         type="text"
         className={field.McField}
-        {...register("galladdress", { required: true , validate : (x : string) => x.includes(gallpage)})}
+        {...register("gallurl", { required: true} )}
       />
       {errors.galladdress && (
         <span className=" text-red-600">

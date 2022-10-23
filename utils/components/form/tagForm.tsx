@@ -8,17 +8,17 @@ import { pushTags, removeTags } from "../../zustand/tagStore";
 import { useTagFormStore } from "../../zustand/tagFormStore";
 
 export default function TagForm() {
-  const tags = ["장타", "단타", "야생", "모드"];
+  const tags = ["장타", "단타", "야생", "모드", "건축", "오피섭"];
   const {Tags,SetTags} = useTagFormStore()
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const handleAddTag = (z:any,x:string) => {
+  const handleAddTag = (x:string) => {
     SetTags(pushTags(Tags,x))
   };
-  const handleRemoveTag = (z:any,x:string) => {
+  const handleRemoveTag = (x:string) => {
     SetTags(removeTags(Tags,x))
   };
   return (
@@ -27,7 +27,7 @@ export default function TagForm() {
       <div className={field.McField}>
         <div className="grid grid-flow-row grid-cols-4 gap-2">
           {tags.map((x, i) => (
-            <div key={i} onClick={(z) => handleAddTag(z,x)} className={btn.McButton}>
+            <div key={i} onClick={(z) => handleAddTag(x)} className={btn.McButton}>
               <div className="flex items-center px-1">
                 <img src="tag.png" className="w-6 h-6 m-1" alt=""/>
                 {x}
@@ -39,10 +39,10 @@ export default function TagForm() {
       <div className={field.McField}>
         <div className="grid grid-flow-row grid-cols-4 gap-2">
           {(Tags == null) || (Tags.length == 0) ? (
-            <p className="text-center col-span-4">선택한 태그가 없습니다.</p>
+            <p className="text-center col-span-4">선택한 태그가 없습니다.(최대 4가지 선택 가능)</p>
           ) : (
             Tags.map((x, i) => (
-              <div key={i} onClick={(z) => handleRemoveTag(z,x)}>
+              <div key={i} onClick={(z) => handleRemoveTag(x)}>
                 <Tag name={x} />
               </div>
             ))

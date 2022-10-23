@@ -1,4 +1,6 @@
 import { ReactNode, useRef, forwardRef } from 'react';
+import Mcbg from "../../styles/mc/Background.module.css"
+
 
 export default function ModalLayout({
   children,
@@ -15,22 +17,27 @@ export default function ModalLayout({
   };
 
   return (
-    <div className="absolute modal-center bg-black outline outline-8 outline-offset-0 rounded-sm outline-gray-300 h-auto w-[24rem] md:w-[40rem] xl:w-[60rem]">
-      <div className="w-auto bg-gray-300 flex  justify-between">
+    <div className="absolute modal-center bg-black outline outline-8 outline-offset-0 outline-[#797878] h-auto w-[24rem] md:w-[40rem] xl:w-[60rem]">
+      <div className={Mcbg.Mcbg_l}>
+
+
+      <div className="w-auto flex  justify-between">
+        {/* 주소 복사 */}
         <div
-          className="text-xl text-center self-center pl-2 flex justify-start cursor-pointer mb-2"
+          className="text-xl text-center self-center p-2 flex justify-start cursor-pointer mb-2"
           onClick={handleCopy}
         >
-          <p ref={titleref} className="text-black">
+          <p ref={titleref} className=" text-white">
             {title ?? "NotFound"}
           </p>
-          <p className="text-black ml-4 text-lg">- Copy</p>
+          <p className="text-white ml-4 text-lg">- Copy</p>
         </div>
         {/* <button className="text-black px-3 py-1 text-xl text-end mb-1">
           x
         </button> */}
       </div>
-      <div className="p-2">{children}</div>
+      </div>
+      <div className="">{children}</div>
       <style jsx>
         {`
           .modal-center {
