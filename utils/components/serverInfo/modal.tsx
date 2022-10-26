@@ -4,6 +4,7 @@ import PlayerInfo from "../player/playerinfo";
 import Tag from "../tag/tag";
 
 import bg from "../../../styles/mc/Background.module.css";
+import ModalMods from './modal/mods';
 
 export default function ServerInfoModal(props: ServerInfoItemProps) {
   const CurrentPlayer = props.data.frenquency.players.current;
@@ -52,7 +53,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
               return <Tag name={x} key={i}></Tag>;
             })}
           </div>
-
+          <ModalMods mods={props.data.lazy.mods}/>
         </div>
       </div>
     </div>

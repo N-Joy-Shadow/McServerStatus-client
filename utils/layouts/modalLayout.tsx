@@ -1,6 +1,6 @@
 import { ReactNode, useRef, forwardRef } from 'react';
 import Mcbg from "../../styles/mc/Background.module.css"
-import MCButton from '../components/MCStyled/mcButton';
+import Mcbtn from "../../styles/mc/Button.module.css"
 
 
 export default function ModalLayout({
@@ -34,8 +34,10 @@ export default function ModalLayout({
           <p className="text-white ml-4 text-lg">- Copy</p>
         </div>
         <div className='flex flex-row space-x-2'>
-       
-
+        {/* 버튼들 */}
+        <div>
+          
+        </div>
 
         </div>
       </div>

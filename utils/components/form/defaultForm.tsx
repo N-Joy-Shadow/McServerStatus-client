@@ -29,7 +29,7 @@ export default function DefaultForm() {
         type="text"
         className={field.McField}
         placeholder={gall_url}
-        {...register("gallurl", { required: true} )}
+        {...register("customStatus.gallurl", { required: true} )}
       />
       {errors.galladdress && (
         <span className=" text-red-600">

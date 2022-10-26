@@ -16,7 +16,6 @@ export function ServerFilter(list :ServerInfo[],args : string[]) : ServerInfo[]{
     //중복 아이템 삭제
     const result_list = [...new Set(result_list_1)]
 
-    console.log(result_list)
 
     return result_list
 }
