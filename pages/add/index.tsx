@@ -27,9 +27,11 @@ const server: NextPage = ({}) => {
    * @returns
    */
   const onSubmit = async (data: any) => {
-    const datas= { ...data, tags : Tags}
-    console.log(datas)
-    await InsertServer(datas).then((x) =>{
+    const datas= { ...data }
+    let s_data = JSON.parse(JSON.stringify(datas))
+    s_data.customStatus.tags = Tags
+    console.log(s_data)
+    await InsertServer(s_data).then((x) =>{
       alert(x.data.message)
     })
   };
