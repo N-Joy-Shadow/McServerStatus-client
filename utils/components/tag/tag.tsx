@@ -31,7 +31,7 @@ export default function Tag(props : TagProps) {
   return (<div className="w-auto flex flex-row h-[40px]">
     <MCButton onClick={HandleOnClick}>
 
-      <img src="tag.png" className="w-6 h-6 m-1"></img>
+      <img src="/tag.png" className="w-6 h-6 m-1"></img>
       <p className="pr-1" ref={tagRef}>{props.name}</p>
     </MCButton>
     </div>);

@@ -6,9 +6,7 @@ export function ServerFilter(list :ServerInfo[],args : string[]) : ServerInfo[]{
     const filtered_name : ServerInfo[][]= []
 
     args.map(x => {
-        console.log(x)
         const f_list = list.filter(z => z.custom?.tags.includes(x))
-        console.log(f_list)
         filtered_name.push(f_list)
     })
     //1차원 배열로 만들기

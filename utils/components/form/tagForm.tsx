@@ -32,7 +32,7 @@ export default function TagForm() {
           {tags.map((x, i) => (
             <div key={i} onClick={(z) => handleAddTag(x)} className={btn.McButton}>
               <div className="flex items-center px-1">
-                <img src="tag.png" className="w-6 h-6 m-1" alt=""/>
+                <img src="/tag.png" className="w-6 h-6 m-1" alt=""/>
                 {x}
               </div>
             </div>

@@ -62,6 +62,16 @@ border-bottom: 3px inset gray;
        url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.ttf') format('truetype');
        unicode-range: U+AC00-D7A3;
 }
+ 
+ /* 
+
+ @font-face {
+  font-family: 'Gal11';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+AC00-D7A3;
+} */
 
 @font-face {
   font-family: Minecraft;

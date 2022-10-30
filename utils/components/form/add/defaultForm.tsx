@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
-import field from "../../../styles/mc/TextField.module.css";
-import btn from "../../../styles/mc/Button.module.css";
+import field from "../../../../styles/mc/TextField.module.css";
+import btn from "../../../../styles/mc/Button.module.css";
 import { useState } from "react";
 
 export default function DefaultForm() {
@@ -29,7 +29,7 @@ export default function DefaultForm() {
         type="text"
         className={field.McField}
         placeholder={gall_url}
-        {...register("customStatus.gallurl", { required: true} )}
+        {...register("custom.gallurl", { required: true} )}
       />
       {errors.galladdress && (
         <span className=" text-red-600">

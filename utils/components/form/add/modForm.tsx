@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
-import field from "../../../styles/mc/TextField.module.css";
-import btn from "../../../styles/mc/Button.module.css";
+import field from "../../../../styles/mc/TextField.module.css";
+import btn from "../../../../styles/mc/Button.module.css";
 import { useState } from "react";
 
 export default function ModForm() {
