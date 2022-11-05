@@ -7,6 +7,8 @@ interface TagProps{
   isSelected? : boolean
 }
 
+export const TAG_LIST = ["장타", "단타", "야생", "모드", "건축", "오피섭","테스트"]
+
 
 export default function Tag(props : TagProps) {
   const isSelected = props.isSelected

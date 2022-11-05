@@ -86,8 +86,8 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                 return <Tag name={x} key={i}></Tag>;
               })}
             </div>
-            <ModalMods mods={props.data.lazy.mods} />
-          </div>
+{/*             <ModalMods mods={props.data.lazy.mods} />
+ */}          </div>
         </div>
       </div>
     </div>

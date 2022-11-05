@@ -7,13 +7,13 @@ import MCstyledLayout from "../../utils/layouts/mcStyleLayout";
 import btn from "../../styles/mc/Button.module.css";
 import { FormProvider, useForm } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
-import DefaultForm from "../../utils/components/form/add/defaultForm";
+import DefaultForm from "../../utils/components/form/defaultForm";
 import ModForm from "../../utils/components/form/add/modForm";
 import TagForm from "../../utils/components/form/tagForm";
 import { useTagFormStore } from "../../utils/zustand/tagFormStore";
 import { InsertServer } from "../../utils/components/fetch/insertServer";
 import UserInfoForm from '../../utils/components/form/userinfoForm';
-import { useEffect } from 'react';
+import { HeadProps } from "../../API/HeadProps";
 
 const server: NextPage = ({}) => {
   const formprovider = useForm();
@@ -33,8 +33,14 @@ const server: NextPage = ({}) => {
     console.log(s_data)
     await InsertServer(s_data).then((x) =>{
       alert(x.data.message)
+      window.location.href ="/"
+
     })
   };
+  const head : HeadProps = {
+    title : `서버 추가`
+  }
+  
   /**
    * 들어가야 할것 :
    * md
@@ -42,13 +48,13 @@ const server: NextPage = ({}) => {
    * Tag
    */
   return (
-    <MCstyledLayout>
+    <MCstyledLayout head={head}>
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto">
           <p className="text-center">ADD SERVER</p>
           <FormProvider {...formprovider}>
             <form onSubmit={formprovider.handleSubmit(onSubmit)} className="space-y-4">
-              <DefaultForm/>
+              <DefaultForm isEdit={false}/>
               {/* 모드 타입 선택 */}
               {/* <ModForm/> */}
               {/* 태그 선택 */}
@@ -57,7 +63,7 @@ const server: NextPage = ({}) => {
               <UserInfoForm/>
               {/* 전송 */}
               <div className="h-[40px] my-4">
-                <input type="submit" className={btn.McButton} />
+                <input type="submit" className={btn.McButton} value="등록하기"/>
               </div>
             </form>
           </FormProvider>

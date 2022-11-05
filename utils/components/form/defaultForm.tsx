@@ -1,10 +1,16 @@
 import { useFormContext } from "react-hook-form";
 
-import field from "../../../../styles/mc/TextField.module.css";
-import btn from "../../../../styles/mc/Button.module.css";
+import field from "../../../styles/mc/TextField.module.css";
+import btn from "../../../styles/mc/Button.module.css";
 import { useState } from "react";
 
-export default function DefaultForm() {
+interface DefaultFormProps {
+  isEdit : boolean
+  hostname? : string
+  gallurl? : string
+}
+
+export default function DefaultForm(props : DefaultFormProps) {
   const gall_url = "https://gall.dcinside.com/mgallery/board/view?id=steve"
 
   const {register,formState : {errors}} = useFormContext();
@@ -16,9 +22,11 @@ export default function DefaultForm() {
       <input
         type="text"
         className={field.McField}
+        defaultValue={props.hostname}
+        disabled={props.isEdit}
         {...register("url", { required: true })}
       />
-      {errors.address && (
+      {(errors.url && !props.isEdit) && (
         <span className=" text-red-600">
           <strong>주소는 필수 입력 사항입니다!</strong>
         </span>
@@ -29,9 +37,10 @@ export default function DefaultForm() {
         type="text"
         className={field.McField}
         placeholder={gall_url}
+        defaultValue={props.gallurl}
         {...register("custom.gallurl", { required: true} )}
       />
-      {errors.galladdress && (
+      {errors.custom && (
         <span className=" text-red-600">
           <strong>스티브 갤러리 서버홍보 게시물 주소는 필수 입력 사항입니다!</strong>
         </span>

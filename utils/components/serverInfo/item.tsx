@@ -40,7 +40,7 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
         aria-labelledby="title"
         aria-describedby="de"
       >
-        <ModalLayout title={props.data.hostname}>
+        <ModalLayout>
           <ServerInfoModal data={props.data} />
         </ModalLayout>
       </Modal>

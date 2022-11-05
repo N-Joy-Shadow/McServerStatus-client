@@ -10,8 +10,8 @@ export default function ModalMods(props : ModalModsProps) {
             <h1>모드들</h1>
             <div className="">
 
-            {props.mods.map((x,i) =>(<div className="" key={i}>{x}</div>))}
-
+            {/* {props.mods.map((x,i) =>(<div className="" key={i}>{x}</div>))}
+ */}
             </div>
         </div>
         )

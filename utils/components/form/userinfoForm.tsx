@@ -14,10 +14,16 @@ const {register,formState : {errors}} = useFormContext();
           <input type="text" className={field.McField} placeholder="ID" {...register("userinfo.id", {required :true})}/>
         </div>
         <div className="w-52">
-          <input type="password" className={field.McField}placeholder="Password" {...register("userinfo.pw",{required : true})}/>
+          <input type="password" className={field.McField} placeholder="Password" {...register("userinfo.pw",{required : true})}/>
         </div>
       </div>
-      
+      {errors.userinfo && (
+                  <span className=" text-red-600">
+                    <strong>
+                      아이디랑 비밀번호를 입력해주세요
+                    </strong>
+                  </span>
+                )}
     </>
   );
 }

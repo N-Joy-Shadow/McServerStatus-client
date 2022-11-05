@@ -2,13 +2,12 @@
 import { useFormContext } from "react-hook-form";
 import field from "../../../styles/mc/TextField.module.css";
 import btn from "../../../styles/mc/Button.module.css";
-import Tag from "../tag/tag";
+import Tag, { TAG_LIST } from "../tag/tag";
 import { DOMAttributes, MouseEventHandler, useContext, useState } from "react";
 import { pushTags, removeTags } from "../../zustand/tagStore";
 import { useTagFormStore } from "../../zustand/tagFormStore";
 
 export default function TagForm() {
-  const tags = ["장타", "단타", "야생", "모드", "건축", "오피섭"];
   const {Tags,SetTags} = useTagFormStore()
   const {
     register,
@@ -29,7 +28,7 @@ export default function TagForm() {
       <h1>자신의 서버의 태그를 선택해 주세요</h1>
       <div className={field.McField}>
         <div className="grid grid-flow-row grid-cols-4 gap-2">
-          {tags.map((x, i) => (
+          {TAG_LIST.map((x, i) => (
             <div key={i} onClick={(z) => handleAddTag(x)} className={btn.McButton}>
               <div className="flex items-center px-1">
                 <img src="/tag.png" className="w-6 h-6 m-1" alt=""/>

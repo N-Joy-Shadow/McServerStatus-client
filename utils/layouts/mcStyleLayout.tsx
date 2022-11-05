@@ -1,12 +1,23 @@
 import Head from "next/head";
 import { ReactNode } from "react";
+import { HeadProps } from "../../API/HeadProps";
 import Footer from "../components/footer";
 import NavBar from "../components/navbar";
-export default function MCstyledLayout({ children }: { children: ReactNode }) {
+
+
+
+export default function MCstyledLayout({ children, head }: { children: ReactNode, head?: HeadProps }) {
+  let title = "로그인"
+
+  if(head){
+    title =  head.title ?? "로그인"
+  }
+
+
   return (
     <div>
       <Head>
-        <title>로그인</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container-item">
