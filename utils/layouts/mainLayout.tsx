@@ -13,6 +13,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         <meta name="description" content="스티브 갤러리 서버 리스트" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div className="wrap">
       <NavBar />
       <main className={bg.Mcbg}>
         <div className="main">
@@ -20,11 +21,18 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         </div>
       </main>
       <Footer />
+      </div>
       <style jsx>
         {`
           .main {
-            height: 86vh;
-            width: 100%;
+            padding-bottom : 60px;
+            padding-top : 60px;
+            height :calc(100vh);
+          }
+          .wrap{
+            min-height : 100vh;
+            position : relative;
+            width : 100%
             overflow-y: auto;
             overflow-x: hidden;
           }

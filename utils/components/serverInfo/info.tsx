@@ -26,7 +26,7 @@ export default function ServerItem(props : ServerInfoItemProps) {
                         <MCServerLoading isOnline={props.data.frenquency.isOnline} LoadingStr={props.data.frenquency.motd}/>
                     </div>
                 </div>
-                <div dangerouslySetInnerHTML={{__html : motdHtml}}/>
+                <div className="text-base md:text-lg truncate" dangerouslySetInnerHTML={{__html : motdHtml}}/>
             </div>
         </div>
     )

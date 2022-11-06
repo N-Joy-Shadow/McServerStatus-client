@@ -1,15 +1,33 @@
 .McBackground {
     background-image: url('/dirt-light.png');
     width: 100%;
-    height: 7vh;    
+    height: 60px;
 }
+.McBgFooter{
+    background-image: url('/dirt-light.png');
+    width: 100%;
+    height: 60px;
+    bottom: 0;
+    position: absolute;
+}
+.McBgNav {
+    background-image: url('/dirt-light.png');
+    width: 100%;
+    height: 60px;
+    top: 0;
+    position: absolute;
+
+}
+
+
+
+
 .Mcbg{
     background-image: url('/dirt-dark.png');
     background-repeat: repeat;
     background-size: 64px;
     width: 100%;
-
-}
+} 
 .Mcbg_l{
     background-image: url('/dirt-light.png');
 }
