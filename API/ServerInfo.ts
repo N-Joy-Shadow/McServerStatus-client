@@ -20,7 +20,7 @@ export interface Lazy {
 }
 
 export interface Custom {
-  markdown: string;
+  markdown?: string;
   tags: string[];
   gallurl : string;
 

@@ -55,6 +55,6 @@ export async function RemoveServer(data : any){
     url: baseAPIURL("status"),
     httpsAgent: httpsAgent,
     method: "DELETE",
-    data: data
+    data: data,
   });
 }

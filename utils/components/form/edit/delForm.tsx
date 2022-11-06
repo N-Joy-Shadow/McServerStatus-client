@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { RemoveServer } from "../../fetch/insertServer";
 
 interface DelFormProps {
-    hostname : string
+    hostname : string | string[] | undefined
 }
 
 export default function DelForm(props : DelFormProps) {

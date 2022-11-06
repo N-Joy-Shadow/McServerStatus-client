@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
-import { EditServer} from "../../utils/components/fetch/insertServer";
+import { EditServer } from "../../utils/components/fetch/insertServer";
 import DefaultForm from "../../utils/components/form/defaultForm";
 import TagForm from "../../utils/components/form/tagForm";
 import UserInfoForm from "../../utils/components/form/userinfoForm";
@@ -12,15 +12,15 @@ import { HeadProps } from "../../API/HeadProps";
 import btn from "../../styles/mc/Button.module.css";
 import DelForm from "../../utils/components/form/edit/delForm";
 import { useRouter } from "next/router";
+import { NextPage } from "next";
+import { EditData } from "../../API/EditData";
 
-export default function edit() {
+const edit: NextPage = () => {
   const router = useRouter();
   const { name } = router.query;
-  let name_s: string = "로딩중..";
+  
   let gallurl: string = "로딩중..";
-  if (typeof name == "string") {
-    name_s = name;
-  }
+  
   /* useEffect(() => {
     if(typeof name == "string" ){
       const call = async () => await EditServerData(name)
@@ -34,17 +34,19 @@ export default function edit() {
   const editFormProvider = useForm();
   const { Tags, SetTags } = useTagFormStore();
 
-  const onSubmit =async  (data: any) => {
-    console.log("hi")
+  const onSubmit = async (data: any) => {
+    console.log(data);
     const datas = { ...data };
     const tags = [...Tags];
 
-    let s_data = JSON.parse(JSON.stringify(datas));
-    s_data.custom.tags = tags;
+    let s_data: EditData = JSON.parse(JSON.stringify(datas));
+    s_data.custom.tags = tags ?? [];
 
     await EditServer(s_data).then((x) => {
       alert(x.data.message);
-      window.location.href = "/";
+      if(x.data.Success){
+       window.location.href = "/";
+      }
     });
   };
   const head: HeadProps = {
@@ -56,22 +58,26 @@ export default function edit() {
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto">
           <p className="text-center">Edit SERVER</p>
-          <p className="text-center">{name}</p>
+          <p className="text-center text-xl my-1">{name}</p>
+          <p className="text-center">현재 수정하기 같은 경우 지원되긴 하나, 좀 불편합니다.</p>
           <FormProvider {...editFormProvider}>
             <form
               onSubmit={editFormProvider.handleSubmit(onSubmit)}
               className="space-y-4"
             >
-
-              <DefaultForm isEdit={true} hostname={name_s} />
+              <DefaultForm isEdit={true} hostname={name} />
               <TagForm />
               <UserInfoForm />
               <div className="h-[40px] my-4">
-                <input type="submit" className={btn.McButton} value="수정하기" />
+                <input
+                  type="submit"
+                  className={btn.McButton}
+                  value="수정하기"
+                />
               </div>
             </form>
           </FormProvider>
-          <DelForm hostname={name_s} />
+          <DelForm hostname={name} />
 
           <div className="h-10 mt-4">
             <Link href="/">
@@ -84,3 +90,4 @@ export default function edit() {
   );
 };
 
+export default edit;

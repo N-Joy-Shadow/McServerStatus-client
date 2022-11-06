@@ -6,7 +6,7 @@ import { useState } from "react";
 
 interface DefaultFormProps {
   isEdit : boolean
-  hostname? : string
+  hostname? : string | string[] | undefined
   gallurl? : string
 }
 
@@ -15,6 +15,8 @@ export default function DefaultForm(props : DefaultFormProps) {
 
   const {register,formState : {errors}} = useFormContext();
   const [md, setMd] = useState<string>("");
+  console.log(typeof props.hostname)
+
   return (
     <>
       {/* 서버 주소 입력 */}
@@ -22,8 +24,8 @@ export default function DefaultForm(props : DefaultFormProps) {
       <input
         type="text"
         className={field.McField}
-        defaultValue={props.hostname}
-        disabled={props.isEdit}
+
+        /* disabled={props.isEdit} */
         {...register("url", { required: true })}
       />
       {(errors.url && !props.isEdit) && (

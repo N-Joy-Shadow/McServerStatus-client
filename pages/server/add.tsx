@@ -33,7 +33,9 @@ const server: NextPage = ({}) => {
     console.log(s_data)
     await InsertServer(s_data).then((x) =>{
       alert(x.data.message)
-      window.location.href ="/"
+      if(x.data.Success){
+        window.location.href ="/"
+      }
 
     })
   };
