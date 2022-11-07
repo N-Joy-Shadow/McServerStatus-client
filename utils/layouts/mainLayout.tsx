@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import Footer from "../components/footer";
 import NavBar from "../components/navbar";
 
-import bg from "../../styles/mc/Background.module.css"
+import bg from "../../styles/mc/Background.module.css";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
@@ -13,31 +13,14 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         <meta name="description" content="스티브 갤러리 서버 리스트" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="wrap">
-      <NavBar />
-      <main className={bg.Mcbg}>
-        <div className="main">
-          <div className="w-full p-4">{children}</div>
-        </div>
-      </main>
-      <Footer />
+      <div className={bg.McMBg}>
+        <NavBar />
+        <main className={bg.McMain}>
+            <div className="w-full py-4 overflow-x-hidden">{children}</div>
+        </main>
+        <Footer />
       </div>
-      <style jsx>
-        {`
-          .main {
-            padding-bottom : 60px;
-            padding-top : 60px;
-            height :calc(100vh);
-          }
-          .wrap{
-            min-height : 100vh;
-            position : relative;
-            width : 100%
-            overflow-y: auto;
-            overflow-x: hidden;
-          }
-        `}
-      </style>
+      
     </div>
   );
 }

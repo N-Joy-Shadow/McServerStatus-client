@@ -6,17 +6,20 @@
 .McBgFooter{
     background-image: url('/dirt-light.png');
     width: 100%;
-    height: 60px;
+    min-height: 60px;
+    align-items: center;
+    display: flex;
     bottom: 0;
-    position: absolute;
+    position: fixed;
 }
 .McBgNav {
     background-image: url('/dirt-light.png');
     width: 100%;
-    height: 60px;
+    min-height: 60px;
+    align-items: center;
+    display: flex;
     top: 0;
-    position: absolute;
-
+    position: fixed;
 }
 
 
@@ -28,6 +31,24 @@
     background-size: 64px;
     width: 100%;
 } 
+
+.McMBg{
+    background-image: url('/dirt-dark.png');
+    background-repeat: repeat;
+    background-size: 64px;
+    width: 100%;
+    height: 100vh;
+
+
+}
+.McMain{
+    position:sticky;
+    overflow-y: auto;
+    overflow-x: auto;
+    height: calc(100vh - 120px);
+    top: 60px;
+}
+
 .Mcbg_l{
     background-image: url('/dirt-light.png');
 }

@@ -18,6 +18,10 @@ export default function index() {
             <div>
                 <p>↓↓ 에러나 기타 등등은 여기로 제보 ↓↓</p>
             <a href="mailto:njoyshadow@gmail.com" className="text-blue-500">njoyshadw@gmail.com</a>
+
+            <h1><strong>현재 SRV 관련 서버가 등록이 안되는 버그가 있음 수능 이후 고쳐볼 예정</strong></h1>
+
+
             </div>
             <div className="h-10 mt-4 w-40 items-center inline-block">
             <Link href="/">
