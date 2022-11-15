@@ -14,7 +14,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
   const FormatPlayer = formatplayercount(CurrentPlayer, MaxPlayer);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(props.data.hostname);
+    navigator.clipboard.writeText(props.data.display_hostname);
   };
 
   return (
@@ -25,12 +25,12 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           <div
             className="text-xl text-center self-center p-2 flex justify-start cursor-pointer my-2 pl-4"
             onClick={handleCopy}>
-            {props.data.hostname}
+            {props.data.display_hostname}
           </div>
           {/* 버튼들 */}
           <div className="p-1">
             <div className="w-14 h-full">
-              <Link href={{ pathname : '/server/edit', query : { name : props.data.hostname }}}>
+              <Link href={{ pathname : '/server/edit', query : { name : props.data.display_hostname }}}>
                 <MCButton>수정</MCButton>
               </Link>
             </div>
@@ -51,9 +51,9 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           "
             >
               <div>
-                <h1>서버 주소 : {props.data.hostname}</h1>
+                <h1>서버 주소 : {props.data.display_hostname}</h1>
                 <p>
-                  IP : {props.data.lazy.ip}:{props.data.port}
+                  IP : {props.data.lazy.ip}:{props.data.display_port}
                 </p>
                 <p>플레이어 : {FormatPlayer}</p>
                 <p>버전 : {props.data.lazy.version}</p>
@@ -71,9 +71,9 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
             <p className="md:text-start pl-2 mt-8 text-xl text-center ">
               플레이어 목록
             </p>
-            <div className="p-2 mt-2">
+            <div className="p-2 mt-2 space-x-2">
               {props.data.frenquency.players.playerlist?.map((x, i) => (
-                <PlayerInfo key={i} name={x} />
+                <PlayerInfo key={i} data={x} />
               )) ?? (
                 <div className="w-full col-span-4">
                   현재 접속중인 플레이가 없습니다.

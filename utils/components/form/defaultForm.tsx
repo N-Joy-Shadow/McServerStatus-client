@@ -15,7 +15,6 @@ export default function DefaultForm(props : DefaultFormProps) {
 
   const {register,formState : {errors}} = useFormContext();
   const [md, setMd] = useState<string>("");
-  console.log(typeof props.hostname)
 
   return (
     <>

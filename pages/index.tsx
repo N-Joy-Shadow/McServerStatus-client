@@ -11,13 +11,10 @@ import {
 import { ServerInfo } from "../API/ServerInfo";
 import {
   serverListFetch,
-  serverNameListFetch,
   serverUpdateListFetch,
 } from "../utils/components/fetch/serverList";
 import ServerInfoItem from "../utils/components/serverInfo/item";
-import { Button } from "@mui/material";
 import { baseHubURL } from "../utils/components/fetch/InitFetch";
-import MCButton from "../utils/components/MCStyled/mcButton";
 import { useTagStore } from "../utils/zustand/tagStore";
 import Tag from "../utils/components/tag/tag";
 import { ServerFilter } from "../utils/util/listFilter";
@@ -29,29 +26,26 @@ const Home: NextPage = ({ data }: any) => {
   const [connection, setConnection] = useState<HubConnection>();
 
   //나중에 손보기
-  const [isConnect,setIsConnect] = useState<boolean>(true)
+  const [isConnect, setIsConnect] = useState<boolean>(true);
   //init signalR
   useEffect(() => {
-
-      const newConnection = new HubConnectionBuilder()
+    const newConnection = new HubConnectionBuilder()
       //Fix Url Later
 
-        .withUrl(baseHubURL("update"), {
-          skipNegotiation: true,
-          transport: HttpTransportType.WebSockets,
-        })
-        .withAutomaticReconnect()
-        .build();
+      .withUrl(baseHubURL("update"), {
+        skipNegotiation: true,
+        transport: HttpTransportType.WebSockets,
+      })
+      .withAutomaticReconnect()
+      .build();
     serverListFetch().then((x) => {
       setServerList(x.data);
-      setFilterList(x.data)
+      setFilterList(x.data);
     });
     setConnection(newConnection);
   }, []);
   useEffect(() => {
-
     if (connection?.state == HubConnectionState.Connected) {
-
       connection.start().then(() => {
         //test function
         serverUpdateListFetch().then((x) => {
@@ -62,35 +56,38 @@ const Home: NextPage = ({ data }: any) => {
           setServerList(data);
         });
       });
-    }
-    else{
-
+    } else {
     }
   }, [connection]);
 
-
-
-  const TagList = useTagStore((x) => x.TagList)
-  useEffect(() =>{
-    if(serverList != undefined){
-      setFilterList(ServerFilter(serverList,TagList))
+  const TagList = useTagStore((x) => x.TagList);
+  useEffect(() => {
+    if (serverList != undefined) {
+      setFilterList(ServerFilter(serverList, TagList));
     }
-  },[TagList, serverList])
+  }, [TagList, serverList]);
   return (
     <MainLayout>
-      <div className="flex-row gap-2 h-12 justify-start items-center" style={{ display :  TagList.length == 0 ? "none" : "flex"}}>
+      <div
+        className="flex-row gap-2 h-12 justify-start items-center"
+        style={{ display: TagList.length == 0 ? "none" : "flex" }}
+      >
         {TagList.length != 0 && <h2 className="text-lg">Tag List :</h2>}
-        {TagList.map((x,i) =>{
-          return(<Tag name={x} key={i} isSelected={true}></Tag>)
+        {TagList.map((x, i) => {
+          return <Tag name={x} key={i} isSelected={true}></Tag>;
         })}
       </div>
       {/* SignalR 연결 확인 */}
-      {isConnect == false && <div className="text-center align-middle w-full h-full">서버와 연결에 실패했습니다.</div>}
+      {isConnect == false && (
+        <div className="text-center align-middle w-full h-full">
+          서버와 연결에 실패했습니다.
+        </div>
+      )}
 
       <div>
-      {filterList.map((x,i) => {
-        return <ServerInfoItem data={x} isLoading={false} key={i}/>
-      })}
+        {filterList.map((x, i) => {
+          return <ServerInfoItem data={x} isLoading={false} key={i} />;
+        })}
       </div>
     </MainLayout>
   );

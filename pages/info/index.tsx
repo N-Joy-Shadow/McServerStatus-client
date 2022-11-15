@@ -1,29 +1,27 @@
 import MCstyledLayout from "../../utils/layouts/mcStyleLayout";
 import { HeadProps } from '../../API/HeadProps';
-import { getstatiacprops } from '../server/add';
 import Link from "next/link";
 import MCButton from "../../utils/components/MCStyled/mcButton";
+import { GetStaticProps, NextPage } from "next/types";
 
-export default function index() {
+const index : NextPage = ({}) => {
     const head :HeadProps = {
         title : "공지"
     }
 
 
     return (<MCstyledLayout head={head}>
-        <div className="display items-center text-center mt-40 ">
+        <div className="display items-center text-center pt-40 h-full">
             일단 대충 쓰는 공지
             <p>일단 초기 버전이고 아마 오류들은 수능 이후에 고쳐질 예정</p>
-            <p>모바일 버전 스크롤에 문제가 있음 디자인쪽이라 이것도 수능이후에 고칠거임</p>
+            <p>모바일 버전 크룸이나 사파리 등 맨 밑부분이 잘리는 버그가 있음</p>
             <div>
                 <p>↓↓ 에러나 기타 등등은 여기로 제보 ↓↓</p>
             <a href="mailto:njoyshadow@gmail.com" className="text-blue-500">njoyshadw@gmail.com</a>
 
-            <h1><strong>현재 SRV 관련 서버가 등록이 안되는 버그가 있음 수능 이후 고쳐볼 예정</strong></h1>
-
-
+            <p>드디어 플레이어 Id얻어서 머리 아이콘 뛰울 수 있네</p>
             </div>
-            <div className="h-10 mt-4 w-40 items-center inline-block">
+            <div className="h-10 mt-4 w-40 items-center inline-block md">
             <Link href="/">
               <MCButton>Back</MCButton>
             </Link>
@@ -31,4 +29,12 @@ export default function index() {
             
         </div>
     </MCstyledLayout>)
+
 };
+export const getstatiacprops: GetStaticProps = (context) => {
+    return {
+      props: {},
+    };
+  };
+  export default index;
+  

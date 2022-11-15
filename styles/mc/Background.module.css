@@ -37,18 +37,37 @@
     background-repeat: repeat;
     background-size: 64px;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 
+    padding-top: 60px;
+    padding-bottom: 60px;
 
 }
 .McMain{
-    position:sticky;
+    position:relative;
     overflow-y: auto;
     overflow-x: auto;
     height: calc(100vh - 120px);
-    top: 60px;
+
 }
 
+.McbgEtc{
+    background-image: url('/dirt-light.png');
+    background-repeat: repeat;
+    background-size: 64px;
+    font-size: large;
+    overflow-y:visible;
+    min-height: -webkit-fill-available;
+    height: 100vh
+}
+.Mcbg_Container{
+
+}
+@media (max-width: 768px){
+    .McMain{
+        padding-bottom: 60px;
+    }
+}
 .Mcbg_l{
     background-image: url('/dirt-light.png');
 }

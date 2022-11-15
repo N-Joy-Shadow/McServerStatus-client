@@ -6,8 +6,9 @@ import NavBar from "../components/navbar";
 import bg from "../../styles/mc/Background.module.css";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
+
   return (
-    <div>
+    <>
       <Head>
         <title>서버 리스트</title>
         <meta name="description" content="스티브 갤러리 서버 리스트" />
@@ -21,6 +22,6 @@ export default function MainLayout({ children }: { children: ReactNode }) {
         <Footer />
       </div>
       
-    </div>
+    </>
   );
 }

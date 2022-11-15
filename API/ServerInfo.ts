@@ -1,7 +1,7 @@
 export interface Players {
   current: number;
   max: number;
-  playerlist: string[];
+  playerlist: PlayerList[];
 }
 
 export interface Frenquency {
@@ -25,10 +25,15 @@ export interface Custom {
   gallurl : string;
 
 }
-
+export interface PlayerList{
+  name: string
+  id : string
+}
 export interface ServerInfo {
   _id?: any;
   hostname: string;
+  display_hostname: string;
+  display_port: number;
   combine_ip: string;
   port: number;
   frenquency: Frenquency;

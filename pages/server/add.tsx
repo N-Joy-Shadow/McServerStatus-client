@@ -14,29 +14,35 @@ import { useTagFormStore } from "../../utils/zustand/tagFormStore";
 import { InsertServer } from "../../utils/components/fetch/insertServer";
 import UserInfoForm from '../../utils/components/form/userinfoForm';
 import { HeadProps } from "../../API/HeadProps";
+import { useState } from 'react';
 
 const server: NextPage = ({}) => {
   const formprovider = useForm();
   const {Tags,SetTags} = useTagFormStore()
-  
+  const [isSubmit,SetisSubmit] = useState<boolean>(false)
   /**
    * 서버에 제출
    * @param data
    * @returns
    */
   const onSubmit = async (data: any) => {
+    SetisSubmit(true)
     const datas= { ...data }
     const tags = [...Tags]
 
     let s_data = JSON.parse(JSON.stringify(datas))
     s_data.custom.tags = tags
-    console.log(s_data)
     await InsertServer(s_data).then((x) =>{
       alert(x.data.message)
-      if(x.data.Success){
+      //버튼 Disable 설정
+      SetisSubmit(false)
+      if(x.data.success){
         window.location.href ="/"
       }
 
+
+    }).catch((err) =>{
+      alert(err)
     })
   };
   const head : HeadProps = {
@@ -65,7 +71,7 @@ const server: NextPage = ({}) => {
               <UserInfoForm/>
               {/* 전송 */}
               <div className="h-[40px] my-4">
-                <input type="submit" className={btn.McButton} value="등록하기"/>
+                <input type="submit" className={btn.McButton} value="등록하기" disabled={isSubmit}/>
               </div>
             </form>
           </FormProvider>

@@ -20,7 +20,7 @@ export default function ServerItem(props : ServerInfoItemProps) {
                 sm:flex-row  
                 justify-start
                 sm:justify-between">
-                    <h1 className="flex-grow text-xl">{props.data.hostname}</h1>
+                    <h1 className="flex-grow text-xl">{props.data.display_hostname}</h1>
                     <div className="flex-grow-0 flex flex-row items-center">
                         <p className="text-center pr-2 text-lg">{formattedCounter}</p>
                         <MCServerLoading isOnline={props.data.frenquency.isOnline} LoadingStr={props.data.frenquency.motd}/>
