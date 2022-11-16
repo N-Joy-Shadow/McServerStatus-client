@@ -19,7 +19,7 @@ const index : NextPage = ({}) => {
                 <p>↓↓ 에러나 기타 등등은 여기로 제보 ↓↓</p>
             <a href="mailto:njoyshadow@gmail.com" className="text-blue-500">njoyshadw@gmail.com</a>
 
-            <p>드디어 플레이어 Id얻어서 머리 아이콘 뛰울 수 있네</p>
+            <p>특정 서버가 업데이트가 안되는 현상이 확인됨</p>
             </div>
             <div className="h-10 mt-4 w-40 items-center inline-block md">
             <Link href="/">

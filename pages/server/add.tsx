@@ -15,6 +15,7 @@ import { InsertServer } from "../../utils/components/fetch/insertServer";
 import UserInfoForm from '../../utils/components/form/userinfoForm';
 import { HeadProps } from "../../API/HeadProps";
 import { useState } from 'react';
+import McToggle from "../../utils/components/MCStyled/mcToggle";
 
 const server: NextPage = ({}) => {
   const formprovider = useForm();
@@ -60,6 +61,7 @@ const server: NextPage = ({}) => {
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto">
           <p className="text-center">ADD SERVER</p>
+          <McToggle/>
           <FormProvider {...formprovider}>
             <form onSubmit={formprovider.handleSubmit(onSubmit)} className="space-y-4">
               <DefaultForm isEdit={false}/>
