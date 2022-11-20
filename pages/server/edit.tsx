@@ -19,7 +19,6 @@ const edit: NextPage = () => {
   const router = useRouter();
   const { name } = router.query;
   
-  let gallurl: string = "로딩중..";
   
   /* useEffect(() => {
     if(typeof name == "string" ){
@@ -44,7 +43,7 @@ const edit: NextPage = () => {
 
     await EditServer(s_data).then((x) => {
       alert(x.data.message);
-      if(x.data.Success){
+      if(x.data.success){
        window.location.href = "/";
       }
     });

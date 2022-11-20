@@ -61,7 +61,7 @@ const server: NextPage = ({}) => {
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto">
           <p className="text-center">ADD SERVER</p>
-          <McToggle/>
+          {/* <McToggle/> */}
           <FormProvider {...formprovider}>
             <form onSubmit={formprovider.handleSubmit(onSubmit)} className="space-y-4">
               <DefaultForm isEdit={false}/>

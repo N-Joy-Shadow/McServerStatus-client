@@ -29,12 +29,14 @@
     left: 0;
     right: 0;
     background: #999 url('/bar.png') center/cover;
-
-    
+      
   }
 
   input:checked + .slider {
     background-color: rgb(52, 175, 48);     
+  }
+  input:checked + .slider:before{
+    box-shadow: 0px 0px 2px black inset;
   }
   input:checked + .slider:before {
     -webkit-transform: translateX(29px);

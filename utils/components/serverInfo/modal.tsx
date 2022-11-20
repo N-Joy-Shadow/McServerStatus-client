@@ -14,7 +14,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
   const FormatPlayer = formatplayercount(CurrentPlayer, MaxPlayer);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(props.data.display_hostname);
+    navigator.clipboard.writeText(props.data.hostIP.decoration.combine_hostname);
   };
 
   return (
@@ -25,12 +25,12 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           <div
             className="text-xl text-center self-center p-2 flex justify-start cursor-pointer my-2 pl-4"
             onClick={handleCopy}>
-            {props.data.display_hostname}
+            {props.data.hostIP.decoration.combine_hostname}
           </div>
           {/* 버튼들 */}
           <div className="p-1">
             <div className="w-14 h-full">
-              <Link href={{ pathname : '/server/edit', query : { name : props.data.display_hostname }}}>
+              <Link href={{ pathname : '/server/edit', query : { name : props.data.hostIP.decoration.combine_hostname }}}>
                 <MCButton>수정</MCButton>
               </Link>
             </div>
@@ -51,9 +51,9 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           "
             >
               <div>
-                <h1>서버 주소 : {props.data.display_hostname}</h1>
+                <h1>서버 주소 : {props.data.hostIP.decoration.combine_hostname}</h1>
                 <p>
-                  IP : {props.data.lazy.ip}:{props.data.display_port}
+                  IP : {props.data.lazy.ip}:{props.data.hostIP.decoration.port}
                 </p>
                 <p>플레이어 : {FormatPlayer}</p>
                 <p>버전 : {props.data.lazy.version}</p>

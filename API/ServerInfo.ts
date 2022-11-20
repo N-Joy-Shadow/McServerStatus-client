@@ -31,12 +31,25 @@ export interface PlayerList{
 }
 export interface ServerInfo {
   _id?: any;
-  hostname: string;
-  display_hostname: string;
-  display_port: number;
-  combine_ip: string;
-  port: number;
+  hostIP : HostIP
   frenquency: Frenquency;
   lazy: Lazy;
   custom?: Custom;
+}
+
+export interface HostIP {
+  decoration: Decoration;
+  original: Original;
+}
+
+export interface Decoration {
+  hostname: string;
+  combine_hostname: string;
+  port: number;
+}
+
+export interface Original {
+  hostname: string;
+  combine_hostname: string;
+  port: number;
 }

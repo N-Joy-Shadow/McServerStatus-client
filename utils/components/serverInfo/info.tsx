@@ -9,6 +9,9 @@ export default function ServerItem(props : ServerInfoItemProps) {
     const playerCount = props?.data.frenquency.players.current
     const MaxPlayer = props?.data.frenquency.players.max
 
+    const HostName = props.data.hostIP.decoration.port == 25565 ? 
+    props.data.hostIP.decoration.hostname : props.data.hostIP.decoration.combine_hostname
+
     const formattedCounter = formatplayercount(playerCount,MaxPlayer)
     return(
         <div className="flex pb-4">
@@ -20,7 +23,7 @@ export default function ServerItem(props : ServerInfoItemProps) {
                 sm:flex-row  
                 justify-start
                 sm:justify-between">
-                    <h1 className="flex-grow text-xl">{props.data.display_hostname}</h1>
+                    <h1 className="flex-grow text-xl">{HostName}</h1>
                     <div className="flex-grow-0 flex flex-row items-center">
                         <p className="text-center pr-2 text-lg">{formattedCounter}</p>
                         <MCServerLoading isOnline={props.data.frenquency.isOnline} LoadingStr={props.data.frenquency.motd}/>

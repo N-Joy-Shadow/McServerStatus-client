@@ -20,3 +20,10 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.page{
+  background-image: url('https://i.imgur.com/77ofjEU_d.webp?maxwidth=760&fidelity=grand');
+  background-repeat: no-repeat;
+  background-size :cover;
+  height: 100vh;
+}
