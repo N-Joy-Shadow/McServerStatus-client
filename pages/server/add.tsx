@@ -60,7 +60,7 @@ const server: NextPage = ({}) => {
     <MCstyledLayout head={head}>
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto">
-          <p className="text-center">ADD SERVER</p>
+          <p className="text-center"><strong>서버 추가</strong></p>
           {/* <McToggle/> */}
           <FormProvider {...formprovider}>
             <form onSubmit={formprovider.handleSubmit(onSubmit)} className="space-y-4">

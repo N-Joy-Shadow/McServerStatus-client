@@ -5,7 +5,9 @@
 
 html,
 body {
-  overflow: hidden;
+  background-image: url('/dirt-light.png');
+  background-repeat: repeat;
+  background-size: 64px;
   padding: 0;
   margin: 0;
   font-family: "Gal11", "Minecraft";

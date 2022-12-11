@@ -13,15 +13,15 @@ export default function MCstyledLayout({ children, head }: { children: ReactNode
 
 
   return (
-    <div>
+    <>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={bg.McbgEtc}>
+      <main>
           {children}
       </main>
 
-    </div>
+    </>
   );
 }

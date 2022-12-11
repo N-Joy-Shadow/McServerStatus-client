@@ -42,7 +42,7 @@ function FilterTags(ServerList : ServerInfo[], tags : string[]){
                 let same_time = 0;
                 tags.map((y) => {
                     for(let j = 0; j < server_tags?.length; j++){
-                        if(y == x.custom?.tags[j]){
+                        if(y == server_tags[j]){
                             same_time += 1
                             break
                         }

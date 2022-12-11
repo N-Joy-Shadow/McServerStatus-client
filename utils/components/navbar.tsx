@@ -12,7 +12,7 @@ export default function navbar() {
   return (
     <nav className={styles.McBgNav}>
       <div className="w-[100%] flex justify-between items-center h-[100%] mx-4">
-        <div className="flex space-x-4 justify-between">
+        <div className="flex space-x-4">
 
 {/*       일단 제거
           <Link href="/login">

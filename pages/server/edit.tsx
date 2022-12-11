@@ -56,7 +56,7 @@ const edit: NextPage = () => {
     <MCstyledLayout head={head}>
       <div className="flex flex-col items-center align-middle top-20 relative">
         <div className="w-auto">
-          <p className="text-center">Edit SERVER</p>
+          <p className="text-center">서버 수정</p>
           <p className="text-center text-xl my-1">{name}</p>
           <p className="text-center">현재 수정하기 같은 경우 지원되긴 하나, 좀 불편합니다.</p>
           <FormProvider {...editFormProvider}>
