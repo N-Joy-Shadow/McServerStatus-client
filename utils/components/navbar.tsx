@@ -23,7 +23,7 @@ export default function navbar() {
 
           <Link href="/info">
             <div className="w-20 h-10 md:w-60">
-              <MCButton> 공지</MCButton>
+              <MCButton>정보</MCButton>
             </div>
           </Link>
 
