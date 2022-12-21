@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import { ServerInfo } from '../../API/ServerInfo';
+import InfoLayout from '../../utils/layouts/infoLayout';
 
 export default function index() {
   const head: HeadProps = {
@@ -28,7 +29,7 @@ export default function index() {
     
   }
   return (
-    <MCstyledLayout head={head}>
+    <InfoLayout head={head}>
 
       <div className="m-6 flex justify-center items-center  flex-col space-y-4 text-center">
         <h6>주의! 모바일은 ㅁ?ㄹ</h6>
@@ -48,6 +49,6 @@ export default function index() {
         </div>
         <div>{result?.lazy.icon}</div>
       </div>
-    </MCstyledLayout>
+    </InfoLayout>
   );
 }
