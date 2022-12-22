@@ -14,9 +14,7 @@ const index: NextPage = ({}) => {
 
   return (
     <InfoLayout head={head}>
-      <MDXProvider>
-        # hi
-      </MDXProvider>
+      
     </InfoLayout>
   );
 };

@@ -29,12 +29,11 @@ const Home: NextPage = ({ data }: any) => {
   const { isOnline ,SetOnline} = useOnlineStore()
 
   //나중에 손보기
-  const [isConnect, setIsConnect] = useState<boolean>(true);
+  /* const [isConnect, setIsConnect] = useState<boolean>(true); */
   //init signalR
   useEffect(() => {
     const newConnection = new HubConnectionBuilder()
       //Fix Url Later
-
       .withUrl(baseHubURL("update"), {
         skipNegotiation: true,
         transport: HttpTransportType.WebSockets,
@@ -42,8 +41,8 @@ const Home: NextPage = ({ data }: any) => {
       .withAutomaticReconnect()
       .build();
     serverListFetch().then((x) => {
-      setServerList(x.data);
-      setFilterList(x.data);
+      setServerList(x.data.data);
+      setFilterList(x.data.data);
     });
     setConnection(newConnection);
   }, []);
@@ -69,6 +68,7 @@ const Home: NextPage = ({ data }: any) => {
       setFilterList(filterIntegration(serverList, TagList,isOnline));
     }
   }, [TagList, serverList,isOnline]);
+  
   return (
     <MainLayout>
       <div
@@ -80,12 +80,12 @@ const Home: NextPage = ({ data }: any) => {
           return <Tag name={x} key={i} isSelected={true}></Tag>;
         })}
       </div>
-      {/* SignalR 연결 확인 */}
+{/*       {/* SignalR 연결 확인
       {isConnect == false && (
         <div className="text-center align-middle w-full h-full">
           서버와 연결에 실패했습니다.
         </div>
-      )}
+      )} */}
 
       <div>
         {filterList.map((x, i) => {

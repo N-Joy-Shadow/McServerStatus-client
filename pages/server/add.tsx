@@ -16,8 +16,11 @@ import UserInfoForm from '../../utils/components/form/userinfoForm';
 import { HeadProps } from "../../API/HeadProps";
 import { useState } from 'react';
 import McToggle from "../../utils/components/MCStyled/mcToggle";
+import { useSnackbar } from "notistack";
 
 const server: NextPage = ({}) => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const formprovider = useForm();
   const {Tags,SetTags} = useTagFormStore()
   const [isSubmit,SetisSubmit] = useState<boolean>(false)

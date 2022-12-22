@@ -28,6 +28,7 @@
     "http-proxy-middleware": "^2.0.6",
     "next": "12.2.2",
     "next-http-proxy-middleware": "^1.2.4",
+    "notistack": "^3.0.0-alpha.11",
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
