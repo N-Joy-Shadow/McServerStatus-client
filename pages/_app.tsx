@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <SnackbarProvider maxSnack={3} Components={{
         Toast : McToast
-      }} anchorOrigin={{ horizontal : "right", vertical : "top" }} autoHideDuration={5000}>
+      }} anchorOrigin={{ horizontal : "right", vertical : "top" }} autoHideDuration={4000}>
       <Component {...pageProps} />
       </SnackbarProvider>
     </>

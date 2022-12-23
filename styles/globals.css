@@ -57,7 +57,10 @@ border-bottom: 3px inset gray;
 .notistack-CollapseWrapper{
   padding: 0 !important;
 }
-
+.notistack-SnackbarContainer{
+  right : 0 !important;
+  top : 0 !important;
+}
 /* @font-face {
   font-family: Gal11;
   font-style: normal;
