@@ -53,6 +53,10 @@ border-bottom: 3px inset gray;
 @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 
 
+/* notistack */
+.notistack-CollapseWrapper{
+  padding: 0 !important;
+}
 
 /* @font-face {
   font-family: Gal11;

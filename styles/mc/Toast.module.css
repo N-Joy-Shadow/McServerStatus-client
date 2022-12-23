@@ -1,5 +1,16 @@
+.McToastWarpper{
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
 .McToastContainer{
-    position: absolute;
-    width: 400px;
-    height: 400px;
+    height: 80px;
+    border: 8px solid rgba(128, 128, 128, 0.7);
+    background-color: white;
+    overflow: hidden;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box
 }

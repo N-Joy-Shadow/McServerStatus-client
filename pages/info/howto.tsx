@@ -13,7 +13,7 @@ export default function howto() {
     }
 
     const onClick = (e : any) =>{
-        enqueueSnackbar("test")
+        enqueueSnackbar("test", { variant : "Toast", title : "hi"})
 
     }
     return(<InfoLayout head={head}>
