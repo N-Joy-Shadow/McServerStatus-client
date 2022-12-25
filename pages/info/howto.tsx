@@ -3,6 +3,8 @@ import InfoLayout from "../../utils/layouts/infoLayout";
 import { HeadProps } from '../../API/HeadProps';
 import MCButton from '../../utils/components/MCStyled/mcButton';
 import { useSnackbar } from "notistack";
+import { useEffect } from 'react';
+import axios from 'axios';
 
 export default function howto() {
     const { enqueueSnackbar } = useSnackbar();
@@ -16,6 +18,7 @@ export default function howto() {
         enqueueSnackbar("테스트입니다.", { variant : "Toast", title : "테스트"})
 
     }
+
     return(<InfoLayout head={head}>
         <div></div>
 

@@ -7,8 +7,8 @@ import { ResInfo } from "../../../../API/ResInfo";
 import { ServerInfo } from "../../../../API/ServerInfo";
 
 export default function APIStatus() {
-    const BASE_API = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://status.njoys.me/api/"
-    const BASE_URL = BASE_API + "status/"
+    const BASE_API = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://status.njoys.me/api"
+    const BASE_URL = BASE_API + "/status/"
 
     const [servers, SetServers] =useState<string[]>([])
     const [result, SetResult] = useState<ResInfo<ServerInfo>>();
@@ -18,7 +18,7 @@ export default function APIStatus() {
 
     useEffect(() =>{
 
-        axios.get(`${BASE_API}serverlist`).then(x => {
+        axios.get(`${BASE_API}/serverlist`).then(x => {
 
           SetServers(x.data.data)
         })
@@ -35,7 +35,7 @@ export default function APIStatus() {
 
     return(
         <>
-        <APIHolder Input_URL="status/" HandleOnClick={ExecuteGet}>
+        <APIHolder Input_URL="/status/" HandleOnClick={ExecuteGet}>
           <Autocomplete
                 options={servers}
                 className="m-2 w-full"

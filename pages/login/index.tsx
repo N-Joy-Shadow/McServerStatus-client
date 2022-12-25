@@ -6,7 +6,7 @@ import { GetStaticProps, NextPage } from "next";
 import MCstyledLayout from "../../utils/layouts/mcStyleLayout";
 import MCButton from "../../utils/components/MCStyled/mcButton";
 const login: NextPage = ({}) => {
-  const DISCORD_URL = "https://discord.com/api/oauth2/authorize?client_id=1015634399070539867&redirect_uri=http%3A%2F%2Flocalhost%3A12345%2Fauth%2Floading&response_type=code&scope=identify%20email"
+  const DISCORD_URL = "https://discord.com/api/oauth2/authorize?client_id=1015634399070539867&redirect_uri=http%3A%2F%2Flocalhost%3A12345%2Fauth&response_type=code&scope=identify%20email"
   const handleOnLogin = () =>{
     window.location.href =  DISCORD_URL
   }

@@ -9,7 +9,7 @@ import axios from "axios";
 
 export default function AdminPage() {
   const BASE_API = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://status.njoys.me/api/"
-  const BASE_URL = BASE_API + "notice"
+  const BASE_URL = BASE_API + "/notice"
   
   const { register ,handleSubmit} = useForm();
   
@@ -29,6 +29,11 @@ export default function AdminPage() {
         <Link href="/">
           <div className="w-40">
             <MCButton>BACK</MCButton>
+          </div>
+        </Link>
+        <Link href="/login">
+          <div className="w-40">
+            <MCButton>로그인</MCButton>
           </div>
         </Link>
 

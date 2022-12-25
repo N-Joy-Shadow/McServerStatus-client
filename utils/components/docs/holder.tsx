@@ -10,7 +10,7 @@ interface APIHolderProps {
 
 
 export default function APIHolder({ children, Input_URL,HandleOnClick} : APIHolderProps) {
-    const BASE_API = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://status.njoys.me/api/"
+    const BASE_API = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://status.njoys.me/api"
     const url = BASE_API + Input_URL
 
     return(
@@ -23,7 +23,7 @@ export default function APIHolder({ children, Input_URL,HandleOnClick} : APIHold
               {children}
           </div>
           <div
-            className="w-14 bg-green-400 flex justify-center cursor-pointer select-none active:bg-green-500"
+            className="w-14 bg-green-400 flex justify-center cursor-pointer select-none active:bg-green-500 min-w-[2rem]"
             onClick={HandleOnClick}
           >
             <p className="mb-1 self-center select-none">실행</p>

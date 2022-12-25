@@ -12,7 +12,7 @@ const index: NextPage = ({}) => {
     title: "공지",
   };
   const BASE_API = process.env.NEXT_PUBLIC_BASE_API_URL ?? "https://status.njoys.me/api/"
-  const url = BASE_API + "notice"
+  const url = BASE_API + "/notice"
 
 
   const [Notices, SetNotices] = useState<ResInfo<INotice[]>>();
