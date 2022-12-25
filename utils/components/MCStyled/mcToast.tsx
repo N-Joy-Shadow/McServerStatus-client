@@ -43,6 +43,15 @@ const McToast = forwardRef<HTMLDivElement,McToastProps>((props,ref) => {
   </SnackbarContent>
     )
 })
+const McToastAchieve = forwardRef<HTMLDivElement,McToastProps>((props,ref) => {
+  const { id, message, title} = props
+
+  return (<SnackbarContent ref={ref} className="">
+
+  </SnackbarContent>)
+})
+
+
 
 McToast.displayName = "McToast"
 

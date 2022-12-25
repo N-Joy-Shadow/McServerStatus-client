@@ -13,11 +13,11 @@ export default function howto() {
     }
 
     const onClick = (e : any) =>{
-        enqueueSnackbar("test", { variant : "Toast", title : "hi"})
+        enqueueSnackbar("테스트입니다.", { variant : "Toast", title : "테스트"})
 
     }
     return(<InfoLayout head={head}>
-        <>hi</>
+        <div></div>
 
         <MCButton onClick={onClick}>test</MCButton>
     </InfoLayout>)

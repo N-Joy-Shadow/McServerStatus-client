@@ -36,14 +36,21 @@ export default function InfoLayout({
       </Head>
       <>
         <nav className={bg.McBgNav}>
-          <div className="fixed w-full flex felx justify-start h-[60px] items-center space-x-4 md:pl-4">
+          <div className="fixed w-full h-[60px] items-center flex  justify-between">
+            <div className=" flex felx justify-start space-x-4 md:pl-4">
             {LinkList.map((x, i) => (
-              <div className="w-48 my-4 textcenter h-10" key={i}>
+              <div className="md:w-48 w-24 my-4 textcenter h-10" key={i}>
                 <Link href={`${x.href}`}>
                   <MCButton>{x.name}</MCButton>
                 </Link>
               </div>
             ))}
+            </div>
+            <div className="md:pr-4 md:block hidden h-[40px] w-32">
+              <Link href="/admin">
+                <MCButton>관리자</MCButton>
+              </Link>
+            </div>
           </div>
         </nav>
         <main className={bg.McMBg}>{children}</main>

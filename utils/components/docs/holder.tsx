@@ -14,20 +14,12 @@ export default function APIHolder({ children, Input_URL,HandleOnClick} : APIHold
     const url = BASE_API + Input_URL
 
     return(
-        <div className="rounded-xl outline outline-4 outline-green-400 w-[90vw] h-12 bg-white flex justify-start overflow-hidden">
+        <div className="rounded-xl outline outline-4 outline-green-400 w-[90vw] h-12 bg-white flex justify-start overflow-hidden overflow-x-auto">
           <div className="bg-green-400 flex justify-center px-2">
             <p className=" self-center select-none">GET</p>
           </div>
           <div className="flex flex-row self-center text-sm mx-2 flex-grow">
             <p className="text-black self-center">{url}</p>
-
-          {/*   <Autocomplete
-              options={servers}
-              className="m-2 w-full"
-              onChange={(event: any, newValue: string | null) => {
-                if(newValue)SetExurl(newValue)
-              }}
-              renderInput={(x) => <TextField {...x} label="서버주소"/>}/> */}
               {children}
           </div>
           <div

@@ -17,7 +17,12 @@ export default function APIStatus() {
 
 
     useEffect(() =>{
-        axios.get(`${BASE_API}/serverlist`).then(x => SetServers(x.data))
+
+        axios.get(`${BASE_API}serverlist`).then(x => {
+
+          SetServers(x.data.data)
+        })
+        console.log(servers)
       },[])
     
       const ExecuteGet = async (e: React.MouseEvent<HTMLInputElement>) => {
