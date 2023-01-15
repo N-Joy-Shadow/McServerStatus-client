@@ -1,0 +1,37 @@
+.McTextField{
+    border: 2px solid rgb(170,170 ,170);
+    background-color: black;
+    padding: 4px;
+    width: 100%;
+    height: 60px;
+}
+.McTextInput{
+    padding-left: 10px;
+    background-color: transparent;
+    border: transparent;
+
+    color: white;
+    font-family: 'minecraft','gal11';
+    font-size: 20px;
+    caret-color: transparent;
+}
+.McTextInput:focus{
+    outline: none;
+}
+
+.McField{
+    border: 2px solid rgb(170,170 ,170);
+    background-color: black;
+    padding: 4px;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    
+    font-family: 'minecraft','gal11';
+    color: white;
+
+}
+
+.McField:focus{
+    outline: none;
+}
