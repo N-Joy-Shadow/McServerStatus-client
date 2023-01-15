@@ -1,6 +1,5 @@
 
 import { IHelmet } from "../../API/IHelmet";
-import React from "react";
 import DelForm from '../../components/form/edit/delForm';
 import { FormProvider, useForm } from "react-hook-form";
 import { Link, useParams } from "react-router-dom";
@@ -12,21 +11,11 @@ import axios from 'axios';
 import { useTagFormStore } from "../../zustand/tagFormStore";
 
 import btn from "../../styles/mc/Button.module.css"
+import { useEffect } from 'react';
 
 const ServerEdit = () => {
     let { name } = useParams();
 
-  
-  
-  /* useEffect(() => {
-    if(typeof name == "string" ){
-      const call = async () => await EditServerData(name)
-      call().then((x) =>{
-        gallurl = x.data.custom.gallurl
-      })
-    }
-  
-  }) */
 
   const editFormProvider = useForm();
   const { Tags, SetTags } = useTagFormStore();

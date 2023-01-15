@@ -16,6 +16,11 @@ export default function navbar() {
 
   return (
     <nav className={styles.McBgNav}>
+      <p className="absolute m-auto text-center text-xl" style={{
+        transform: "translate(-50%,-50%)",
+        left: "50%",
+        top: "50%"
+      }}><strong>서버 리스트</strong></p>
       <div className="w-[100%] flex justify-between items-center h-[100%] mx-4">
         <div className="flex space-x-4">
 
@@ -33,7 +38,7 @@ export default function navbar() {
 
         </div>
           <label className="flex flex-row">
-            <p className="mr-4 text-center cursor-pointer select-none">온라인 스위치</p>
+            <p className="mr-4 text-center cursor-pointer select-none hidden md:block">온라인 스위치</p>
             <McToggle onClick={(e) => SetOnline(!isOnline)} defaultChecked={true}/>
           </label>
       </div>

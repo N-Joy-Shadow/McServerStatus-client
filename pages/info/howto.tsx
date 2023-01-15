@@ -10,13 +10,8 @@ export default function Howto() {
         title : "어떻게 씀?"
     }
 
-    const onClick = (e : any) =>{
-        enqueueSnackbar("테스트입니다.", { variant : "Toast", title : "테스트"})
-
-    }
 
     return(<InfoLayout helmet={helmet}>
-
-        <MCButton onClick={onClick}>test</MCButton>
+        <>준비중..</>
     </InfoLayout>)
 };

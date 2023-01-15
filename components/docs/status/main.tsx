@@ -30,12 +30,6 @@ const APIStatus = () => {
     const BASE_API = import.meta.env.VITE_BASE_API_URL
     const BASE_URL = BASE_API + "/status/"
 
-
-
-
-
-
-
     return(
         <>
         <APIHolder Input_URL="/status/" HandleOnClick={ExecuteGet}>
@@ -50,7 +44,7 @@ const APIStatus = () => {
 
       
         <APIResult data={result} />
-        <div className="rounded-xl outline-4 outline-orange-300 outline w-[90vw] h-full bg-white">
+        <div className="rounded-xl outline-4 outline-orange-300 outline w-full h-full bg-white">
           <div className="bg-orange-300 text-white py-1 pb-3 text-xl">설명</div>
           <div className="text-black p-2 text-start">
             HostIP의 Original과 Decoration의 차이점 :<br/>

@@ -47,7 +47,7 @@ export default function InfoLayout({
             ))}
             </div>
             <div className="md:pr-4 md:block hidden h-[40px] w-32">
-              <Link to="/admin">
+              <Link to="/login">
                 <MCButton>관리자</MCButton>
               </Link>
             </div>

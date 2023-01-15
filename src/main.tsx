@@ -21,6 +21,7 @@ import ServerEdit from '../pages/server/edit';
 import DevPush from '../pages/server/dev_add';
 
 import { McToast, ToastEnum } from '../components/MCStyled/mcToast';
+import Login from '../pages/admin/login';
 declare module "notistack" {
   interface VariantOverrides {
     Toast: {
@@ -42,6 +43,7 @@ const router = createBrowserRouter(
         <Route path="docs" element={<Docs/>}/>
         <Route path="howto" element={<Howto/>}/>
       </Route>
+      <Route path="login" element={<Login/>}/>
     </Route>
   )
 )

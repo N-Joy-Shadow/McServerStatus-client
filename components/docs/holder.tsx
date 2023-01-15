@@ -14,7 +14,7 @@ export default function APIHolder({ children, Input_URL,HandleOnClick} : APIHold
     const url = BASE_API + Input_URL
 
     return(
-        <div className="rounded-xl outline outline-4 outline-green-400 w-[90vw] h-12 bg-white flex justify-start overflow-hidden overflow-x-auto">
+        <div className="rounded-xl outline outline-4 outline-green-400 w-full h-12 bg-white flex justify-start overflow-hidden overflow-x-auto">
           <div className="bg-green-400 flex justify-center px-2">
             <p className=" self-center select-none">GET</p>
           </div>
