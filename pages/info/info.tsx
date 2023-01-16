@@ -31,9 +31,5 @@ const Info = () => {
     </InfoLayout>
   );
 };
-/* export const getstatiacprops: GetStaticProps = (context) => {
-  return {
-    props: {},
-  };
-}; */
+
 export default Info;

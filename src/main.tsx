@@ -18,7 +18,7 @@ import Howto from "../pages/info/howto";
 import Docs from "../pages/info/docs";
 import ServerPush from '../pages/server/add';
 import ServerEdit from '../pages/server/edit';
-import DevPush from '../pages/server/dev_add';
+import DevPush from '../pages/server/add';
 
 import { McToast, ToastEnum } from '../components/MCStyled/mcToast';
 import Login from '../pages/admin/login';

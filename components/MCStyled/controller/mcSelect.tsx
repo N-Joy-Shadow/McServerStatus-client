@@ -4,6 +4,7 @@ import MCTextField from "../mcTextField";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FormControl, InputLabel, MenuItem } from "@mui/material";
 import { borderRadius } from "@mui/system";
+import { EnumModType } from '../../../API/Enum/EnumModType';
 
 export default function McSelect() {
   return (
@@ -30,9 +31,9 @@ export default function McSelect() {
               {...field}
               labelId="type-select"
             >
-              <MenuItem value={"defaultZip"}>일반 ZIP파일</MenuItem>
-              <MenuItem value={"curseforgeInstance"}>CurseForge Instance Zip파일</MenuItem>
-              <MenuItem value={"curseforgeURL"}>CurseForge URL</MenuItem>
+{/*               <MenuItem value={EnumModType.zip}>일반 ZIP파일</MenuItem>
+              <MenuItem value={EnumModType.instance}>CurseForge Instance Zip파일</MenuItem> */}
+              <MenuItem value={EnumModType.curseforge_url}>CurseForge URL</MenuItem>
             </Select>
             
           </FormControl>

@@ -1,7 +1,7 @@
-import { PlayerList } from '../../../API/ServerInfo';
+import { IPlayerList } from '../../API/IServerInfo';
 import MCButton from '../MCStyled/mcButton';
 interface PlayerInfoProps  {
-    data : PlayerList
+    data : IPlayerList
 }
 
 export default function PlayerInfo(props : PlayerInfoProps) {

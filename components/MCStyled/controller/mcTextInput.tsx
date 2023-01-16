@@ -6,7 +6,7 @@ import { Controller } from 'react-hook-form';
 interface IMcTextInputProps {
   name : string,
   placeholder? : string,
-  required : boolean
+  required? : boolean
 }
 
 export default function McTextInput(

@@ -1,6 +1,6 @@
-import { ServerInfo } from '../../../API/ServerInfo';
+import { IServerInfo } from '../../API/IServerInfo';
 
-export default function filterIntegration(ServerList : ServerInfo[],tags : string[],isOnline : boolean) {
+export default function filterIntegration(ServerList : IServerInfo[],tags : string[],isOnline : boolean) {
     if(isOnline){
         let online_filters =  ServerList.filter(x => x.frenquency.isOnline == true)
 
@@ -20,9 +20,9 @@ export default function filterIntegration(ServerList : ServerInfo[],tags : strin
 };
 
 
-function FilterTags(ServerList : ServerInfo[], tags : string[]){
-    let filtered_list : ServerInfo[][] =[];
-    let result_list : ServerInfo[] =[]
+function FilterTags(ServerList : IServerInfo[], tags : string[]){
+    let filtered_list : IServerInfo[][] =[];
+    let result_list : IServerInfo[] =[]
 
     
     tags.map((tag) => {

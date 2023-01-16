@@ -7,7 +7,11 @@ import bg from "../../styles/mc/Background.module.css";
 import ModalMods from "./modal/mods";
 import MCButton from "../MCStyled/mcButton";
 import { Link } from "react-router-dom";
-import { enqueueSnackbar } from 'notistack';
+import { enqueueSnackbar } from "notistack";
+import { ToastEnum } from "../MCStyled/mcToast";
+import versionRegex from "../../utils/string/version";
+import MCServerLoading from "../MCStyled/mcServerLoading";
+import McButton from "../MCStyled/mcButton";
 
 export default function ServerInfoModal(props: ServerInfoItemProps) {
   const CurrentPlayer = props.data.frenquency.players.current;
@@ -15,11 +19,15 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
   const FormatPlayer = formatplayercount(CurrentPlayer, MaxPlayer);
 
   const handleCopy = () => {
-    enqueueSnackbar("주소가 복사되었습니다.", { variant : "Toast", title : "정보"})
-
-    navigator.clipboard.writeText(props.data.hostIP.decoration.combine_hostname);
+    enqueueSnackbar("주소가 복사되었습니다.", {
+      variant: "Toast",
+      toastType: ToastEnum.info,
+    });
+    navigator.clipboard.writeText(
+      props.data.hostIP.decoration.combine_hostname
+    );
   };
-
+  console.log(props.data.custom)
   return (
     <div>
       <div className={bg.Mcbg_l}>
@@ -27,13 +35,16 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           {/* 주소 복사 */}
           <div
             className="text-xl text-center self-center p-2 flex justify-start cursor-pointer my-2 pl-4"
-            onClick={handleCopy}>
+            onClick={handleCopy}
+          >
             {props.data.hostIP.decoration.combine_hostname}
           </div>
           {/* 버튼들 */}
           <div className="p-1">
             <div className="w-14 h-full">
-              <Link to={`/server/edit/${props.data.hostIP.decoration.combine_hostname}`}>
+              <Link
+                to={`/server/edit/${props.data.hostIP.decoration.combine_hostname}`}
+              >
                 <MCButton>수정</MCButton>
               </Link>
             </div>
@@ -53,13 +64,18 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
             flex-col-reverse items-center
           "
             >
-              <div>
-                <h1>서버 주소 : {props.data.hostIP.decoration.combine_hostname}</h1>
-                <p>
-                  IP : {props.data.lazy.ip}:{props.data.hostIP.decoration.port}
-                </p>
-                <p>플레이어 : {FormatPlayer}</p>
-                <p>버전 : {props.data.lazy.version}</p>
+              <div className="mb-auto space-y-2">
+                <p>접속가능 버전 : {versionRegex(props.data.lazy.version)}</p>
+                {props.data.custom?.gallurl && (
+                  <div className="h-12">
+
+                  <a href={props.data.custom?.gallurl}>
+                    <McButton>
+                      <strong>서버 게시물 보기</strong>
+                    </McButton>
+                  </a>
+                  </div>
+                )}
               </div>
               <img
                 className="w-40 h-40 m-1 ml-4 rounded-full
@@ -67,12 +83,9 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                 src={props.data.lazy.icon}
               ></img>
             </div>
-            <a href={props.data.custom?.gallurl}>
-              →→ <strong>갤러리 홍보 게시물 보기</strong> ←←
-            </a>
 
             <p className="md:text-start pl-2 mt-8 text-xl text-center ">
-              플레이어 목록
+              플레이어 목록 ({FormatPlayer})
             </p>
             <div className="p-2 mt-2 space-x-2">
               {props.data.frenquency.players.playerlist?.map((x, i) => (
@@ -89,8 +102,9 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                 return <Tag name={x} key={i}></Tag>;
               })}
             </div>
-{/*             <ModalMods mods={props.data.lazy.mods} />
- */}          </div>
+            {/*             <ModalMods mods={props.data.lazy.mods} />
+             */}{" "}
+          </div>
         </div>
       </div>
     </div>

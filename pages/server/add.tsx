@@ -1,89 +1,126 @@
-
-import { useState } from 'react';
-import { useSnackbar } from "notistack";
-import { useForm, FormProvider } from 'react-hook-form';
+import { Step, StepConnector, stepConnectorClasses, StepContent, StepLabel, Stepper, styled } from '@mui/material';
+import { useState, useEffect } from 'react';
+import MCButton, { MCSubmitButton } from '../../components/MCStyled/mcButton';
+import { FormProvider, useForm } from 'react-hook-form';
+import BasicStep from '../../components/step/server/push/basicStep';
+import ModStep from '../../components/step/server/push/modStep';
+import OptionStep from '../../components/step/server/push/optionStep';
 import { useTagFormStore } from '../../zustand/tagFormStore';
+import { useSnackbar } from 'notistack';
+import { ToastEnum } from '../../components/MCStyled/mcToast';
 import { IHelmet } from '../../API/IHelmet';
-import React from 'react';
-import DefaultForm from '../../components/form/defaultForm';
-import TagForm from '../../components/form/tagForm';
-import UserInfoForm from '../../components/form/userinfoForm';
-import MCButton from '../../components/MCStyled/mcButton';
-import { Link } from 'react-router-dom';
+import DefualtLayout from '../../layouts/defualtLayout';
 import axios from 'axios';
-
-import btn from "../../styles/mc/Button.module.css"
-const ServerPush = () => {
-  const { enqueueSnackbar } = useSnackbar();
-  const formprovider = useForm();
-  const {Tags,SetTags} = useTagFormStore()
-  const [isSubmit,SetisSubmit] = useState<boolean>(false)
-  /**
-   * 서버에 제출
-   * @param data
-   * @returns
-   */
-  const onSubmit = async (data: any) => {
-    SetisSubmit(true)
-    const datas= { ...data }
-    const tags = [...Tags]
-
-    let s_data = JSON.parse(JSON.stringify(datas))
-    s_data.custom.tags = tags
-    await axios.post(`${import.meta.env.VITE_BASE_API_URL}/status`,s_data).then((x) =>{
-      alert(x.data.message)
-      //버튼 Disable 설정
-      SetisSubmit(false)
-      if(x.data.success){
-        window.location.href ="/"
-      }
+import { useNavigate } from 'react-router-dom';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 
-    }).catch((err) =>{
-      alert(err)
+export default function ServerAdd () {
+    const gall_url = "https://gall.dcinside.com/mgallery/board/view/?id=steve"
+    const curse_url = "https://www.curseforge.com/minecraft/modpacks/"
+
+    const schema = z.object({
+        url : z.string(),
+        userinfo : z.object({
+            id : z.string().min(1),
+            pw : z.string().min(1)
+        }),
+        custom : z.object({
+            gallurl : z.string().startsWith(gall_url).optional(),
+            tags : z.string().array().optional()
+        }),
+        mods : z.object({
+            enable : z.boolean().default(false),
+            type : z.string().optional(),
+            url : z.string().startsWith(curse_url).optional()
+        })
+
     })
-  };
-  const head : IHelmet = {
-    title : `서버 추가`
-  }
-  
-  /**
-   * 들어가야 할것 :
-   * md
-   * 로그인 ID, PW
-   * Tag
-   */
-  return (
-    <div>
-      <div className="flex flex-col items-center align-middle top-20 relative">
-        <div className="w-auto">
-          <p className="text-center"><strong>서버 추가</strong></p>
-          {/* <McToggle/> */}
-          <FormProvider {...formprovider}>
-            <form onSubmit={formprovider.handleSubmit(onSubmit)} className="space-y-4">
-              <DefaultForm isEdit={false}/>
-              {/* 모드 타입 선택 */}
-              {/* <ModForm/> */}
-              {/* 태그 선택 */}
-              <TagForm/>
-              {/* 유저 정보 */}
-              <UserInfoForm/>
-              {/* 전송 */}
-              <div className="h-[40px] my-4">
-                <input type="submit" className={btn.McButton} value="등록하기" disabled={isSubmit}/>
-              </div>
-            </form>
-          </FormProvider>
+    const navigate = useNavigate();
+    const { Tags } = useTagFormStore()
+    const { enqueueSnackbar } = useSnackbar();
+    const FormMethod = useForm({ resolver : zodResolver(schema) })
+    
 
-          <div className="h-10 mt-4">
-            <Link to="/">
-              <MCButton>Back</MCButton>
-            </Link>
-          </div>
+    
+    const [activeStep, setActiveStep] = useState(0);
+    const lastStep = 2
+    const test = [
+        {
+            title: "기본 셋팅",
+            reactNode : <BasicStep/>
+        },
+        {
+            title: "모드 서버 셋팅",
+            reactNode : <ModStep/>
+        },
+        {
+            title: "추가 셋팅",
+            reactNode : <OptionStep/>
+        }
+    ]
+
+    const helmet : IHelmet = {
+        title : "서버 추가"
+    }
+
+
+
+    useEffect(() =>{
+        setActiveStep(0)
+    },[FormMethod.formState.errors.url,FormMethod.formState.errors.userinfo])
+
+    const onSubmit =async  (data : any) => {
+        data.custom.tags = Tags
+        
+        enqueueSnackbar("제출중...", { variant : "Toast",toastType : ToastEnum.info})
+        await axios.post(`${import.meta.env.VITE_BASE_API_URL}/status`,data).then((x) =>{
+            if(x.data.success) {
+                enqueueSnackbar(x.data.message, { variant : "Toast",toastType : ToastEnum.success})
+                navigate("/")
+            }
+            else{
+                enqueueSnackbar(x.data.message, { variant : "Toast",toastType : ToastEnum.error})
+            }
+        }).catch(err => 
+        {
+            enqueueSnackbar("서버주소나 아이디 비번을 확인해주세요.", { variant : "Toast",toastType : ToastEnum.error})
+        })
+    } 
+    return(<DefualtLayout helmet={helmet} title="서버추가">
+    <FormProvider {...FormMethod}>
+    <form onSubmit={FormMethod.handleSubmit(onSubmit)} className="max-w-[600px] m-auto">
+        <Stepper activeStep={activeStep} orientation="vertical">
+            {test.map((x,i) =>(
+                <Step key={i}>
+                    <StepLabel optional={i == 0 ? (<p className='text-sm text-red-500'>필수</p>) : (<p className='text-gray-400 text-sm'>선택</p>)}>
+                        <p className='text-white text-xl'>{x.title}</p></StepLabel>
+                    <StepContent>
+                        <div className='flex flex-col'>
+                            <div className='flex-grow space-y-2'>
+                                {x.reactNode}
+                            </div>
+                            <div className='flex flex-row justify-end space-x-4 my-4'>
+                                {activeStep > 0 && (<MCButton style={{ maxWidth : "140px"}} onClick={() => setActiveStep(x => x - 1) }>이전으로</MCButton>)}
+                                {activeStep < lastStep && (<MCButton style={{ maxWidth : "140px"}} onClick={() => setActiveStep(x => x + 1) }>다음으로</MCButton>)}
+                            </div>
+                        </div>
+                    </StepContent>
+                </Step>
+            ))}
+        </Stepper>
+        <div className='flex justify-end'>
+            {activeStep >= lastStep && (<MCSubmitButton style={{ maxWidth : "200px"}}/>)}
         </div>
-      </div>
-    </div>
-  );
-};
+        </form>
+        </FormProvider>
 
-export default ServerPush;
+
+        <footer className='bottom-0 fixed min-h-[60px]'>
+
+
+        </footer>
+
+    </DefualtLayout>)
+};
