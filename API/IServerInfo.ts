@@ -35,6 +35,7 @@ export interface Players {
     frenquency: IFrenquency;
     lazy: ILazy;
     custom?: ICustom;
+    updateTime : IUpdateTime
   }
   
   export interface IHostIP {
@@ -52,4 +53,10 @@ export interface Players {
     hostname: string;
     combine_hostname: string;
     port: number;
+  }
+
+  export interface IUpdateTime {
+    lastUpdate : number,
+    lastOnline : number,
+    isExclude : boolean
   }

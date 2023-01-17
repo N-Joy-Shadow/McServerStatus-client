@@ -1,11 +1,11 @@
 import formatplayercount from "../../utils/formatplayercount";
-import MotdPaser from "../../utils/MotdPaser";
+import MotdPaser from "../../utils/motdPaser";
 import MCServerLoading from "../MCStyled/mcServerLoading";
 import { ServerInfoItemProps } from "./item";
 
 
 export default function ServerItem(props : ServerInfoItemProps) {
-    const motdHtml = MotdPaser(props.data.frenquency.motd)
+    const motdHtml = MotdPaser(props.data.frenquency.motd,props.data.updateTime)
     const playerCount = props?.data.frenquency.players.current
     const MaxPlayer = props?.data.frenquency.players.max
 

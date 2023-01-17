@@ -22,7 +22,7 @@ const Info = () => {
       <div className="p-4 space-y-4 divide-y-2">
       {Notices?.data.map((x,i) => (
         <div key={i} className="space-y-2">
-          <h1 className=" text-4xl">{x.notice.title}</h1>
+          <h1 className=" text-4xl mt-4">{x.notice.title}</h1>
           <p className="text-gray-400 text-sm">{x.notice.date}</p>
           <div className="prose prose-invert" dangerouslySetInnerHTML={{__html:x.convert_content}}/>
         </div>

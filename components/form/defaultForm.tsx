@@ -38,7 +38,7 @@ export default function DefaultForm(props : DefaultFormProps) {
         className={field.McField}
         placeholder={gall_url}
         defaultValue={props.gallurl}
-        {...register("custom.gallurl", { required: true} )}
+        {...register("custom.gallurl")}
       />
       {errors.custom && (
         <span className=" text-red-600">

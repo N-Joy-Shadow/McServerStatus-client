@@ -18,33 +18,33 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
   const MaxPlayer = props.data.frenquency.players.max;
   const FormatPlayer = formatplayercount(CurrentPlayer, MaxPlayer);
 
+  const HostName = props.data.hostIP.decoration.port == 25565 ? 
+  props.data.hostIP.decoration.hostname : props.data.hostIP.decoration.combine_hostname
+
   const handleCopy = () => {
     enqueueSnackbar("주소가 복사되었습니다.", {
       variant: "Toast",
       toastType: ToastEnum.info,
     });
     navigator.clipboard.writeText(
-      props.data.hostIP.decoration.combine_hostname
+      HostName
     );
   };
-  console.log(props.data.custom)
   return (
-    <div>
+    <>
       <div className={bg.Mcbg_l}>
         <div className="w-auto flex  justify-between ">
           {/* 주소 복사 */}
-          <div
-            className="text-xl text-center self-center p-2 flex justify-start cursor-pointer my-2 pl-4"
-            onClick={handleCopy}
-          >
-            {props.data.hostIP.decoration.combine_hostname}
+          <div className="text-xl text-center self-center flex justify-start cursor-pointer m-2  select-none items-center" onClick={handleCopy}>
+            <img
+                className="w-10 h-10 ml-2 mr-4  rounded-full"
+                src={props.data.lazy.icon}/>
+                {HostName}
           </div>
           {/* 버튼들 */}
           <div className="p-1">
             <div className="w-14 h-full">
-              <Link
-                to={`/server/edit/${props.data.hostIP.decoration.combine_hostname}`}
-              >
+              <Link to={`/server/edit/${props.data.hostIP.decoration.combine_hostname}`}>
                 <MCButton>수정</MCButton>
               </Link>
             </div>
@@ -53,19 +53,13 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
       </div>
 
       <div className={bg.Mcbg}>
-        <div
-          className="flex  w-full flex-grow
-                flex-col justify-start
-                md:flex-row md:justify-between text-center md:text-start p-2"
-        >
+        <div className="flex w-full flex-grow flex-col justify-start
+                        md:flex-row md:justify-between text-center md:text-start p-2">
           <div className="w-full">
-            <div
-              className="flex md:flex-row md:justify-between
-            flex-col-reverse items-center
-          "
-            >
+            <div className="flex md:flex-row md:justify-between flex-col-reverse items-center">
               <div className="mb-auto space-y-2">
                 <p>접속가능 버전 : {versionRegex(props.data.lazy.version)}</p>
+                <p>서버 IP : {versionRegex(props.data.lazy.ip)}</p>
                 {props.data.custom?.gallurl && (
                   <div className="h-12">
 
@@ -77,11 +71,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                   </div>
                 )}
               </div>
-              <img
-                className="w-40 h-40 m-1 ml-4 rounded-full
-        md:w-40 md:h-40 md:block md:rounded-none"
-                src={props.data.lazy.icon}
-              ></img>
+
             </div>
 
             <p className="md:text-start pl-2 mt-8 text-xl text-center ">
@@ -92,7 +82,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                 <PlayerInfo key={i} data={x} />
               )) ?? (
                 <div className="w-full col-span-4">
-                  현재 접속중인 플레이가 없습니다.
+                  {props.data.frenquency.players.current == 0 ? "현재 접속중인 플레이가 없습니다." : "서버가 유저닉네임을 공개하고 있지않습니다."}
                 </div>
               )}
             </div>
@@ -102,11 +92,10 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                 return <Tag name={x} key={i}></Tag>;
               })}
             </div>
-            {/*             <ModalMods mods={props.data.lazy.mods} />
-             */}{" "}
+
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
