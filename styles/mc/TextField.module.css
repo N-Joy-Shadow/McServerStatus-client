@@ -15,11 +15,14 @@
     font-size: 20px;
     caret-color: transparent;
 }
-
+ 
 @-moz-document url-prefix() {
     .McField {
       height: auto !important;
     }
+}
+.McTextField:focus{
+    outline: none;
 }
 
 .McTextInput:focus{

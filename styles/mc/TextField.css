@@ -1,0 +1,12 @@
+.McTextField{
+    border: 2px solid rgb(170,170 ,170);
+    background-color: black;
+    padding: 4px;
+    width: 100%;
+    height: 60px;
+}
+@-moz-document url-prefix() {
+    .McField {
+      height: auto !important;
+    }
+}
