@@ -4,6 +4,8 @@ import MCTextField from '../../../MCStyled/mcTextField';
 import McTextInput from '../../../MCStyled/controller/mcTextInput';
 import TagForm from '../../../form/tagForm';
 import UserInfoForm from '../../../form/userinfoForm';
+
+import "../../../../styles/firefox/input.css"
 export default function BasicStep() {
     const { register, formState : { errors} } = useFormContext()
     

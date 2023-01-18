@@ -74,7 +74,7 @@ export default function ServerAdd () {
     const onSubmit =async  (data : any) => {
         data.custom.tags = Tags
         
-        enqueueSnackbar("제출중...", { variant : "Toast",toastType : ToastEnum.info})
+        enqueueSnackbar("제출중... (시간이 다소 소요됩니다.)", { variant : "Toast",toastType : ToastEnum.info})
         await axios.post(`${import.meta.env.VITE_BASE_API_URL}/status`,data).then((x) =>{
             if(x.data.success) {
                 enqueueSnackbar(x.data.message, { variant : "Toast",toastType : ToastEnum.success})

@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className={styles.McBgFooter}>
             <div className="w-[100%] flex justify-center items-center h-[100%]">
 
-        <Link to="/server/add" className="fixed table  ">
+        <Link to="/server/add" className="table">
           <div className="h-10 w-72 md:w-96">
             <MCButton>서버 추가</MCButton>
           </div>
