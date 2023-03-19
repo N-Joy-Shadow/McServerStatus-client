@@ -11,17 +11,19 @@ import {
 import "./index.css";
 import { CookiesProvider } from "react-cookie";
 import { SnackbarProvider } from "notistack";
+import { MsalProvider } from "@azure/msal-react";
+import { Configuration,  PublicClientApplication } from "@azure/msal-browser";
 
-import Main from "../pages/main";
-import Info from "../pages/info/info";
-import Howto from "../pages/info/howto";
-import Docs from "../pages/info/docs";
-import ServerPush from '../pages/server/add';
-import ServerEdit from '../pages/server/edit';
-import DevPush from '../pages/server/add';
+import Main from "./pages/main";
+import Info from "./pages/info/info";
+import Howto from "./pages/info/howto";
+import Docs from "./pages/info/docs";
+import ServerPush from './pages/server/add';
+import ServerEdit from './pages/server/edit';
 
-import { McToast, ToastEnum } from '../components/MCStyled/mcToast';
-import Login from '../pages/admin/login';
+import { McToast, ToastEnum } from './components/MCStyled/mcToast';
+import Login from './pages/admin/login';
+import DevEdit from './pages/server/dev_edit';
 declare module "notistack" {
   interface VariantOverrides {
     Toast: {
@@ -35,7 +37,7 @@ const router = createBrowserRouter(
       <Route index element={<Main/>}/>
       <Route path="server">
         <Route path="add" element={<ServerPush/>}/>
-        <Route path="dev" element={<DevPush/>}/>
+        <Route path="dev/:name" element={<DevEdit/>}/>
         <Route path="edit/:name" element={<ServerEdit/>}/>
       </Route>
       <Route path="info">
@@ -48,29 +50,26 @@ const router = createBrowserRouter(
   )
 )
 
+const Toast = { Toast : McToast }
+const configuration : Configuration= {
+  auth: { clientId: import.meta.env.VITE_AUTH_CLIENT_ID }
+};
+
+const pca = new PublicClientApplication(configuration);
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <CookiesProvider>
       <SnackbarProvider
         maxSnack={3}
-        Components={
-          {
-            Toast: McToast,
-          }
-        }
+        Components={Toast}
         anchorOrigin={{ horizontal: "right", vertical: "top" }}
         autoHideDuration={2500}
       >
-{/*         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/info" element={<Info />} />
-            <Route path="/info/docs" element={<Docs />} />
-            <Route path="/info/howto" element={<Howto />} />
-          </Routes>
-        </BrowserRouter> */}
-        <RouterProvider router={router}/>
+        <MsalProvider instance={pca}>
+          <RouterProvider router={router}/>
+        </MsalProvider>
       </SnackbarProvider>
     </CookiesProvider>
   </React.StrictMode>

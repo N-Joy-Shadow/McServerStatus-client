@@ -1,0 +1,27 @@
+.McButton{
+    height: 100%;
+    width: 100%;
+    
+    padding-bottom: 0.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DDD;
+    text-shadow: 2px 2px #000a;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #fff5;
+    background: #999 url('/bar.png') center/cover;
+    image-rendering: pixelated;
+    border: 2px solid #000;
+    font-family: 'minecraft','gal11';
+    user-select: none;
+
+}
+
+
+.McButton:hover {
+    border: #fff9 2px solid;
+}
+.McButton:active {
+    box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
+}
+

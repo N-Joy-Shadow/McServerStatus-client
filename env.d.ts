@@ -10,6 +10,7 @@ declare global {
       DISCORD_CLIENT_SECRET: string;
       BASE_API_URL : string;
       BASE_AUTH_URL : string;
+      VITE_AUTH_CLIENT_ID : string;
     }
   }
 }
