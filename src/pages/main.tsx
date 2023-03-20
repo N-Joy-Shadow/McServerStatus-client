@@ -75,22 +75,22 @@ const Home = () => {
   return (
     <MainLayout>
       <ServerListContext.Provider value={{isOnline : true}}>
-      <Toolbar/>
-      <div
-        className="flex-row gap-2 h-12 justify-start items-center"
-        style={{ display: TagList.length == 0 ? "none" : "flex" }}
-        >
-        {TagList.length != 0 && <h2 className="text-lg ml-4">태그 목록 :</h2>}
-        {TagList.map((x, i) => {
-          return <Tag name={x} key={i} isSelected={true}></Tag>;
-        })}
-      </div>
-      <div>
-        {filterList.map((x, i) => {
-          return <ServerInfoItem data={x} isLoading={false} key={i} />;
-        })}
-      </div>
-        </ServerListContext.Provider>
+        <Toolbar/>
+        <div
+          className="flex-row gap-2 h-12 justify-start items-center"
+          style={{ display: TagList.length == 0 ? "none" : "flex" }}
+          >
+          {TagList.length != 0 && <h2 className="text-lg ml-4">태그 목록 :</h2>}
+          {TagList.map((x, i) => {
+            return <Tag name={x} key={i} isSelected={true}></Tag>;
+          })}
+        </div>
+        <div>
+          {filterList.map((x, i) => {
+            return <ServerInfoItem data={x} isLoading={false} key={i} />;
+          })}
+        </div>
+      </ServerListContext.Provider>
     </MainLayout>
   );
 };

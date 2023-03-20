@@ -4,9 +4,9 @@ import DefualtLayout from '../../layouts/defualtLayout';
 import { useParams } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import UserInfoForm from "../../components/form/userinfoForm";
-import { MCSubmitButton } from "../../components/MCStyled/mcButton";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { McButton } from "../../components/MCStyled/mcStyle";
  
 interface IEditProps {
 
@@ -42,7 +42,7 @@ return (<DefualtLayout title="서버수정" helmet={helmet} >
             <form onSubmit={Form.handleSubmit(OnSubmit)}>
                 <UserInfoForm/>
             </form>
-            <MCSubmitButton/>
+            <McButton type="submit"/>
         </FormProvider>    
     </DefualtLayout >)
 }

@@ -32,7 +32,7 @@ export enum ToastEnum {
   error = "에러"
 }
 
-const McToast = forwardRef<HTMLDivElement,McToastProps>((props,ref) => {
+export const McToast = forwardRef<HTMLDivElement,McToastProps>((props,ref) => {
   const { id, message, toastType} = props
   
   return (<SnackbarContent ref={ref}  className={styles.McToastContainer}>
@@ -57,11 +57,5 @@ const McToastAchieve = forwardRef<HTMLDivElement,McToastProps>((props,ref) => {
   </SnackbarContent>)
 })
 
-
-
 McToast.displayName = "McToast"
 
-
-export  {
-  McToast
-}

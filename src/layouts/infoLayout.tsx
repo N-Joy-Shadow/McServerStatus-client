@@ -1,12 +1,12 @@
 import React, { ReactNode } from "react";
 import bg from "../styles/mc/Background.module.css";
-import MCButton from "../components/MCStyled/mcButton";
 import { IHelmet } from "../API/IHelmet";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { McButton, McFooter, McNav } from "../components/MCStyled/mcStyle";
 
 export default function InfoLayout({
   children,
@@ -38,50 +38,38 @@ export default function InfoLayout({
         <link rel="icon" href="/favicon.ico" />
       </Helmet>
       <>
-        <nav className={bg.McBgNav}>
+        <McNav>
           <div className="fixed w-full h-[60px] items-center flex  justify-between">
             <div className=" flex felx justify-start space-x-4 md:pl-4">
               {LinkList.map((x, i) => (
-                <div className="md:w-48 w-24 my-4 textcenter h-10" key={i}>
-                  <Link to={`${x.href}`}>
-                    <MCButton>{x.name}</MCButton>
+                  <Link to={`${x.href}`} key={i}>
+                    <McButton className="md:w-48 w-24 my-4 textcenter h-10">{x.name}</McButton>
                   </Link>
-                </div>
               ))}
             </div>
             <div className="pr-4 md:flex hidden h-[40px]">
-              <div className="w-10 h-full">
                 <a href="mailto:njoyshadow@gmail.com">
-                  <MCButton>
+                  <McButton className="w-10 h-full">
                     <EmailIcon />
-                  </MCButton>
+                  </McButton>
                 </a>
-              </div>
-              <div className="w-10 h-full">
                 <a href="https://github.com/N-Joy-Shadow/McServerStatus-client">
-                <MCButton>
+                <McButton className="w-10 h-full">
                   <GitHubIcon />
-                </MCButton>
+                </McButton>
                 </a>
-              </div>
-              <div className="w-28 h-full">
                 <Link to="/login">
-                  <MCButton>관리자</MCButton>
+                  <McButton className="w-28 h-full">관리자</McButton>
                 </Link>
-              </div>
             </div>
           </div>
-        </nav>
+        </McNav>
         <main className={bg.McMBg}>{children}</main>
-        <footer className={bg.McBgFooter}>
-          <div className="w-full flex justify-end">
-            <div className="h-10 mx-4 my-3 w-48">
+        <McFooter className="w-full flex justify-end">
               <Link to="/">
-                <MCButton>뒤로 가기</MCButton>
+                <McButton className=" h-10 w-48 mx-4 my-3">뒤로 가기</McButton>
               </Link>
-            </div>
-          </div>
-        </footer>
+        </McFooter>
       </>
     </>
   );

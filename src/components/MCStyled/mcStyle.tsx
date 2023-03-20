@@ -1,11 +1,7 @@
 import styled from "styled-components"
 
-interface IMcLengthProps {
-    width? : string,
-    height? : string  
-}
 
-const McButton = styled.button<IMcLengthProps>`
+const McButton = styled.button`
     padding-bottom: 0.4em;
     display: flex;
     justify-content: center;
@@ -19,8 +15,6 @@ const McButton = styled.button<IMcLengthProps>`
     font-family: 'minecraft','gal11';
     user-select: none;
 
-    width : ${(props) => props.width ?? "auto"};
-    height: ${(props) => props.height ?? "auto"};
     min-height: 40px;
 
     &:hover {
@@ -31,21 +25,62 @@ const McButton = styled.button<IMcLengthProps>`
     }
 `
 
-const McTextInput = styled.input<IMcLengthProps>`
+const McTextInput = styled.input`
     border: 2px solid rgb(170,170 ,170);
     background-color: black;
     padding: 4px;
-    padding: 12px;
     font-family: 'minecraft','gal11';
     color: white;
-
-    width : ${(props) => props.width ?? "calc(auto-4px)"};
-    height: ${(props) => props.height ?? "calc(auto-4px)"};
     
     &:focus {
        outline: none;
     }
 `
+interface IBackgroundProps {
+    darker? : boolean
+}
+
+const McBackground = styled.div<IBackgroundProps>`
+    background-image: ${props => props.darker ? "url(\"/dirt-dark.png\")" : "url(\"/dirt-light.png\")"};
+    background-repeat: repeat;
+    ${props => props.darker ? "background-size : 64px" : ""};
+    `
+
+const McNav = styled.nav`
+    background-image: url("/dirt-light.png");
+    background-repeat: repeat;
+
+    width: 100%;
+    min-height: 60px;
+    align-items: center;
+    display: flex;
+    top : 0;
+    position : fixed;
+    z-index: 1;
+`
+const McFooter = styled.footer`
+    background-image: url("/dirt-light.png");
+    background-repeat: repeat;
+
+
+    width: 100%;
+    min-height: 60px;
+    align-items: center;
+    display: flex;
+    bottom : 0;
+    position : fixed;
+    z-index: 1;
+`
+
+const McBlackContainer = styled.div`
+    border: 2px solid rgb(170,170 ,170);
+    background-color: black;
+    padding: 4px;
+
+    color: white;
+
+`
+
 export {
-    McButton,McTextInput
+    McButton,McTextInput,McBackground,McFooter,McNav,McBlackContainer
 }

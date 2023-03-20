@@ -1,6 +1,7 @@
 
 import styles from "../../../styles/mc/TextField.module.css";
 import { Controller } from 'react-hook-form';
+import { McTextInput } from "../mcStyle";
 
 interface IMcTextInputProps {
   name : string,
@@ -8,13 +9,13 @@ interface IMcTextInputProps {
   required? : boolean
 }
 
-export default function McTextInput(
+export default function McTextInputC(
   { name ,placeholder ,required} : IMcTextInputProps
 ) {
   return <Controller
   name={name}
   render={({ field }) => {
-    return <input type="input" placeholder={placeholder} className={styles.McField} {...field} required={required}/>
+    return <McTextInput type="text" placeholder={placeholder}  {...field} required={required}/>
   }}
 />
 }

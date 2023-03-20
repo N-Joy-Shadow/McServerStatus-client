@@ -2,8 +2,8 @@ import { enqueueSnackbar, useSnackbar } from "notistack";
 import { IHelmet } from '../../API/IHelmet';
 import React from "react";
 import InfoLayout from '../../layouts/infoLayout';
-import MCButton from "../../components/MCStyled/mcButton";
 import { useMsal } from "@azure/msal-react";
+import { McButton } from "../../components/MCStyled/mcStyle";
 
 export default function Howto() {
     const { instance, accounts, inProgress } = useMsal();
@@ -14,6 +14,6 @@ export default function Howto() {
 
 
     return(<InfoLayout helmet={helmet}>
-        <MCButton onClick={() => { }}>로그인</MCButton>
+        <McButton onClick={() => { }}>로그인</McButton>
     </InfoLayout>)
 };

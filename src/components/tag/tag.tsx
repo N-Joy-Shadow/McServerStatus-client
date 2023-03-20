@@ -1,6 +1,6 @@
-import MCButton from "../MCStyled/mcButton";
 import { useRef } from 'react';
 import { useTagStore, isExistTag, pushTags, removeTags } from '../../zustand/tagStore';
+import { McButton } from "../MCStyled/mcStyle";
 
 interface TagProps{
   name : string
@@ -30,13 +30,12 @@ export default function Tag(props : TagProps) {
   }
 
 
-  return (<div className="w-auto flex flex-row h-[40px]">
-    <MCButton onClick={HandleOnClick}>
-
+  return (
+    <McButton className="w-full flex flex-row h-[40px]" onClick={HandleOnClick}>
       <img src="/tag.png" className="w-6 h-6 m-1"></img>
       <p className="pr-1" ref={tagRef}>{props.name}</p>
-    </MCButton>
-    </div>);
+    </McButton>
+    );
 }
 
 

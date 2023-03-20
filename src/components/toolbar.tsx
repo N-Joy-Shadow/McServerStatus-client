@@ -1,6 +1,4 @@
-import MCButton from './MCStyled/mcButton';
 import { McButton,McTextInput } from './MCStyled/mcStyle';
-import MCTextField from './MCStyled/mcTextField';
 import McToggle from './MCStyled/mcToggle';
 
 
@@ -9,7 +7,7 @@ export default function Toolbar() {
     return <div className='flex justify-between mx-4 items-center'>
         <div className="grow flex">
             {/* <MCTextField/> */}
-            <McButton width='50px'>asd</McButton>
+            <McButton>asd</McButton>
             <McTextInput/>
 
         </div>

@@ -1,5 +1,4 @@
 import { Modal } from "@mui/material";
-import MCButton from "../../MCStyled/mcButton";
 import { useState } from "react";
 import ModalLayout from "../../../layouts/modalLayout";
 
@@ -7,6 +6,7 @@ import bg from "../../../styles/mc/Background.module.css";
 import field from "../../../styles/mc/TextField.module.css";
 
 import { useForm } from "react-hook-form";
+import { McButton } from "../../MCStyled/mcStyle";
 
 interface DelFormProps {
     hostname : string | string[] | undefined
@@ -33,12 +33,12 @@ export default function DelForm(props : DelFormProps) {
   };
 
   return (
-    <div className="h-10 mt-4">
-      <MCButton onClick={handleOpen}>
+    <>
+      <McButton className="h-10 mt-4" onClick={handleOpen}>
         <p className="text-red-600">
           <strong>삭제하기</strong>
         </p>
-      </MCButton>
+      </McButton>
       <Modal
         open={open}
         onClose={handleClose}
@@ -92,6 +92,6 @@ export default function DelForm(props : DelFormProps) {
           </div>
         </ModalLayout>
       </Modal>
-    </div>
+    </>
   );
 }

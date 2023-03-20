@@ -1,6 +1,5 @@
 import { Step, StepConnector, stepConnectorClasses, StepContent, StepLabel, Stepper, styled } from '@mui/material';
 import { useState, useEffect } from 'react';
-import MCButton, { MCSubmitButton } from '../../components/MCStyled/mcButton';
 import { FormProvider, useForm } from 'react-hook-form';
     import BasicStep from '../../components/step/server/push/basicStep';
     import ModStep from '../../components/step/server/push/modStep';
@@ -14,6 +13,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { McButton } from '../../components/MCStyled/mcStyle';
 
 
 export default function ServerAdd () {
@@ -85,7 +85,7 @@ export default function ServerAdd () {
             }
         }).catch(err => 
         {
-            enqueueSnackbar("서버주소나 아이디 비번을 확인해주세요.", { variant : "Toast",toastType : ToastEnum.error})
+            enqueueSnackbar("서버주소 또는 아이디 비번을 확인해주세요.", { variant : "Toast",toastType : ToastEnum.error})
         })
     } 
     return(<DefualtLayout helmet={helmet} title="서버추가">
@@ -102,8 +102,8 @@ export default function ServerAdd () {
                                 {x.reactNode}
                             </div>
                             <div className='flex flex-row justify-end space-x-4 my-4'>
-                                {activeStep > 0 && (<MCButton style={{ maxWidth : "140px"}} onClick={() => setActiveStep(x => x - 1) }>이전으로</MCButton>)}
-                                {activeStep < lastStep && (<MCButton style={{ maxWidth : "140px"}} onClick={() => setActiveStep(x => x + 1) }>다음으로</MCButton>)}
+                                {activeStep > 0 && (<McButton className='w-[140px]' type="button" onClick={() => setActiveStep(x => x - 1) }>이전으로</McButton>)}
+                                {activeStep < lastStep && (<McButton className='w-[140px]' type="button" onClick={() => setActiveStep(x => x + 1) }>다음으로</McButton>)}
                             </div>
                         </div>
                     </StepContent>
@@ -111,7 +111,7 @@ export default function ServerAdd () {
             ))}
         </Stepper>
         <div className='flex justify-end'>
-            {activeStep >= lastStep && (<MCSubmitButton style={{ maxWidth : "200px"}}/>)}
+            {activeStep >= lastStep && (<McButton type="submit" className='w-[200px]'>제출하기</McButton>)}
         </div>
         </form>
         </FormProvider>

@@ -3,11 +3,11 @@ import DefualtLayout from "../../layouts/defualtLayout";
 import { useForm, FormProvider } from "react-hook-form";
 import moment from "moment";
 import McTextInput from "../../components/MCStyled/controller/mcTextInput";
-import { MCSubmitButton } from "../../components/MCStyled/mcButton";
 import McMultiTextInput from '../../components/MCStyled/controller/mcMultiTextInput';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 import { ToastEnum } from '../../components/MCStyled/mcToast';
+import { McButton } from "../../components/MCStyled/mcStyle";
 
 export default function Login() {
   const helmet: IHelmet = {
@@ -34,7 +34,7 @@ export default function Login() {
           >
             <McTextInput name="title" placeholder="제목 (버전)" />
             <McMultiTextInput name="content" placeholder="내용 (마크다운)" />
-            <MCSubmitButton />
+            <McButton type="submit"/>
           </form>
         </FormProvider>
       </DefualtLayout>

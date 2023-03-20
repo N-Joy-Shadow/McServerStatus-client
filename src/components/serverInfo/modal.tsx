@@ -5,13 +5,11 @@ import Tag from "../tag/tag";
 
 import bg from "../../styles/mc/Background.module.css";
 import ModalMods from "./modal/mods";
-import MCButton from "../MCStyled/mcButton";
 import { Link } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import { ToastEnum } from "../MCStyled/mcToast";
 import versionRegex from "../../utils/string/version";
-import MCServerLoading from "../MCStyled/mcServerLoading";
-import McButton from "../MCStyled/mcButton";
+import { McBackground, McButton } from "../MCStyled/mcStyle";
 
 export default function ServerInfoModal(props: ServerInfoItemProps) {
   const CurrentPlayer = props.data.frenquency.players.current;
@@ -32,8 +30,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
   };
   return (
     <>
-      <div className={bg.Mcbg_l}>
-        <div className="w-auto flex  justify-between ">
+      <McBackground className="w-auto flex  justify-between">
           {/* 주소 복사 */}
           <div className="text-xl text-center self-center flex justify-start cursor-pointer m-2  select-none items-center" onClick={handleCopy}>
             <img
@@ -43,19 +40,14 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           </div>
           {/* 버튼들 */}
           <div className="p-1">
-            <div className="w-14 h-full">
               <Link to={`/server/edit/${props.data.hostIP.decoration.combine_hostname}`}>
-                <MCButton>수정</MCButton>
+                <McButton className="w-14 h-full">수정</McButton>
               </Link>
-            </div>
-            <div className="w-14 h-full">
               <Link to={`/server/dev/${props.data.hostIP.decoration.combine_hostname}`}>
-                <MCButton>수정</MCButton>
+                <McButton className="w-14 h-full">수정</McButton>
               </Link>
-            </div>
           </div>
-        </div>
-      </div>
+      </McBackground>
 
       <div className={bg.Mcbg}>
         <div className="flex w-full flex-grow flex-col justify-start
