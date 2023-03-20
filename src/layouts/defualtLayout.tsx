@@ -6,6 +6,7 @@ import { IHelmet } from "../API/IHelmet";
 import bg from "../styles/mc/Background.module.css";
 import {
   McBackground,
+  McBackgroundLayout,
   McButton,
   McFooter,
   McNav,
@@ -33,11 +34,9 @@ export default function DefualtLayout({
         <p className="w-full flex justify-center text-xl">{title}</p>
       </McNav>
 
-      <main>
-        <McBackground darker className="h-[100vh] py-[60px]">
-          {children}
-        </McBackground>
-      </main>
+      <McBackgroundLayout>
+        {children}
+      </McBackgroundLayout>
 
       <McFooter className="w-full flex justify-end">
         <Link to="/">

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { McButton, McFooter, McNav } from "../components/MCStyled/mcStyle";
+import { McBackground, McBackgroundLayout, McButton, McFooter, McNav } from "../components/MCStyled/mcStyle";
 
 export default function InfoLayout({
   children,
@@ -43,7 +43,7 @@ export default function InfoLayout({
             <div className=" flex felx justify-start space-x-4 md:pl-4">
               {LinkList.map((x, i) => (
                   <Link to={`${x.href}`} key={i}>
-                    <McButton className="md:w-48 w-24 my-4 textcenter h-10">{x.name}</McButton>
+                    <McButton className="md:w-48 w-24 my-4 textcenter h-10 ">{x.name}</McButton>
                   </Link>
               ))}
             </div>
@@ -64,7 +64,9 @@ export default function InfoLayout({
             </div>
           </div>
         </McNav>
-        <main className={bg.McMBg}>{children}</main>
+        <McBackgroundLayout>
+          {children}
+        </McBackgroundLayout>
         <McFooter className="w-full flex justify-end">
               <Link to="/">
                 <McButton className=" h-10 w-48 mx-4 my-3">뒤로 가기</McButton>

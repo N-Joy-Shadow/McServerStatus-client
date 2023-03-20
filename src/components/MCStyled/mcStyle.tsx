@@ -15,7 +15,7 @@ const McButton = styled.button`
     font-family: 'minecraft','gal11';
     user-select: none;
 
-    min-height: 40px;
+    //min-height: 40px;
 
     &:hover {
         border: #fff9 2px solid;
@@ -25,10 +25,14 @@ const McButton = styled.button`
     }
 `
 
-const McTextInput = styled.input`
+interface IMcTextInputProps {
+    size?: "small" | "medium"
+}
+
+const McTextInput = styled.input<IMcTextInputProps>`
     border: 2px solid rgb(170,170 ,170);
     background-color: black;
-    padding: 4px;
+    padding: 12px;
     font-family: 'minecraft','gal11';
     color: white;
     
@@ -45,6 +49,20 @@ const McBackground = styled.div<IBackgroundProps>`
     background-repeat: repeat;
     ${props => props.darker ? "background-size : 64px" : ""};
     `
+const McBackgroundLayout = styled.main`
+    background-image: url("/dirt-dark.png");
+    background-repeat: repeat;
+    background-size: 64px;
+
+    width: 100%;
+    min-height: 100vh;
+
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+`
 
 const McNav = styled.nav`
     background-image: url("/dirt-light.png");
@@ -76,11 +94,16 @@ const McBlackContainer = styled.div`
     border: 2px solid rgb(170,170 ,170);
     background-color: black;
     padding: 4px;
-
     color: white;
 
 `
 
 export {
-    McButton,McTextInput,McBackground,McFooter,McNav,McBlackContainer
+    McButton,
+    McTextInput,
+    McBackground,
+    McFooter,
+    McNav,
+    McBlackContainer,
+    McBackgroundLayout
 }

@@ -2,11 +2,9 @@ import { Modal } from "@mui/material";
 import { useState } from "react";
 import ModalLayout from "../../../layouts/modalLayout";
 
-import bg from "../../../styles/mc/Background.module.css";
-import field from "../../../styles/mc/TextField.module.css";
 
 import { useForm } from "react-hook-form";
-import { McButton } from "../../MCStyled/mcStyle";
+import { McBackground, McButton, McTextInput } from "../../MCStyled/mcStyle";
 
 interface DelFormProps {
     hostname : string | string[] | undefined
@@ -47,31 +45,24 @@ export default function DelForm(props : DelFormProps) {
       >
         <ModalLayout>
           <div>
-            <div className={bg.Mcbg_l}>
+            <McBackground>
               <div className="text-xl text-center self-center p-2 flex justify-start cursor-pointer pl-4">
                 {"진짜 삭제?"}
               </div>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)} className={bg.Mcbg}>
+            </McBackground>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div className="text-center justify-center flex flex-col space-y-4">
                 <h1 className="mt-4 text-xl">아이디랑 비번을 입력해 주세요</h1>
                 <div className="flex flex-row space-x-2 justify-center">
-                  <div className="w-52">
-                    <input
-                      type="text"
-                      className={field.McField}
+                    <McTextInput className="w-52"
                       placeholder="ID"
                       {...register("userinfo.id", { required: true })}
                     />
-                  </div>
-                  <div className="w-52">
-                    <input
+                    <McTextInput className="w-52"
                       type="password"
-                      className={field.McField}
                       placeholder="Password"
                       {...register("userinfo.pw", { required: true })}
                     />
-                  </div>
                 </div>
                 {errors.userinfo && (
                   <span className=" text-red-600">

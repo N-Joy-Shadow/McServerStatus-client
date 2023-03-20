@@ -1,6 +1,5 @@
 import React from "react"
 import { Controller } from 'react-hook-form';
-import input from "../../../styles/mc/TextField.module.css"
 
 
 interface IMcMultiTextInputProps {
@@ -11,7 +10,7 @@ interface IMcMultiTextInputProps {
 const McMultiTextInput = (props : IMcMultiTextInputProps) => {
  
 return (<Controller name={props.name} render={({field}) => 
-    (<textarea className={input.McField} placeholder={props.placeholder} {...field}/>)
+    (<textarea className={''} placeholder={props.placeholder} {...field}/>)
 }/>)
 }
  

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/mc/Background.module.css";
 
@@ -5,8 +6,7 @@ import { useOnlineStore } from "../zustand/onlineStore";
 
 import { McButton, McNav } from "./MCStyled/mcStyle";
 
-export default function navbar() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function Navbar() {
   const { isOnline, SetOnline } = useOnlineStore();
 
   return (
@@ -36,3 +36,4 @@ export default function navbar() {
     </McNav>
   );
 }
+export default memo(Navbar)

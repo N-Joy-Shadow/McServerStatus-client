@@ -15,7 +15,7 @@ export default function McTextInputC(
   return <Controller
   name={name}
   render={({ field }) => {
-    return <McTextInput type="text" placeholder={placeholder}  {...field} required={required}/>
+    return <McTextInput className="w-full" type="text" placeholder={placeholder}  {...field} required={required}/>
   }}
 />
 }

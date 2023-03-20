@@ -46,7 +46,7 @@ export default function ServerAdd () {
     
     const [activeStep, setActiveStep] = useState(0);
     const lastStep = 2
-    const test = [
+    const step = [
         {
             title: "기본 셋팅",
             reactNode : <BasicStep/>
@@ -64,8 +64,6 @@ export default function ServerAdd () {
     const helmet : IHelmet = {
         title : "서버 추가"
     }
-
-
 
     useEffect(() =>{
         setActiveStep(0)
@@ -90,37 +88,32 @@ export default function ServerAdd () {
     } 
     return(<DefualtLayout helmet={helmet} title="서버추가">
     <FormProvider {...FormMethod}>
-    <form onSubmit={FormMethod.handleSubmit(onSubmit)} className="max-w-[600px] m-auto">
-        <Stepper activeStep={activeStep} orientation="vertical">
-            {test.map((x,i) =>(
-                <Step key={i}>
-                    <StepLabel optional={i == 0 ? (<p className='text-sm text-red-500'>필수</p>) : (<p className='text-gray-400 text-sm'>선택</p>)}>
-                        <p className='text-white text-xl'>{x.title}</p></StepLabel>
-                    <StepContent>
-                        <div className='flex flex-col'>
-                            <div className='flex-grow space-y-2'>
-                                {x.reactNode}
+        <form onSubmit={FormMethod.handleSubmit(onSubmit)} className="max-w-[600px] m-auto">
+            <Stepper activeStep={activeStep} orientation="vertical">
+                {step.map((x,i) =>(
+                    <Step key={i}>
+                        <StepLabel optional={i == 0 ? (<p className='text-sm text-red-500'>필수</p>) : (<p className='text-gray-400 text-sm'>선택</p>)}>
+                            <p className='text-white text-xl'>{x.title}</p></StepLabel>
+                        <StepContent>
+                            <div className='flex flex-col'>
+                                <div className='flex-grow space-y-2'>
+                                    {x.reactNode}
+                                </div>
+                                <div className='flex flex-row justify-end space-x-4 my-4'>
+                                    {activeStep > 0 && (<McButton className='w-[140px]' type="button" onClick={() => setActiveStep(x => x - 1) }>이전으로</McButton>)}
+                                    {activeStep < lastStep && (<McButton className='w-[140px]' type="button" onClick={() => setActiveStep(x => x + 1) }>다음으로</McButton>)}
+                                </div>
                             </div>
-                            <div className='flex flex-row justify-end space-x-4 my-4'>
-                                {activeStep > 0 && (<McButton className='w-[140px]' type="button" onClick={() => setActiveStep(x => x - 1) }>이전으로</McButton>)}
-                                {activeStep < lastStep && (<McButton className='w-[140px]' type="button" onClick={() => setActiveStep(x => x + 1) }>다음으로</McButton>)}
-                            </div>
-                        </div>
-                    </StepContent>
-                </Step>
-            ))}
-        </Stepper>
-        <div className='flex justify-end'>
-            {activeStep >= lastStep && (<McButton type="submit" className='w-[200px]'>제출하기</McButton>)}
-        </div>
-        </form>
+                        </StepContent>
+                    </Step>
+                ))}
+            </Stepper>
+            <div className='flex justify-end'>
+                {activeStep >= lastStep && (<McButton type="submit" className='w-[200px]'>제출하기</McButton>)}
+            </div>
+            </form>
         </FormProvider>
 
-
-        <footer className='bottom-0 fixed min-h-[60px]'>
-
-
-        </footer>
 
     </DefualtLayout>)
 };

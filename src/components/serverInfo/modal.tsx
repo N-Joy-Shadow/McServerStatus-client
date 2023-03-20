@@ -1,6 +1,5 @@
 import { ServerInfoItemProps } from "./item";
 import formatplayercount from "../../utils/formatplayercount";
-import PlayerInfo from "../player/playerinfo";
 import Tag from "../tag/tag";
 
 import bg from "../../styles/mc/Background.module.css";
@@ -10,6 +9,7 @@ import { enqueueSnackbar } from "notistack";
 import { ToastEnum } from "../MCStyled/mcToast";
 import versionRegex from "../../utils/string/version";
 import { McBackground, McButton } from "../MCStyled/mcStyle";
+import PlayerInfo from '../player/playerinfo';
 
 export default function ServerInfoModal(props: ServerInfoItemProps) {
   const CurrentPlayer = props.data.frenquency.players.current;
@@ -49,8 +49,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
           </div>
       </McBackground>
 
-      <div className={bg.Mcbg}>
-        <div className="flex w-full flex-grow flex-col justify-start
+      <McBackground darker className="flex w-full flex-grow flex-col justify-start
                         md:flex-row md:justify-between text-center md:text-start p-2">
           <div className="w-full">
             <div className="flex md:flex-row md:justify-between flex-col-reverse items-center">
@@ -68,7 +67,6 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                   </div>
                 )}
               </div>
-
             </div>
 
             <p className="md:text-start pl-2 mt-8 text-xl text-center ">
@@ -79,7 +77,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
                 <PlayerInfo key={i} data={x} />
               )) ?? (
                 <div className="w-full col-span-4">
-                  {props.data.frenquency.players.current == 0 ? "현재 접속중인 플레이가 없습니다." : "서버가 유저닉네임을 공개하고 있지않습니다."}
+                  {props.data.frenquency.players.current == 0 ? "현재 접속중인 플레이가 없습니다." : "서버가 유저 정보를 공개하고 있지않습니다."}
                 </div>
               )}
             </div>
@@ -91,8 +89,7 @@ export default function ServerInfoModal(props: ServerInfoItemProps) {
             </div>
 
           </div>
-        </div>
-      </div>
+      </McBackground>
     </>
   );
 }

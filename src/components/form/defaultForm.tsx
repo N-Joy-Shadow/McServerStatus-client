@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 
-import field from "../../styles/mc/TextField.module.css";
 import { useState } from "react";
+import { McTextInput } from "../MCStyled/mcStyle";
 
 interface DefaultFormProps {
   isEdit : boolean
@@ -19,13 +19,7 @@ export default function DefaultForm(props : DefaultFormProps) {
     <>
       {/* 서버 주소 입력 */}
       <h1>서버 주소</h1>
-      <input
-        type="text"
-        className={field.McField}
-
-        /* disabled={props.isEdit} */
-        {...register("url", { required: true })}
-      />
+      <McTextInput /* disabled={props.isEdit} */ {...register("url", { required: true })}/>
       {(errors.url && !props.isEdit) && (
         <span className=" text-red-600">
           <strong>주소는 필수 입력 사항입니다!</strong>
@@ -33,9 +27,8 @@ export default function DefaultForm(props : DefaultFormProps) {
       )}
       {/* 갤 주소 입력 */}
       <h1>스티브 갤러리 서버홍보 게시물 주소</h1>
-      <input
-        type="text"
-        className={field.McField}
+      <McTextInput
+
         placeholder={gall_url}
         defaultValue={props.gallurl}
         {...register("custom.gallurl")}

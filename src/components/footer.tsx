@@ -1,10 +1,8 @@
-import { Button } from "@mui/material";
+import { memo } from "react";
 import { Link } from "react-router-dom";
-
-import styles from "../styles/mc/Background.module.css";
 import { McButton, McFooter } from "./MCStyled/mcStyle";
 
-export default function Footer() {
+function Footer() {
   return (
     <McFooter className="flex justify-center items-center">
         <Link to="/server/add" className="table">
@@ -13,3 +11,5 @@ export default function Footer() {
     </McFooter>
   );
 }
+
+export default memo(Footer)

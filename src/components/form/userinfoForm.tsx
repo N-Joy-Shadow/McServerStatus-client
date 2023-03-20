@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-import field from "../../styles/mc/TextField.module.css";
+import { McTextInput } from "../MCStyled/mcStyle";
 
 export default function UserInfoForm() {
   const {
@@ -11,23 +11,17 @@ export default function UserInfoForm() {
   return (
     <>
       <h1>아이디랑 비번을 입력해 주세요</h1>
-      <div className="flex flex-row space-x-2">
-        <div className="w-52">
-          <input
-            type="text"
-            className={field.McField}
+      <div className="flex md:flex-row md:space-x-2 flex-col  ">
+          <McTextInput
+          className="w-52 mt-2"
             placeholder="ID"
             {...register("userinfo.id", { required: true })}
           />
-        </div>
-        <div className="w-52">
-          <input
-            type="password"
-            className={field.McField}
-            placeholder="Password"
+          <McTextInput
+          className="w-52 mt-2"
+            type="password" placeholder="Password"
             {...register("userinfo.pw", { required: true })}
           />
-        </div>
       </div>
       {errors.userinfo && (
         <span className=" text-red-600">

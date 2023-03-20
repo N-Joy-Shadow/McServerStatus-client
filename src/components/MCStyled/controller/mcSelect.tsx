@@ -1,9 +1,6 @@
-import React from "react";
 import { Controller } from "react-hook-form";
-import MCTextField from "../mcTextField";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FormControl, InputLabel, MenuItem } from "@mui/material";
-import { borderRadius } from "@mui/system";
 import { EnumModType } from '../../../API/Enum/EnumModType';
 
 export default function McSelect() {
