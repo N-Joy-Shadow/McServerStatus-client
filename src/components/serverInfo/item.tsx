@@ -22,8 +22,9 @@ export default function ServerInfoItem(props: ServerInfoItemProps) {
   const handleClose = () => setOpen(false);
 
   return (
+    //최대 길이를 1000px로 제한
     <div className="ms:px-0 md:px-[9rem] lg:px-[15rem] xl:px-[22rem] 2xl:px-[34rem]">
-      <div className="p-4 hover:outline hover:outline-3 hover:outline-gray-500">
+      <div className="p-4 hover:outline hover:outline-3 hover:outline-gray-500 ">
         <div onClick={handleOpen}>
           <ServerItem data={props.data} />
         </div>

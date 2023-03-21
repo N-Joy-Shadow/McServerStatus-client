@@ -32,7 +32,15 @@ interface IMcTextInputProps {
 const McTextInput = styled.input<IMcTextInputProps>`
     border: 2px solid rgb(170,170 ,170);
     background-color: black;
-    padding: 12px;
+    ${(props)=> {
+        if(props.size == "small"){
+            return "padding: 4px;"
+        }
+        else{
+            return "padding: 12px;"
+        }
+    }}
+    
     font-family: 'minecraft','gal11';
     color: white;
     

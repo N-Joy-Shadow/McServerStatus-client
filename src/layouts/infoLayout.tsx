@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import EmailIcon from "@mui/icons-material/Email";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import { McBackground, McBackgroundLayout, McButton, McFooter, McNav } from "../components/MCStyled/mcStyle";
+import {  McBackgroundLayout, McButton, McFooter, McNav } from "../components/MCStyled/mcStyle";
 
 export default function InfoLayout({
   children,
@@ -38,8 +38,7 @@ export default function InfoLayout({
         <link rel="icon" href="/favicon.ico" />
       </Helmet>
       <>
-        <McNav>
-          <div className="fixed w-full h-[60px] items-center flex  justify-between">
+        <McNav className="fixed w-full h-[60px] items-center flex  justify-between">
             <div className=" flex felx justify-start space-x-4 md:pl-4">
               {LinkList.map((x, i) => (
                   <Link to={`${x.href}`} key={i}>
@@ -62,7 +61,6 @@ export default function InfoLayout({
                   <McButton className="w-28 h-full">관리자</McButton>
                 </Link>
             </div>
-          </div>
         </McNav>
         <McBackgroundLayout>
           {children}
