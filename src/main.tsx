@@ -22,8 +22,10 @@ import ServerPush from './pages/server/add';
 import ServerEdit from './pages/server/edit';
 
 import { McToast, ToastEnum } from './components/MCStyled/mcToast';
-import Login from './pages/admin/login';
+import Login from './pages/login/index';
 import DevEdit from './pages/server/dev_edit';
+import { msalConfig } from "./utils/auth/authcfg";
+import Auth from './pages/login/auth';
 declare module "notistack" {
   interface VariantOverrides {
     Toast: {
@@ -46,16 +48,17 @@ const router = createBrowserRouter(
         <Route path="howto" element={<Howto/>}/>
       </Route>
       <Route path="login" element={<Login/>}/>
+      <Route path="auth" element={<Auth/>}
+      loader={async ({ request ,params }) => {
+          return params
+      }}/>
     </Route>
   )
 )
 
 const Toast = { Toast : McToast }
-const configuration : Configuration= {
-  auth: { clientId: import.meta.env.VITE_AUTH_CLIENT_ID }
-};
 
-const pca = new PublicClientApplication(configuration);
+const pca = new PublicClientApplication(msalConfig);
 
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
