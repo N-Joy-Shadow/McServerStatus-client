@@ -27,3 +27,4 @@ dist-ssr
 .env.production
 
 /pages/admin/**/*
+vite-config.js
