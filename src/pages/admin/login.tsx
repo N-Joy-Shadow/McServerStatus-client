@@ -36,7 +36,7 @@ export default function Login() {
             <McMultiTextInput name="content" placeholder="내용 (마크다운)" />
             <McButton type="submit"/>
           </form>
-        </FormProvider>
+        </FormProvider> 
       </DefualtLayout>
     );
   } else {
