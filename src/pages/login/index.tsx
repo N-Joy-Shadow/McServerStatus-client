@@ -1,7 +1,9 @@
 import { McBackground, McBackgroundLayout, McButton } from "../../components/MCStyled/mcStyle";
 import { useMsal } from '@azure/msal-react';
 import { LoginRequest } from "../../utils/auth/authcfg";
-export default function Login() {
+import styled from "styled-components";
+import { LoaderFunctionArgs } from "react-router-dom";
+const Login = () => {
     const { instance } = useMsal();
 
     const HandleLogin = () => {
@@ -10,7 +12,13 @@ export default function Login() {
         })
     }
 
-    return(<McBackground className="w-[600px]">
+    const LoginBackground = styled(McBackground)`
+        height: 100vh;
+        width: 100vw;
+        margin : auto;
+    `
+
+    return(<LoginBackground>
         <div className="flex gap-2">
             <img src="./ms_logo.svg" width={64}/>
             <div>
@@ -19,5 +27,14 @@ export default function Login() {
             </div>
         </div>
         <McButton onClick={HandleLogin}>Login With Microsoft Account</McButton>
-    </McBackground>)
+    </LoginBackground>)
 };
+
+const LoginLoader = ({ params,request } : LoaderFunctionArgs) => {
+    
+}
+
+export default Login
+export {
+    LoginLoader
+}

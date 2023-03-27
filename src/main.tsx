@@ -25,7 +25,7 @@ import { McToast, ToastEnum } from './components/MCStyled/mcToast';
 import Login from './pages/login/index';
 import DevEdit from './pages/server/dev_edit';
 import { msalConfig } from "./utils/auth/authcfg";
-import Auth from './pages/login/auth';
+import Auth, { AuthLoader } from './pages/login/auth';
 declare module "notistack" {
   interface VariantOverrides {
     Toast: {
@@ -48,10 +48,7 @@ const router = createBrowserRouter(
         <Route path="howto" element={<Howto/>}/>
       </Route>
       <Route path="login" element={<Login/>}/>
-      <Route path="auth" element={<Auth/>}
-      loader={async ({ request ,params }) => {
-          return params
-      }}/>
+      <Route path="auth" element={<Auth/>} loader={AuthLoader}/>
     </Route>
   )
 )
