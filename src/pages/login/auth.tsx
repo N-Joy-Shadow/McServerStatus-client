@@ -9,12 +9,15 @@ const Auth = (props : IAuthProps) => {
     const raw_data = useLoaderData()
     if("string" == typeof raw_data){
         const data = JSON.parse(raw_data)
+        return (<>
+            {data}
+        </>)
     }
     
     return (
-        <div>
-            {data.code}
-        </div>
+        <>
+            null
+        </>
 )}
 
 const AuthLoader = ({ request, params } : LoaderFunctionArgs) => {

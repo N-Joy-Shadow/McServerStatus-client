@@ -13,13 +13,14 @@ const Login = () => {
     }
 
     const LoginBackground = styled(McBackground)`
-        height: 100vh;
-        width: 100vw;
-        margin : auto;
+        width: 300px;
+        position: relative;
+
     `
 
     return(<LoginBackground>
         <div className="flex gap-2">
+
             <img src="./ms_logo.svg" width={64}/>
             <div>
                 <h1 className="text-center items-center grow text-xl"><strong>로그인</strong></h1><hr/>
