@@ -1,3 +1,3 @@
-# McServerStatus-client
+# mcstatus-client
 
-nextjs 쓰면서 백엔드를 따로 쓴다는 멍청함을 깨닫고 vite-react로 옮겼습니다
+마인크래프트 스타일로 제작된 서버 상태를 실시간으로 볼 수 있는 사이트의 프론트 엔드입니다.
