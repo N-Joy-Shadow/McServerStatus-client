@@ -33,6 +33,7 @@
     "react-router-dom": "^6.6.1",
     "styled-components": "^5.3.9",
     "styled-jsx": "^5.0.7",
+    "vite-dotnet": "^0.2.15",
     "zod": "^3.20.2",
     "zustand": "^4.1.0"
   },
