@@ -14,6 +14,6 @@ export default function Howto() {
 
 
     return(<InfoLayout helmet={helmet}>
-        <McButton onClick={() => { }}>로그인</McButton>
+        <p>준비중..</p>
     </InfoLayout>)
 };
