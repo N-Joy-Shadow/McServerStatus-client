@@ -26,9 +26,6 @@ const Home = () => {
   
   const { isOnline ,SetOnline} = useOnlineStore()
 
-
-  const url = import.meta.env.VITE_BASE_API_URL
-
   //나중에 손보기
   /* const [isConnect, setIsConnect] = useState<boolean>(true); */
   //init signalR

@@ -1,5 +1,4 @@
 import { IPlayerList } from '../../API/IServerInfo';
-import MCButton from '../MCStyled/mcButton';
 interface PlayerInfoProps  {
     data : IPlayerList
 }

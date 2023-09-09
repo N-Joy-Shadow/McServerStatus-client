@@ -15,14 +15,11 @@ import { MsalProvider } from "@azure/msal-react";
 import { Configuration,  PublicClientApplication } from "@azure/msal-browser";
 
 import Main from "./pages/main";
-import Info from "./pages/info/info";
-import Howto from "./pages/info/howto";
-import Docs from "./pages/info/docs";
+
 import ServerPush from './pages/server/add';
 import ServerEdit from './pages/server/edit';
 
 import { McToast, ToastEnum } from './components/MCStyled/mcToast';
-import Login from './pages/admin/login';
 import DevEdit from './pages/server/dev_edit';
 declare module "notistack" {
   interface VariantOverrides {
@@ -40,12 +37,6 @@ const router = createBrowserRouter(
         <Route path="dev/:name" element={<DevEdit/>}/>
         <Route path="edit/:name" element={<ServerEdit/>}/>
       </Route>
-      <Route path="info">
-        <Route index element={<Info/>}/>
-        <Route path="docs" element={<Docs/>}/>
-        <Route path="howto" element={<Howto/>}/>
-      </Route>
-      <Route path="login" element={<Login/>}/>
     </Route>
   )
 )
